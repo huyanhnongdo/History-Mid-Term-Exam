@@ -8,58 +8,50 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap">
 <style>
-/* Layout: a pocket player — big transport controls, the line being read, a track list below */
+/* Layout: a pocket player — transport on top, track list, then the script of the current track */
 :root{
   --bg:#f3f5f9; --surface:#ffffff; --ink:#18223a; --muted:#5b667d; --line:#d9dee8;
   --accent:#1f4fa8; --accent-soft:#e3ebfa; --gold:#9a6b12; --gold-soft:#f6ecd6;
-  --ok:#1d7a46; --ok-soft:#e1f3e8;
   --display:"Literata", Georgia, serif;
   --body:"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0f1420; --surface:#171e2d; --ink:#e6eaf3; --muted:#9aa5bb; --line:#2a3447;
-  --accent:#8fb2f5; --accent-soft:#1d2a45; --gold:#e3b866; --gold-soft:#33291a;
-  --ok:#6fd39a; --ok-soft:#15301f; color-scheme:dark}}
+  --accent:#8fb2f5; --accent-soft:#1d2a45; --gold:#e3b866; --gold-soft:#33291a; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1420; --surface:#171e2d; --ink:#e6eaf3; --muted:#9aa5bb; --line:#2a3447;
-  --accent:#8fb2f5; --accent-soft:#1d2a45; --gold:#e3b866; --gold-soft:#33291a;
-  --ok:#6fd39a; --ok-soft:#15301f; color-scheme:dark}
+  --accent:#8fb2f5; --accent-soft:#1d2a45; --gold:#e3b866; --gold-soft:#33291a; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.6}
 .wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:flex;flex-direction:column;gap:18px}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:600}
 h1{font-family:var(--display);font-size:clamp(26px,6vw,34px);line-height:1.15;margin:4px 0 6px}
+h2{font-family:var(--display);font-size:20px;margin:0}
 .lede{color:var(--muted);margin:0}
-.player{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px}
-.now{font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums}
-.now b{color:var(--accent)}
-.line{font-family:var(--display);font-size:clamp(19px,4.6vw,23px);line-height:1.45;min-height:6.2em;text-wrap:pretty}
-.line.answer{color:var(--ok)}
-.line.wait{color:var(--muted);font-style:italic}
-.bar{height:5px;background:var(--line);border-radius:5px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.player{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.ttl{font-family:var(--display);font-size:22px;line-height:1.3;margin:0}
+.sub{color:var(--muted);font-size:13.5px;margin:0}
+.seek{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.seek input{flex:1;min-width:0;accent-color:var(--accent)}
 .ctrls{display:flex;align-items:center;justify-content:center;gap:14px}
 .btn{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;cursor:pointer;display:grid;place-items:center}
 .btn.sm{width:52px;height:52px;font-size:13px;font-weight:600}
 .btn.play{width:76px;height:76px;background:var(--accent);border-color:var(--accent);color:var(--surface)}
-.btn svg{width:26px;height:26px;fill:currentColor}
+.btn svg{width:24px;height:24px;fill:currentColor}
 .btn.play svg{width:34px;height:34px}
 .btn:focus-visible,.track:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.opts label{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px;min-width:0}
-select{font:inherit;font-size:14px;padding:7px 8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
-.warn{background:var(--gold-soft);border-radius:10px;padding:10px 14px;font-size:14px}
+.opts{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 .tracks{display:flex;flex-direction:column;gap:8px}
-.track{font:inherit;text-align:left;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer}
+.track{font:inherit;text-align:left;display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer}
 .track .n{font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
 .track .t{min-width:0}
 .track .t small{display:block;color:var(--muted);font-size:12.5px}
 .track .d{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
 .track[aria-current="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .track[aria-current="true"] .n{color:var(--accent)}
-h2{font-family:var(--display);font-size:20px;margin:0}
-.tips{font-size:14px;color:var(--muted);margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.script{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;white-space:pre-line;font-size:15px}
+.note{background:var(--gold-soft);border-radius:10px;padding:10px 14px;font-size:14px}
 </style>
 <style>body{margin:0}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 </head>
@@ -70,31 +62,24 @@ h2{font-family:var(--display);font-size:20px;margin:0}
   <header>
     <div class="eyebrow">Lịch sử 12 · Giữa kỳ I · Bài 1–6</div>
     <h1>Nghe ôn Sử 12</h1>
-    <p class="lede">Bật lên, cho điện thoại vào túi rồi đi bộ. Mỗi bài khoảng 3–4 phút, cuối có phần hỏi nhanh: máy đọc câu hỏi, dừng cho bạn tự trả lời rồi đọc đáp án.</p>
+    <p class="lede">8 bài nghe, tổng khoảng 17 phút. Phát xong bài này sẽ tự chuyển sang bài tiếp theo, khóa màn hình vẫn nghe được.</p>
   </header>
 
-  <div class="warn" id="warn" hidden></div>
-
   <section class="player" aria-label="Trình phát">
-    <div class="now"><span id="tname"><b>Chọn một bài để nghe</b></span><span id="tpos"></span></div>
-    <div class="line" id="line" aria-live="polite">Bấm nút phát để bắt đầu từ bài 1, hoặc chọn bài bên dưới.</div>
-    <div class="bar"><i id="prog"></i></div>
+    <div><p class="ttl" id="ttl">Tổng ôn nhanh</p><p class="sub" id="sub"></p></div>
+    <div class="seek"><span id="cur">0:00</span><input type="range" id="pos" min="0" max="100" value="0" step="0.1" aria-label="Vị trí"><span id="dur">0:00</span></div>
     <div class="ctrls">
-      <button class="btn sm" id="back" aria-label="Lùi một câu"><svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6L11 18zm.5-6 8.5 6V6l-8.5 6z"/></svg></button>
+      <button class="btn sm" id="prev" aria-label="Bài trước"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg></button>
+      <button class="btn sm" id="rw" aria-label="Lùi 10 giây">−10</button>
       <button class="btn play" id="play" aria-label="Phát"><svg id="ico" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-      <button class="btn sm" id="fwd" aria-label="Tới một câu"><svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg></button>
+      <button class="btn sm" id="ff" aria-label="Tới 10 giây">+10</button>
+      <button class="btn sm" id="next" aria-label="Bài sau"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6z"/></svg></button>
     </div>
     <div class="opts">
-      <label for="rate">Tốc độ đọc
-        <select id="rate"><option value="0.85">Chậm</option><option value="1" selected>Bình thường</option><option value="1.15">Nhanh</option><option value="1.3">Rất nhanh</option></select>
-      </label>
-      <label for="gap">Thời gian tự trả lời
-        <select id="gap"><option value="3">3 giây</option><option value="5" selected>5 giây</option><option value="8">8 giây</option></select>
-      </label>
-      <label for="voice" style="grid-column:1/-1">Giọng đọc
-        <select id="voice"></select>
-      </label>
+      <label for="rate">Tốc độ <select id="rate"><option value="0.9">0,9×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option><option value="1.5">1,5×</option></select></label>
+      <label for="loop">Hết danh sách <select id="loop"><option value="stop">Dừng</option><option value="all">Phát lại từ đầu</option></select></label>
     </div>
+    <audio id="au" preload="metadata"></audio>
   </section>
 
   <section style="display:flex;flex-direction:column;gap:10px">
@@ -102,218 +87,52 @@ h2{font-family:var(--display);font-size:20px;margin:0}
     <div class="tracks" id="tracks"></div>
   </section>
 
-  <section style="display:flex;flex-direction:column;gap:8px">
-    <h2>Mẹo nghe khi đi bộ</h2>
-    <ul class="tips">
-      <li>Giữ màn hình sáng; trang sẽ cố giữ màn hình không tắt khi đang phát. Nếu khóa máy, giọng đọc sẽ dừng.</li>
-      <li>iPhone chưa có giọng tiếng Việt: Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → Tiếng Việt, tải giọng Linh (bản nâng cao nghe tự nhiên hơn).</li>
-      <li>Đến phần hỏi nhanh, nói đáp án thành tiếng trước khi máy đọc. Nhớ lâu hơn hẳn nghe thụ động.</li>
-    </ul>
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <h2>Lời đọc bài đang phát</h2>
+    <div class="note">Đến phần "Hỏi nhanh", bấm tạm dừng hoặc nói to đáp án trước khi máy đọc. Nhớ lâu hơn nghe thụ động.</div>
+    <div class="script" id="script"></div>
   </section>
 </div>
 
 <script>
-// Each track: list of items. String = câu đọc thường. {q,a} = câu hỏi nhanh.
-const TRACKS=[
-{t:"Bài 1 · Liên hợp quốc",s:"Bối cảnh, hình thành, mục tiêu, nguyên tắc, vai trò",items:[
-"Bài một. Liên hợp quốc.",
-"Bối cảnh. Cuối Chiến tranh thế giới thứ hai, ưu thế thuộc về phe Đồng minh, việc tổ chức lại thế giới trở nên cấp bách.",
-"Các nước muốn có một tổ chức quốc tế đủ mạnh để giữ hòa bình, thay cho Hội Quốc liên. Hội Quốc liên lập năm 1920, giải thể năm 1946.",
-"Ba nước giữ vai trò chính là Liên Xô, Mỹ và Anh.",
-"Quá trình hình thành có năm mốc. Hãy nghe kỹ, vì đề rất hay đánh tráo các hội nghị.",
-"Mốc một. Ngày 1 tháng 1 năm 1942, hai mươi sáu nước kí Tuyên bố Liên hợp quốc, cam kết cùng chống phát xít.",
-"Mốc hai. Hội nghị Tê hê ran, cuối năm 1943. Liên Xô, Mỹ, Anh khẳng định quyết tâm thành lập Liên hợp quốc. Chỉ là khẳng định quyết tâm.",
-"Mốc ba. Hội nghị I an ta, tháng 2 năm 1945. Ba nước ra quyết định thành lập Liên hợp quốc.",
-"Mốc bốn. Hội nghị Xan Phran xi xcô ở Mỹ, từ 25 tháng 4 đến 26 tháng 6 năm 1945. Năm mươi nước thông qua Hiến chương Liên hợp quốc.",
-"Mốc năm. Ngày 24 tháng 10 năm 1945, Liên hợp quốc chính thức thành lập với năm mươi mốt thành viên. Ngày 24 tháng 10 là Ngày Liên hợp quốc.",
-"Nhắc lại cho nhớ: Tê hê ran, khẳng định quyết tâm. I an ta, quyết định thành lập. Xan Phran xi xcô, thông qua Hiến chương. Ngày 24 tháng 10, chính thức ra đời.",
-"Bốn mục tiêu. Một, duy trì hòa bình và an ninh quốc tế. Đây là mục tiêu quan trọng nhất, là cơ sở cho mọi mục tiêu khác.",
-"Hai, thúc đẩy quan hệ hữu nghị giữa các dân tộc. Ba, hợp tác quốc tế về kinh tế, xã hội, văn hóa, nhân đạo, bảo đảm quyền con người. Bốn, làm trung tâm điều hòa các nỗ lực quốc tế.",
-"Sáu nguyên tắc. Bình đẳng chủ quyền. Tôn trọng toàn vẹn lãnh thổ và độc lập chính trị. Không dùng vũ lực. Không can thiệp nội bộ. Tôn trọng luật pháp quốc tế. Giải quyết tranh chấp bằng hòa bình.",
-"Mẹo phân biệt: duy trì hòa bình là mục tiêu. Không can thiệp nội bộ là nguyên tắc, không phải vai trò.",
-"Vai trò thứ nhất, giữ hòa bình. Từ năm 1945 đến nay không để xảy ra chiến tranh thế giới mới. Gìn giữ hòa bình ở nhiều nơi. Có các hiệp ước giải trừ vũ khí năm 1968, 1993 và 2017. Thúc đẩy phi thực dân hóa, nay có một trăm chín mươi ba thành viên.",
-"Vai trò thứ hai, kinh tế và đời sống. Chiến lược phát triển từng thập kỉ từ năm 1960. Mục tiêu Thiên niên kỉ năm 2000. Chương trình nghị sự 2030 với mười bảy mục tiêu, thông qua năm 2015.",
-"Vai trò thứ ba, quyền con người và văn hóa. Tuyên ngôn Nhân quyền năm 1948. UNESCO bảo tồn di sản. Quỹ Giáo dục không thể chờ đợi.",
-{q:"Hội nghị nào ra quyết định thành lập Liên hợp quốc?",a:"Hội nghị I an ta, tháng 2 năm 1945."},
-{q:"Hiến chương Liên hợp quốc được thông qua ở đâu?",a:"Hội nghị Xan Phran xi xcô, Mỹ, năm 1945, với năm mươi nước."},
-{q:"Khi thành lập, Liên hợp quốc có bao nhiêu thành viên? Hiện nay có bao nhiêu?",a:"Năm mươi mốt thành viên. Hiện nay một trăm chín mươi ba."},
-{q:"Mục tiêu nào quan trọng nhất của Liên hợp quốc?",a:"Duy trì hòa bình và an ninh quốc tế."},
-{q:"Không can thiệp vào công việc nội bộ là mục tiêu, nguyên tắc hay vai trò?",a:"Là nguyên tắc."}
-]},
-{t:"Bài 2 · Trật tự hai cực I-an-ta",s:"Hội nghị I-an-ta, hai giai đoạn, nguyên nhân sụp đổ",items:[
-"Bài hai. Trật tự thế giới trong Chiến tranh lạnh.",
-"Hội nghị I an ta họp từ ngày 4 đến 11 tháng 2 năm 1945 ở Liên Xô. Chỉ có ba nước: Liên Xô, Mỹ, Anh. Không có Pháp, không có Trung Quốc.",
-"Quyết định chung: kết thúc chiến tranh, tiêu diệt tận gốc phát xít Đức và quân phiệt Nhật, thành lập Liên hợp quốc, chia phạm vi ảnh hưởng ở châu Âu và châu Á.",
-"Ở châu Âu. Liên Xô chiếm Đông Đức, Đông Béc lin và Đông Âu. Mỹ, Anh, Pháp chiếm Tây Đức, Tây Béc lin và Tây Âu. Áo và Phần Lan trung lập.",
-"Ở châu Á. Mỹ chiếm đóng Nhật Bản. Triều Tiên chia đôi ở vĩ tuyến 38, Liên Xô ở phía bắc, Mỹ ở phía nam.",
-"Còn Đông Nam Á, Nam Á và Tây Á vẫn thuộc ảnh hưởng của các nước phương Tây.",
-"Chú ý bẫy: việc quân Anh và quân Trung Hoa Dân quốc vào Đông Dương là quyết định của Hội nghị Pốt xđam, không phải I an ta.",
-"Trật tự hai cực tồn tại từ năm 1945 đến năm 1991, qua hai giai đoạn.",
-"Giai đoạn một, từ năm 1945 đến đầu những năm 70. Xác lập và phát triển, đối đầu Mỹ và Liên Xô căng thẳng, nhất là từ khi Chiến tranh lạnh bắt đầu năm 1947.",
-"Hai khối quân sự đối đầu: NATO năm 1949, và Tổ chức Hiệp ước Vác sa va năm 1955.",
-"Nhưng ngay giai đoạn này đã rạn nứt. Cách mạng Trung Quốc thắng lợi năm 1949 là bước đột phá đầu tiên, phá vỡ âm mưu khống chế Trung Quốc của Mỹ.",
-"Giai đoạn hai, từ đầu những năm 70 đến năm 1991. Suy yếu và sụp đổ. Năm 1972, Xô Mỹ thỏa thuận hạn chế vũ khí chiến lược. Năm 1987, thủ tiêu tên lửa tầm trung ở châu Âu.",
-"Năm 1989, hai nước tuyên bố chấm dứt Chiến tranh lạnh. Nhưng phải đến tháng 12 năm 1991, Liên Xô tan rã, trật tự hai cực mới chấm dứt.",
-"Năm nguyên nhân sụp đổ. Một, đối đầu tốn kém làm cả hai cực suy yếu. Hai, quan hệ Đông Âu và Tây Âu hòa dịu. Ba, phong trào giải phóng dân tộc thắng lợi. Bốn, Nhật Bản và Tây Âu vươn lên, Liên Xô suy giảm. Năm, Liên Xô khủng hoảng và sai lầm trong cải tổ.",
-"Tác động: mở ra thời kì mới trong quan hệ quốc tế. Ưu thế tạm thời thuộc về Mỹ, nhưng vai trò các cường quốc khác tăng lên. Và hình thành một trật tự thế giới mới.",
-{q:"Ba nước nào dự Hội nghị I an ta?",a:"Liên Xô, Mỹ và Anh."},
-{q:"Theo Hội nghị I an ta, Đông Nam Á thuộc ảnh hưởng của ai?",a:"Các nước phương Tây."},
-{q:"NATO và Vác sa va thành lập năm nào?",a:"NATO năm 1949. Vác sa va năm 1955."},
-{q:"Sự kiện nào là bước đột phá đầu tiên làm xói mòn trật tự hai cực?",a:"Cách mạng Trung Quốc thắng lợi năm 1949."},
-{q:"Năm 1989 hay năm 1991 trật tự hai cực chấm dứt?",a:"Năm 1991, khi Liên Xô tan rã. Năm 1989 chỉ là chấm dứt Chiến tranh lạnh."}
-]},
-{t:"Bài 3 · Thế giới sau Chiến tranh lạnh",s:"Bốn xu thế, khái niệm và biểu hiện đa cực",items:[
-"Bài ba. Trật tự thế giới sau Chiến tranh lạnh.",
-"Có bốn xu thế chính. Một, lấy kinh tế làm trọng tâm. Hai, toàn cầu hóa. Ba, đối thoại và hợp tác thay cho đối đầu. Bốn, đa cực.",
-"Toàn cầu hóa là sự gia tăng mạnh mẽ mối liên hệ, phụ thuộc, tác động lẫn nhau giữa các quốc gia. Nguyên nhân sâu xa là cách mạng khoa học công nghệ.",
-"Biểu hiện của toàn cầu hóa: thương mại quốc tế phát triển, công ty xuyên quốc gia, sáp nhập tập đoàn, ra đời các tổ chức như EU, WTO, ASEM.",
-"Đa cực là trật tự có nhiều quốc gia và trung tâm tham gia, trong đó không nước nào có quyền lực áp đảo.",
-"Ba biểu hiện của đa cực. Một, các nước lớn như Trung Quốc, Nga, Ấn Độ, Nhật Bản, một số nước EU vươn lên. Hai, Mỹ suy giảm sức mạnh tương đối. Ba, vai trò các tổ chức kinh tế tài chính quốc tế và khu vực tăng, như G20.",
-"Bẫy hay gặp: công ty xuyên quốc gia là biểu hiện toàn cầu hóa, không phải đa cực.",
-"Bẫy thứ hai: Mỹ chỉ suy giảm tương đối. Mỹ vẫn đứng đầu thế giới về kinh tế, và thế giới không phải đơn cực.",
-"Quan hệ giữa các nước lớn sau Chiến tranh lạnh: đối thoại, thỏa hiệp, tránh xung đột trực tiếp. Có tính hai mặt, vừa mâu thuẫn vừa hài hòa.",
-{q:"Kể bốn xu thế phát triển chính sau Chiến tranh lạnh.",a:"Kinh tế là trọng tâm, toàn cầu hóa, đối thoại hợp tác, và đa cực."},
-{q:"Công ty xuyên quốc gia là biểu hiện của toàn cầu hóa hay đa cực?",a:"Toàn cầu hóa."},
-{q:"Sau Chiến tranh lạnh, Mỹ có mất vị trí số một về kinh tế không?",a:"Không. Mỹ vẫn số một, chỉ suy giảm tương đối."},
-{q:"Xu thế chủ đạo trong quan hệ giữa các cường quốc là gì?",a:"Đối thoại, thỏa hiệp, tránh xung đột trực tiếp."}
-]},
-{t:"Bài 4 · Sự ra đời và phát triển của ASEAN",s:"Hoàn cảnh, mục đích, ASEAN 5 đến ASEAN 10, bốn giai đoạn",items:[
-"Bài bốn. Sự ra đời và phát triển của ASEAN.",
-"Hoàn cảnh. Sau chiến tranh, xu hướng khu vực hóa lan rộng. Các nước Đông Nam Á cần hợp tác phát triển và tạo sức mạnh chung trước sự tranh giành của các nước lớn.",
-"Ngày 8 tháng 8 năm 1967, tại Băng Cốc, năm nước In đô nê xi a, Ma lai xi a, Phi líp pin, Xin ga po và Thái Lan thông qua Tuyên bố Băng Cốc, thành lập ASEAN.",
-"Mẹo nhớ năm nước sáng lập: không có Bru nây, không có Việt Nam, không có Mi an ma.",
-"Điều kiện tiên quyết: các nước thành viên đều đã giành được độc lập. Nhưng chú ý: cả khu vực thì chưa, vì năm 1967 Bru nây chưa độc lập và Đông Dương còn chiến tranh.",
-"Mục đích: hợp tác kinh tế, văn hóa, xã hội; giữ hòa bình ổn định khu vực trên cơ sở tôn trọng công lí và luật pháp; đưa Đông Nam Á thành khu vực hòa bình, thịnh vượng.",
-"Mở rộng thành viên. Năm 1984, Bru nây là thành viên thứ sáu. Tháng 7 năm 1995, Việt Nam là thành viên thứ bảy. Năm 1997, Lào và Mi an ma gia nhập. Năm 1999, Cam pu chia là thành viên thứ mười.",
-"Bốn giai đoạn. Từ 1967 đến 1976: khởi đầu, tập trung chính trị an ninh, có Tuyên bố khu vực hòa bình, tự do, trung lập năm 1971.",
-"Từ 1976 đến 1999: mở rộng từ năm lên mười nước. Hiệp ước Ba li năm 1976, Khu vực mậu dịch tự do AFTA năm 1992, Diễn đàn khu vực ARF năm 1994.",
-"Từ 1999 đến 2015: hoàn thiện cơ cấu tổ chức. Tuyên bố Ba li hai năm 2003, Hiến chương ASEAN năm 2007.",
-"Từ 2015 đến nay: xây dựng Cộng đồng ASEAN với ba trụ cột.",
-{q:"ASEAN thành lập ngày nào, ở đâu?",a:"Ngày 8 tháng 8 năm 1967, tại Băng Cốc, Thái Lan."},
-{q:"Việt Nam là thành viên thứ mấy của ASEAN, gia nhập năm nào?",a:"Thành viên thứ bảy, năm 1995."},
-{q:"Thành viên thứ mười là nước nào?",a:"Cam pu chia, năm 1999."},
-{q:"Hiến chương ASEAN ra đời năm nào, thuộc giai đoạn nào?",a:"Năm 2007, giai đoạn 1999 đến 2015."},
-{q:"Giai đoạn 1967 đến 1976, ASEAN tập trung hợp tác lĩnh vực gì?",a:"Chính trị và an ninh."}
-]},
-{t:"Bài 5 · Cộng đồng ASEAN",s:"Ý tưởng, văn kiện, ba trụ cột, thách thức",items:[
-"Bài năm. Cộng đồng ASEAN, từ ý tưởng đến hiện thực.",
-"Ý tưởng khởi nguồn ngay từ khi ASEAN thành lập năm 1967. Chính thức khẳng định tại Hội nghị cấp cao không chính thức ở Ma lai xi a, tháng 12 năm 1997, với văn kiện Tầm nhìn ASEAN 2020.",
-"Tuyên bố Ba li hai năm 2003 nêu rõ ba trụ cột. Hiến chương ASEAN năm 2007 là cơ sở pháp lí.",
-"Kế hoạch là Lộ trình xây dựng Cộng đồng ASEAN giai đoạn 2009 đến 2015.",
-"Ngày 22 tháng 11 năm 2015, lãnh đạo ASEAN kí Tuyên bố Cua la Lăm pơ. Cộng đồng ASEAN chính thức thành lập từ ngày 31 tháng 12 năm 2015.",
-"Nhắc lại chuỗi văn kiện: Tầm nhìn 2020 năm 1997, Ba li hai năm 2003, Hiến chương năm 2007, Lộ trình 2009, Cua la Lăm pơ năm 2015.",
-"Ba trụ cột. Một, Cộng đồng Chính trị An ninh: tạo môi trường hòa bình, an ninh.",
-"Hai, Cộng đồng Kinh tế: một thị trường và cơ sở sản xuất chung, lưu chuyển tự do hàng hóa, dịch vụ, đầu tư, vốn, lao động có tay nghề.",
-"Ba, Cộng đồng Văn hóa Xã hội: phát triển con người, phúc lợi xã hội, bảo vệ môi trường, xây dựng bản sắc chung, thu hẹp khoảng cách phát triển.",
-"Sau năm 2015: Hội nghị cấp cao lần thứ 37 ở Hà Nội năm 2020 thông qua việc xây dựng Tầm nhìn Cộng đồng ASEAN sau năm 2025.",
-"Thách thức nội khối: sự đa dạng về chế độ chính trị, chênh lệch phát triển, cạnh tranh xuất khẩu. Thách thức bên ngoài: nước lớn cạnh tranh ảnh hưởng, Biển Đông, biến đổi khí hậu, dịch bệnh.",
-"Nhớ: Cộng đồng ASEAN không thay thế ASEAN. Và ba trụ cột gắn kết chặt chẽ, không có trụ cột nào quan trọng nhất.",
-{q:"Văn kiện Tầm nhìn ASEAN 2020 được thông qua ở đâu, năm nào?",a:"Hội nghị cấp cao không chính thức ở Ma lai xi a, năm 1997."},
-{q:"Cơ sở pháp lí của Cộng đồng ASEAN là gì?",a:"Hiến chương ASEAN."},
-{q:"Văn kiện nào chính thức thành lập Cộng đồng ASEAN?",a:"Tuyên bố Cua la Lăm pơ, ngày 22 tháng 11 năm 2015."},
-{q:"Một thị trường và cơ sở sản xuất chung thuộc trụ cột nào?",a:"Cộng đồng Kinh tế ASEAN."},
-{q:"Sự đa dạng về chế độ chính trị là thuận lợi hay thách thức?",a:"Là thách thức."}
-]},
-{t:"Bài 6 · Cách mạng tháng Tám năm 1945",s:"Bối cảnh, diễn biến theo ngày, nguyên nhân, ý nghĩa, bài học",items:[
-"Bài sáu. Cách mạng tháng Tám năm 1945.",
-"Bối cảnh. Hội nghị Pốt xđam giao việc giải giáp quân Nhật ở Đông Dương cho quân Trung Hoa Dân quốc ở phía bắc vĩ tuyến 16 và quân Anh ở phía nam vĩ tuyến 16.",
-"Ngày 6 và 9 tháng 8, Mỹ ném bom nguyên tử xuống Hi rô si ma và Na ga xa ki. Ngày 15 tháng 8 năm 1945, Nhật đầu hàng Đồng minh không điều kiện. Thời cơ đã đến.",
-"Ba sự kiện mở đầu, cần nhớ theo thứ tự.",
-"Ngày 13 tháng 8, Trung ương Đảng và Tổng bộ Việt Minh lập Ủy ban Khởi nghĩa toàn quốc, ra Quân lệnh số 1, phát động Tổng khởi nghĩa.",
-"Ngày 14 và 15 tháng 8, Hội nghị toàn quốc của Đảng ở Tân Trào thông qua kế hoạch Tổng khởi nghĩa và chính sách đối nội, đối ngoại.",
-"Ngày 16 và 17 tháng 8, Đại hội Quốc dân ở Tân Trào tán thành Tổng khởi nghĩa, thông qua mười chính sách của Việt Minh, cử Ủy ban Dân tộc giải phóng do Hồ Chí Minh làm Chủ tịch.",
-"Diễn biến. Chiều 16 tháng 8, Giải phóng quân do Võ Nguyên Giáp chỉ huy tiến về Thái Nguyên, mở đường về Hà Nội.",
-"Ngày 18 tháng 8, bốn tỉnh giành chính quyền sớm nhất: Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam.",
-"Ba thành phố lớn: Hà Nội ngày 19, Huế ngày 23, Sài Gòn ngày 25 tháng 8. Nhớ thứ tự mười chín, hai mươi ba, hai mươi lăm.",
-"Ngày 28 tháng 8, Đồng Nai Thượng và Hà Tiên giành chính quyền cuối cùng.",
-"Ngày 30 tháng 8, vua Bảo Đại thoái vị, chế độ phong kiến sụp đổ. Ngày 2 tháng 9 năm 1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa.",
-"Nguyên nhân thắng lợi. Chủ quan có ba: đường lối lãnh đạo đúng đắn, sáng tạo của Đảng; truyền thống yêu nước, đoàn kết; quá trình chuẩn bị lâu dài suốt mười lăm năm. Khách quan: Đồng minh và Hồng quân Liên Xô đánh bại phát xít, nhất là quân phiệt Nhật.",
-"Ý nghĩa. Lật đổ thực dân Pháp hơn tám mươi năm, phát xít Nhật gần năm năm, chế độ quân chủ hơn một nghìn năm. Đảng trở thành đảng cầm quyền. Mở ra kỉ nguyên độc lập, tự do.",
-"Ba bài học: sự lãnh đạo của Đảng; xây dựng khối đại đoàn kết dân tộc; và nắm bắt thời cơ.",
-{q:"Ủy ban Khởi nghĩa toàn quốc và Quân lệnh số 1 ra đời ngày nào?",a:"Ngày 13 tháng 8 năm 1945."},
-{q:"Đại hội Quốc dân Tân Trào cử ra tổ chức nào?",a:"Ủy ban Dân tộc giải phóng Việt Nam, do Hồ Chí Minh làm Chủ tịch."},
-{q:"Bốn tỉnh nào giành chính quyền sớm nhất?",a:"Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam, ngày 18 tháng 8."},
-{q:"Hà Nội, Huế, Sài Gòn khởi nghĩa thắng lợi ngày nào?",a:"Hà Nội 19, Huế 23, Sài Gòn 25 tháng 8."},
-{q:"Kể ba bài học của Cách mạng tháng Tám.",a:"Sự lãnh đạo của Đảng, khối đại đoàn kết dân tộc, nắm bắt thời cơ."}
-]},
-{t:"Bẫy hay gặp trong đề",s:"Những chỗ đáp án chính thức chấm khác dự đoán",items:[
-"Phần cuối. Những bẫy hay gặp, rút ra từ đáp án chính thức của năm đề tham khảo.",
-"Bẫy một. Ý trật tự hai cực chi phối toàn bộ đời sống chính trị thế giới được chấm Đúng. Đừng loại chỉ vì chữ toàn bộ.",
-"Bẫy hai. Câu Hiến chương ASEAN thể hiện tinh thần thống nhất trong đa dạng được chấm Đúng.",
-"Bẫy ba. Câu ASEAN thành lập trong bối cảnh các quốc gia trong khu vực đã giành độc lập bị chấm Sai, vì cả khu vực thì chưa. Nhưng câu các nước thành viên đều đã độc lập thì Đúng.",
-"Bẫy bốn. Ở Đề 1, câu Cộng đồng ASEAN dựa trên Tuyên bố Băng Cốc và Ba li hai được chấm Đúng. Còn nếu hỏi thẳng cơ sở pháp lí là gì, chọn Hiến chương ASEAN.",
-"Bẫy năm. Mục đích của ASEAN là duy trì hòa bình ổn định khu vực. Nếu đề viết trên thế giới thì Sai.",
-"Bẫy sáu. Quân Anh và quân Trung Hoa Dân quốc vào Đông Dương là quyết định của Hội nghị Pốt xđam.",
-"Bẫy bảy. Các ý có chữ triệt để, tất cả, chỉ, hoàn toàn, quyết định thường là Sai, nhưng hãy đọc kĩ tinh thần của tư liệu.",
-"Hết phần nghe ôn tập. Chúc bạn làm bài thật tốt."
-]}
-];
-
-// ---------- engine ----------
-const S=window.speechSynthesis;
-const $=id=>document.getElementById(id);
-let voices=[],ti=-1,ii=0,si=0,playing=false,phase="q",timer=null,lock=null,runId=0;
-function flat(t){ // expand items into steps
-  const out=[];t.items.forEach((it,k)=>{
-    if(typeof it==="string") it.split(/(?<=[.?!])\s+/).forEach(s=>s.trim()&&out.push({k,txt:s,type:"say"}));
-    else {out.push({k,txt:"Hỏi nhanh. "+it.q,type:"q"});out.push({k,txt:"",type:"wait"});out.push({k,txt:"Đáp án: "+it.a,type:"a"});}
-  });return out;}
-const STEPS=TRACKS.map(flat);
-function estMin(steps){const w=steps.reduce((n,s)=>n+s.txt.split(/\s+/).length,0);return Math.max(1,Math.round(w/150+steps.filter(s=>s.type==="wait").length*5/60));}
-
-function loadVoices(){
-  voices=(S?S.getVoices():[]).filter(v=>/^vi/i.test(v.lang));
-  const sel=$("voice");let saved=null;try{saved=localStorage.getItem("nghe-voice")}catch(e){}
-  sel.innerHTML=voices.length?voices.map((v,i)=>`<option value="${i}" ${v.name===saved?"selected":""}>${v.name}${/enhanced|premium|nâng cao/i.test(v.name)?" ★":""}</option>`).join(""):'<option>Không tìm thấy giọng tiếng Việt</option>';
-  const w=$("warn");
-  if(!S){w.hidden=false;w.textContent="Trình duyệt này không hỗ trợ đọc giọng nói. Hãy mở trang bằng Safari (iPhone) hoặc Chrome (Android).";}
-  else if(!voices.length){w.hidden=false;w.textContent="Máy chưa có giọng tiếng Việt nên có thể đọc bằng giọng nước ngoài. Xem mẹo ở cuối trang để cài giọng tiếng Việt.";}
-  else w.hidden=true;
+const T=[{"t": "Tổng ôn nhanh", "s": "Cả 6 bài trong một lượt", "src": "audio/phan-0-tong-on.mp3", "d": 156, "text": "Tổng ôn nhanh Lịch sử 12, giữa kỳ một.\n\nBài một, Liên hợp quốc. Hội nghị Tê hê ran năm 1943 khẳng định quyết tâm thành lập. Hội nghị I an ta tháng 2 năm 1945 quyết định thành lập. Hội nghị Xan Phran xi xcô, năm mươi nước, thông qua Hiến chương. Ngày 24 tháng 10 năm 1945, Liên hợp quốc chính thức ra đời với năm mươi mốt thành viên, nay là một trăm chín mươi ba. Mục tiêu quan trọng nhất: duy trì hòa bình và an ninh quốc tế. Không can thiệp nội bộ là nguyên tắc, không phải vai trò.\n\nBài hai, trật tự hai cực I an ta. Hội nghị chỉ có Liên Xô, Mỹ, Anh. Đông Nam Á thuộc ảnh hưởng phương Tây. NATO năm 1949, Vác sa va năm 1955. Bước đột phá đầu tiên: cách mạng Trung Quốc năm 1949. Năm 1989 chấm dứt Chiến tranh lạnh, nhưng năm 1991 Liên Xô tan rã mới chấm dứt trật tự hai cực.\n\nBài ba, sau Chiến tranh lạnh có bốn xu thế: kinh tế là trọng tâm, toàn cầu hóa, đối thoại hợp tác, và đa cực. Đa cực là không nước nào áp đảo. Mỹ chỉ suy giảm tương đối, vẫn số một kinh tế. Công ty xuyên quốc gia là biểu hiện toàn cầu hóa.\n\nBài bốn, ASEAN ra đời ngày 8 tháng 8 năm 1967 ở Băng Cốc, năm nước: In đô nê xi a, Ma lai xi a, Phi líp pin, Xin ga po, Thái Lan. Bru nây thứ sáu năm 1984, Việt Nam thứ bảy năm 1995, Lào và Mi an ma năm 1997, Cam pu chia thứ mười năm 1999. Hiến chương ASEAN năm 2007.\n\nBài năm, Cộng đồng ASEAN. Tầm nhìn 2020 năm 1997, Ba li hai năm 2003, Lộ trình 2009 đến 2015, Tuyên bố Cua la Lăm pơ ngày 22 tháng 11 năm 2015. Ba trụ cột: chính trị an ninh, kinh tế, văn hóa xã hội. Đa dạng chế độ chính trị là thách thức.\n\nBài sáu, Cách mạng tháng Tám. Ngày 13 tháng 8, Quân lệnh số 1. Ngày 16 và 17, Đại hội Quốc dân Tân Trào. Sớm nhất ngày 18: Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam. Hà Nội 19, Huế 23, Sài Gòn 25. Ngày 2 tháng 9, Tuyên ngôn Độc lập. Ba bài học: Đảng lãnh đạo, đại đoàn kết, nắm thời cơ."}, {"t": "Bài 1 · Liên hợp quốc", "s": "Hình thành, mục tiêu, nguyên tắc, vai trò", "src": "audio/phan-1-lien-hop-quoc.mp3", "d": 124, "text": "Bài một. Liên hợp quốc.\n\nCuối Chiến tranh thế giới thứ hai, phe Đồng minh chiếm ưu thế, việc tổ chức lại thế giới trở nên cấp bách. Các nước muốn có một tổ chức đủ mạnh để giữ hòa bình, thay cho Hội Quốc liên. Ba nước giữ vai trò chính là Liên Xô, Mỹ và Anh.\n\nQuá trình hình thành có năm mốc. Ngày 1 tháng 1 năm 1942, hai mươi sáu nước kí Tuyên bố Liên hợp quốc. Cuối năm 1943, Hội nghị Tê hê ran khẳng định quyết tâm thành lập. Tháng 2 năm 1945, Hội nghị I an ta ra quyết định thành lập. Từ tháng 4 đến tháng 6 năm 1945, Hội nghị Xan Phran xi xcô ở Mỹ, với năm mươi nước, thông qua Hiến chương. Ngày 24 tháng 10 năm 1945, Liên hợp quốc chính thức thành lập với năm mươi mốt thành viên.\n\nNhắc lại: Tê hê ran, khẳng định quyết tâm. I an ta, quyết định thành lập. Xan Phran xi xcô, thông qua Hiến chương.\n\nBốn mục tiêu. Một, duy trì hòa bình và an ninh quốc tế, mục tiêu quan trọng nhất. Hai, thúc đẩy hữu nghị giữa các dân tộc. Ba, hợp tác về kinh tế, xã hội, văn hóa, nhân đạo. Bốn, làm trung tâm điều hòa các nỗ lực quốc tế.\n\nSáu nguyên tắc: bình đẳng chủ quyền, tôn trọng toàn vẹn lãnh thổ, không dùng vũ lực, không can thiệp nội bộ, tôn trọng luật pháp quốc tế, giải quyết tranh chấp bằng hòa bình.\n\nBa vai trò. Giữ hòa bình: không để xảy ra chiến tranh thế giới mới, thúc đẩy phi thực dân hóa, nay có một trăm chín mươi ba thành viên. Kinh tế: chiến lược từng thập kỉ từ năm 1960, Chương trình nghị sự 2030 với mười bảy mục tiêu. Quyền con người: Tuyên ngôn Nhân quyền năm 1948, UNESCO bảo tồn di sản.\n\nHỏi nhanh. Hội nghị nào quyết định thành lập Liên hợp quốc? ... ... Đáp án: Hội nghị I an ta.\nKhi thành lập có bao nhiêu thành viên? ... ... Đáp án: năm mươi mốt.\nKhông can thiệp nội bộ là mục tiêu hay nguyên tắc? ... ... Đáp án: nguyên tắc."}, {"t": "Bài 2 · Trật tự hai cực I-an-ta", "s": "Hội nghị I-an-ta, hai giai đoạn, sụp đổ", "src": "audio/phan-2-trat-tu-hai-cuc.mp3", "d": 121, "text": "Bài hai. Trật tự thế giới trong Chiến tranh lạnh.\n\nHội nghị I an ta họp từ ngày 4 đến 11 tháng 2 năm 1945, chỉ có ba nước Liên Xô, Mỹ, Anh. Hội nghị quyết định tiêu diệt tận gốc phát xít Đức và quân phiệt Nhật, thành lập Liên hợp quốc, chia phạm vi ảnh hưởng.\n\nỞ châu Âu, Liên Xô chiếm Đông Đức, Đông Béc lin và Đông Âu. Mỹ, Anh, Pháp chiếm Tây Đức, Tây Béc lin và Tây Âu. Ở châu Á, Mỹ chiếm đóng Nhật Bản, Triều Tiên chia đôi ở vĩ tuyến 38. Đông Nam Á vẫn thuộc ảnh hưởng của các nước phương Tây.\n\nChú ý: quân Anh và quân Trung Hoa Dân quốc vào Đông Dương là quyết định của Hội nghị Pốt xđam, không phải I an ta.\n\nTrật tự hai cực tồn tại từ năm 1945 đến năm 1991, qua hai giai đoạn. Giai đoạn một, từ năm 1945 đến đầu những năm 70, đối đầu Xô Mỹ căng thẳng. Hai khối quân sự: NATO năm 1949, Vác sa va năm 1955. Ngay lúc này đã rạn nứt: cách mạng Trung Quốc năm 1949 là bước đột phá đầu tiên.\n\nGiai đoạn hai, từ đầu những năm 70 đến năm 1991, suy yếu và sụp đổ. Năm 1972 hạn chế vũ khí chiến lược. Năm 1987 thủ tiêu tên lửa tầm trung. Năm 1989 tuyên bố chấm dứt Chiến tranh lạnh. Tháng 12 năm 1991 Liên Xô tan rã, trật tự hai cực chấm dứt.\n\nNăm nguyên nhân sụp đổ: chạy đua tốn kém, Đông Âu và Tây Âu hòa dịu, phong trào giải phóng dân tộc thắng lợi, Nhật Bản và Tây Âu vươn lên, Liên Xô khủng hoảng.\n\nLưu ý khi làm đề: câu trật tự hai cực chi phối toàn bộ đời sống chính trị thế giới được chấm Đúng.\n\nHỏi nhanh. Đông Nam Á thuộc ảnh hưởng của ai? ... ... Đáp án: các nước phương Tây.\nBước đột phá đầu tiên là gì? ... ... Đáp án: cách mạng Trung Quốc năm 1949.\nTrật tự hai cực chấm dứt năm nào? ... ... Đáp án: năm 1991."}, {"t": "Bài 3 · Sau Chiến tranh lạnh", "s": "Bốn xu thế, đa cực", "src": "audio/phan-3-sau-chien-tranh-lanh.mp3", "d": 112, "text": "Bài ba. Trật tự thế giới sau Chiến tranh lạnh.\n\nChiến tranh lạnh kết thúc mở ra bốn xu thế chính. Một, lấy kinh tế làm trọng tâm: các nước điều chỉnh chiến lược, tập trung phát triển kinh tế. Hai, toàn cầu hóa. Ba, đối thoại và hợp tác thay cho đối đầu. Bốn, đa cực.\n\nToàn cầu hóa là sự gia tăng mạnh mẽ mối liên hệ, phụ thuộc, tác động lẫn nhau giữa các quốc gia. Nguyên nhân sâu xa là cách mạng khoa học công nghệ. Biểu hiện: thương mại quốc tế phát triển, công ty xuyên quốc gia, sáp nhập tập đoàn, ra đời các tổ chức như EU, WTO, ASEM.\n\nĐa cực là trật tự có nhiều quốc gia, nhiều trung tâm tham gia, trong đó không nước nào có quyền lực áp đảo.\n\nBa biểu hiện của đa cực. Một, các nước lớn vươn lên: Trung Quốc, Nga, Ấn Độ, Nhật Bản, một số nước EU. Hai, Mỹ suy giảm sức mạnh tương đối. Năm 2000, GDP Mỹ gấp khoảng mười hai lần Trung Quốc, năm 2021 chỉ còn khoảng một phẩy ba lần. Ba, vai trò các tổ chức kinh tế, tài chính quốc tế tăng, như G20 thành lập năm 1999.\n\nBa bẫy cần nhớ. Công ty xuyên quốc gia là biểu hiện toàn cầu hóa, không phải đa cực. Mỹ chỉ suy giảm tương đối, vẫn đứng đầu kinh tế, thế giới không phải đơn cực. Phân tuyến hai hệ thống là đặc điểm hai cực, không phải đa cực.\n\nQuan hệ giữa các nước lớn: đối thoại, thỏa hiệp, tránh xung đột trực tiếp, có tính hai mặt, vừa mâu thuẫn vừa hài hòa.\n\nHỏi nhanh. Kể bốn xu thế chính. ... ... Đáp án: kinh tế là trọng tâm, toàn cầu hóa, đối thoại hợp tác, đa cực.\nCông ty xuyên quốc gia thuộc xu thế nào? ... ... Đáp án: toàn cầu hóa.\nMỹ có mất vị trí số một kinh tế không? ... ... Đáp án: không, chỉ suy giảm tương đối."}, {"t": "Bài 4 · ASEAN", "s": "Ra đời, mở rộng, bốn giai đoạn", "src": "audio/phan-4-asean.mp3", "d": 128, "text": "Bài bốn. Sự ra đời và phát triển của ASEAN.\n\nSau Chiến tranh thế giới thứ hai, xu hướng khu vực hóa lan rộng. Các nước Đông Nam Á cần hợp tác phát triển và tạo sức mạnh chung trước sự tranh giành ảnh hưởng của các nước lớn.\n\nNgày 8 tháng 8 năm 1967, tại Băng Cốc, năm nước In đô nê xi a, Ma lai xi a, Phi líp pin, Xin ga po và Thái Lan thông qua Tuyên bố Băng Cốc, thành lập ASEAN. Năm nước sáng lập không có Bru nây, không có Việt Nam.\n\nĐiều kiện tiên quyết: các nước thành viên đều đã giành độc lập. Nhưng cả khu vực thì chưa, nên câu các quốc gia trong khu vực đã giành độc lập bị chấm Sai.\n\nMục đích: hợp tác kinh tế, văn hóa, xã hội; giữ hòa bình ổn định khu vực trên cơ sở tôn trọng công lí và luật pháp; đưa Đông Nam Á thành khu vực hòa bình, thịnh vượng.\n\nMở rộng thành viên. Năm 1984, Bru nây là thành viên thứ sáu. Tháng 7 năm 1995, Việt Nam là thành viên thứ bảy. Năm 1997, Lào và Mi an ma. Năm 1999, Cam pu chia là thành viên thứ mười.\n\nBốn giai đoạn. Từ 1967 đến 1976: tập trung chính trị an ninh, Tuyên bố khu vực hòa bình, tự do, trung lập năm 1971. Từ 1976 đến 1999: mở rộng từ năm lên mười nước, Hiệp ước Ba li năm 1976, AFTA năm 1992, Diễn đàn ARF năm 1994. Từ 1999 đến 2015: hoàn thiện cơ cấu tổ chức, Ba li hai năm 2003, Hiến chương ASEAN năm 2007. Từ 2015 đến nay: xây dựng Cộng đồng ASEAN.\n\nTừ những năm 90, ASEAN chuyển trọng tâm sang hợp tác kinh tế.\n\nHỏi nhanh. ASEAN thành lập ngày nào? ... ... Đáp án: ngày 8 tháng 8 năm 1967.\nViệt Nam là thành viên thứ mấy? ... ... Đáp án: thứ bảy, năm 1995.\nHiến chương ASEAN ra đời năm nào? ... ... Đáp án: năm 2007."}, {"t": "Bài 5 · Cộng đồng ASEAN", "s": "Văn kiện, ba trụ cột, thách thức", "src": "audio/phan-5-cong-dong-asean.mp3", "d": 125, "text": "Bài năm. Cộng đồng ASEAN, từ ý tưởng đến hiện thực.\n\nÝ tưởng khởi nguồn ngay từ khi ASEAN thành lập năm 1967. Ý tưởng được chính thức khẳng định tại Hội nghị cấp cao không chính thức ở Ma lai xi a, tháng 12 năm 1997, với văn kiện Tầm nhìn ASEAN 2020.\n\nTuyên bố Ba li hai năm 2003 nêu rõ ba trụ cột. Mục tiêu là đưa ASEAN thành cộng đồng liên kết sâu rộng hơn, trên cơ sở pháp lí là Hiến chương ASEAN. Kế hoạch là Lộ trình xây dựng Cộng đồng ASEAN giai đoạn 2009 đến 2015.\n\nNgày 22 tháng 11 năm 2015, lãnh đạo ASEAN kí Tuyên bố Cua la Lăm pơ. Cộng đồng ASEAN chính thức thành lập từ ngày 31 tháng 12 năm 2015.\n\nNhắc lại chuỗi văn kiện: Tầm nhìn 2020 năm 1997, Ba li hai năm 2003, Hiến chương năm 2007, Lộ trình năm 2009, Cua la Lăm pơ năm 2015.\n\nBa trụ cột. Cộng đồng Chính trị An ninh: môi trường hòa bình, an ninh. Cộng đồng Kinh tế: một thị trường và cơ sở sản xuất chung, lưu chuyển tự do hàng hóa, dịch vụ, đầu tư, vốn, lao động có tay nghề. Cộng đồng Văn hóa Xã hội: phát triển con người, phúc lợi xã hội, môi trường, bản sắc chung, thu hẹp khoảng cách phát triển.\n\nNăm 2020, Hội nghị cấp cao lần thứ 37 ở Hà Nội thông qua việc xây dựng Tầm nhìn Cộng đồng ASEAN sau năm 2025.\n\nThách thức nội khối: đa dạng chế độ chính trị, chênh lệch phát triển. Thách thức bên ngoài: nước lớn cạnh tranh, Biển Đông, biến đổi khí hậu, dịch bệnh. Cộng đồng ASEAN không thay thế ASEAN, và không trụ cột nào quan trọng nhất.\n\nHỏi nhanh. Tầm nhìn ASEAN 2020 thông qua năm nào? ... ... Đáp án: năm 1997, ở Ma lai xi a.\nVăn kiện nào thành lập Cộng đồng ASEAN? ... ... Đáp án: Tuyên bố Cua la Lăm pơ năm 2015.\nThị trường chung thuộc trụ cột nào? ... ... Đáp án: Cộng đồng Kinh tế."}, {"t": "Bài 6 · Cách mạng tháng Tám", "s": "Diễn biến theo ngày, nguyên nhân, bài học", "src": "audio/phan-6-cach-mang-thang-tam.mp3", "d": 120, "text": "Bài sáu. Cách mạng tháng Tám năm 1945.\n\nHội nghị Pốt xđam giao giải giáp quân Nhật ở Đông Dương cho quân Trung Hoa Dân quốc phía bắc vĩ tuyến 16, quân Anh phía nam vĩ tuyến 16. Ngày 15 tháng 8 năm 1945, Nhật đầu hàng Đồng minh không điều kiện. Thời cơ đã đến.\n\nBa sự kiện mở đầu. Ngày 13 tháng 8, Trung ương Đảng và Tổng bộ Việt Minh lập Ủy ban Khởi nghĩa toàn quốc, ra Quân lệnh số 1. Ngày 14 và 15, Hội nghị toàn quốc của Đảng ở Tân Trào thông qua kế hoạch Tổng khởi nghĩa. Ngày 16 và 17, Đại hội Quốc dân ở Tân Trào tán thành Tổng khởi nghĩa, thông qua mười chính sách của Việt Minh, cử Ủy ban Dân tộc giải phóng do Hồ Chí Minh làm Chủ tịch.\n\nChiều 16 tháng 8, Giải phóng quân do Võ Nguyên Giáp chỉ huy tiến về Thái Nguyên, mở đường về Hà Nội. Ngày 18, bốn tỉnh giành chính quyền sớm nhất: Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam. Hà Nội ngày 19, Huế ngày 23, Sài Gòn ngày 25. Ngày 28, Đồng Nai Thượng và Hà Tiên giành chính quyền cuối cùng. Ngày 30, vua Bảo Đại thoái vị. Ngày 2 tháng 9, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa.\n\nNguyên nhân chủ quan: đường lối đúng đắn của Đảng, truyền thống yêu nước, chuẩn bị suốt mười lăm năm. Nguyên nhân khách quan: Đồng minh và Hồng quân Liên Xô đánh bại phát xít Nhật.\n\nÝ nghĩa: lật đổ thực dân Pháp hơn tám mươi năm, phát xít Nhật gần năm năm, chế độ quân chủ hơn một nghìn năm. Đảng trở thành đảng cầm quyền.\n\nBa bài học: Đảng lãnh đạo, khối đại đoàn kết dân tộc, nắm bắt thời cơ.\n\nHỏi nhanh. Quân lệnh số 1 ra ngày nào? ... ... Đáp án: ngày 13 tháng 8.\nBốn tỉnh nào giành chính quyền sớm nhất? ... ... Đáp án: Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam.\nHà Nội, Huế, Sài Gòn thứ tự ngày nào? ... ... Đáp án: 19, 23 và 25 tháng 8."}, {"t": "Bẫy hay gặp", "s": "Rút ra từ đáp án chính thức 5 đề", "src": "audio/phan-7-bay-hay-gap.mp3", "d": 113, "text": "Những bẫy hay gặp, rút ra từ đáp án chính thức của năm đề tham khảo.\n\nBẫy một. Tê hê ran chỉ khẳng định quyết tâm. I an ta mới quyết định thành lập Liên hợp quốc. Xan Phran xi xcô chỉ thông qua Hiến chương. Hiến chương có hiệu lực ngày 24 tháng 10 năm 1945.\n\nBẫy hai. Hai mươi sáu nước kí Tuyên bố năm 1942 không phải là thành viên. Khi thành lập có năm mươi mốt, nay là một trăm chín mươi ba, không phải hơn hai trăm.\n\nBẫy ba. Quân Anh và quân Trung Hoa Dân quốc vào Đông Dương là quyết định của Hội nghị Pốt xđam.\n\nBẫy bốn. Năm 1989 chỉ chấm dứt Chiến tranh lạnh. Năm 1991 Liên Xô tan rã mới chấm dứt trật tự hai cực.\n\nBẫy năm. Câu trật tự hai cực chi phối toàn bộ đời sống chính trị thế giới được chấm Đúng. Đừng loại chỉ vì chữ toàn bộ.\n\nBẫy sáu. Công ty xuyên quốc gia là biểu hiện toàn cầu hóa, không phải đa cực.\n\nBẫy bảy. Câu Hiến chương ASEAN thể hiện tinh thần thống nhất trong đa dạng được chấm Đúng.\n\nBẫy tám. Các nước thành viên ASEAN đều đã độc lập thì Đúng. Các quốc gia trong khu vực đã độc lập thì Sai.\n\nBẫy chín. Mục đích ASEAN là hòa bình ổn định khu vực. Viết trên thế giới thì Sai.\n\nBẫy mười. Hỏi thẳng cơ sở pháp lí của Cộng đồng ASEAN thì chọn Hiến chương ASEAN. Riêng câu đúng sai ở Đề một, ý nhắc Tuyên bố Băng Cốc và Ba li hai được chấm Đúng.\n\nBẫy mười một. Sự đa dạng chế độ chính trị là thách thức của ASEAN, không phải thuận lợi.\n\nBẫy mười hai. Căn cứ địa cách mạng xây dựng ở rừng núi, nông thôn, không phải đô thị. Cách mạng tháng Tám là tổng khởi nghĩa, không phải chiến tranh.\n\nBẫy mười ba. Lãnh đạo Cách mạng tháng Tám là Đảng Cộng sản Đông Dương, không phải giai cấp lao động.\n\nChúc bạn làm bài thật tốt."}];
+const $=id=>document.getElementById(id), au=$("au");
+let ti=0, seeking=false;
+const fmt=s=>{s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")};
+const save=()=>{try{localStorage.setItem("nghe-mp3",JSON.stringify([ti,au.currentTime||0]))}catch(e){}};
+function renderList(){
+  $("tracks").innerHTML=T.map((t,i)=>`<button class="track" data-i="${i}" aria-current="${i===ti}"><span class="n">${i}</span><span class="t">${t.t}<small>${t.s}</small></span><span class="d">${fmt(t.d)}</span></button>`).join("");
+  document.querySelectorAll(".track").forEach(b=>b.onclick=()=>{load(+b.dataset.i,0);au.play().catch(()=>{})});
 }
-if(S){loadVoices();S.onvoiceschanged=loadVoices;}
-$("voice").onchange=e=>{try{localStorage.setItem("nghe-voice",voices[+e.target.value]?.name||"")}catch(_){}};
-
-function renderTracks(){
-  $("tracks").innerHTML=TRACKS.map((t,i)=>`<button class="track" data-i="${i}" aria-current="${i===ti}"><span class="n">${i+1}</span><span class="t">${t.t}<small>${t.s}</small></span><span class="d">~${estMin(STEPS[i])} phút</span></button>`).join("");
-  document.querySelectorAll(".track").forEach(b=>b.onclick=()=>startTrack(+b.dataset.i));
+function load(i,at){
+  ti=i;const t=T[i];au.src=t.src;au.playbackRate=+$("rate").value;
+  $("ttl").textContent=t.t;$("sub").textContent=t.s+" · Phần "+i+"/7";$("script").textContent=t.text;$("dur").textContent=fmt(t.d);
+  if(at){au.addEventListener("loadedmetadata",()=>{au.currentTime=at},{once:true})}
+  renderList();
+  if("mediaSession" in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:t.t,artist:"Ôn Sử 12",album:"Giữa kỳ I"})}catch(e){}}
 }
-function setIcon(){ $("ico").innerHTML=playing?'<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>':'<path d="M8 5v14l11-7z"/>'; $("play").setAttribute("aria-label",playing?"Tạm dừng":"Phát"); }
-async function wake(on){try{if(on&&!lock&&navigator.wakeLock){lock=await navigator.wakeLock.request("screen");lock.addEventListener("release",()=>lock=null)}else if(!on&&lock){await lock.release();lock=null}}catch(e){}}
-document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&playing)wake(true)});
-
-function show(step){
-  const L=$("line");L.className="line"+(step.type==="a"?" answer":step.type==="wait"?" wait":"");
-  L.textContent=step.type==="wait"?"Bạn tự trả lời…":step.txt;
-  $("tname").innerHTML="<b>"+TRACKS[ti].t+"</b>";
-  $("tpos").textContent=(si+1)+"/"+STEPS[ti].length;
-  $("prog").style.width=((si+1)/STEPS[ti].length*100)+"%";
-}
-function speakStep(){
-  clearTimeout(timer);const my=++runId;
-  if(!playing)return;
-  const steps=STEPS[ti];
-  if(si>=steps.length){ if(ti<TRACKS.length-1){ti++;si=0;renderTracks();try{localStorage.setItem("nghe-pos",JSON.stringify([ti,0]))}catch(e){}}else{playing=false;setIcon();wake(false);$("line").textContent="Đã nghe hết. Bấm phát để nghe lại từ bài 1.";ti=-1;renderTracks();return;} }
-  const step=STEPS[ti][si];show(step);
-  try{localStorage.setItem("nghe-pos",JSON.stringify([ti,si]))}catch(e){}
-  if(step.type==="wait"){timer=setTimeout(()=>{if(my===runId){si++;speakStep()}},(+$("gap").value)*1000);return;}
-  const u=new SpeechSynthesisUtterance(step.txt);
-  u.lang="vi-VN";const v=voices[+$("voice").value];if(v)u.voice=v;u.rate=+$("rate").value;
-  u.onend=()=>{if(my!==runId||!playing)return;timer=setTimeout(()=>{if(my===runId){si++;speakStep()}},step.type==="q"?250:(step.type==="a"?900:350));};
-  u.onerror=()=>{if(my!==runId||!playing)return;si++;timer=setTimeout(speakStep,300);};
-  S.speak(u);
-}
-function startTrack(i){ if(!S)return; S.cancel();ti=i;si=0;playing=true;setIcon();renderTracks();wake(true);speakStep(); }
-$("play").onclick=()=>{
-  if(!S)return;
-  if(playing){playing=false;runId++;clearTimeout(timer);S.cancel();setIcon();wake(false);return;}
-  if(ti<0){let p=null;try{p=JSON.parse(localStorage.getItem("nghe-pos")||"null")}catch(e){} if(p&&STEPS[p[0]]){ti=p[0];si=Math.min(p[1],STEPS[ti].length-1);}else{ti=0;si=0;}renderTracks();}
-  playing=true;setIcon();wake(true);S.cancel();speakStep();
-};
-function jump(d){ if(ti<0)return; si=Math.max(0,Math.min(STEPS[ti].length-1,si+d)); S.cancel(); if(playing)speakStep(); else show(STEPS[ti][si]); }
-$("back").onclick=()=>jump(-1);$("fwd").onclick=()=>jump(1);
-["rate","gap"].forEach(id=>{const el=$(id);try{const v=localStorage.getItem("nghe-"+id);if(v)el.value=v}catch(e){} el.onchange=()=>{try{localStorage.setItem("nghe-"+id,el.value)}catch(e){}}});
-renderTracks();
-(function(){let p=null;try{p=JSON.parse(localStorage.getItem("nghe-pos")||"null")}catch(e){} if(p&&STEPS[p[0]]){$("line").textContent="Lần trước bạn nghe đến "+TRACKS[p[0]].t+". Bấm phát để nghe tiếp.";}})();
+function icon(){const p=!au.paused;$("ico").innerHTML=p?'<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>':'<path d="M8 5v14l11-7z"/>';$("play").setAttribute("aria-label",p?"Tạm dừng":"Phát")}
+$("play").onclick=()=>{au.paused?au.play().catch(()=>{}):au.pause()};
+$("prev").onclick=()=>{if(au.currentTime>3){au.currentTime=0}else if(ti>0){load(ti-1,0);au.play().catch(()=>{})}};
+$("next").onclick=()=>{if(ti<T.length-1){load(ti+1,0);au.play().catch(()=>{})}};
+$("rw").onclick=()=>{au.currentTime=Math.max(0,au.currentTime-10)};
+$("ff").onclick=()=>{au.currentTime=Math.min(au.duration||0,au.currentTime+10)};
+$("rate").onchange=()=>{au.playbackRate=+$("rate").value;try{localStorage.setItem("nghe-rate",$("rate").value)}catch(e){}};
+$("pos").oninput=()=>{seeking=true;$("cur").textContent=fmt($("pos").value/100*(au.duration||0))};
+$("pos").onchange=()=>{au.currentTime=$("pos").value/100*(au.duration||0);seeking=false};
+au.addEventListener("play",icon);au.addEventListener("pause",()=>{icon();save()});
+au.addEventListener("timeupdate",()=>{if(!seeking&&au.duration){$("pos").value=au.currentTime/au.duration*100;$("cur").textContent=fmt(au.currentTime)}});
+au.addEventListener("loadedmetadata",()=>{$("dur").textContent=fmt(au.duration)});
+au.addEventListener("ended",()=>{if(ti<T.length-1){load(ti+1,0);au.play().catch(()=>{})}else if($("loop").value==="all"){load(0,0);au.play().catch(()=>{})}else save()});
+setInterval(()=>{if(!au.paused)save()},5000);
+if("mediaSession" in navigator){const ms=navigator.mediaSession;try{
+  ms.setActionHandler("play",()=>au.play());ms.setActionHandler("pause",()=>au.pause());
+  ms.setActionHandler("previoustrack",()=>$("prev").onclick());ms.setActionHandler("nexttrack",()=>$("next").onclick());
+  ms.setActionHandler("seekbackward",()=>$("rw").onclick());ms.setActionHandler("seekforward",()=>$("ff").onclick());
+}catch(e){}}
+try{const r=localStorage.getItem("nghe-rate");if(r)$("rate").value=r}catch(e){}
+let p=null;try{p=JSON.parse(localStorage.getItem("nghe-mp3")||"null")}catch(e){}
+if(p&&T[p[0]])load(p[0],p[1]);else load(0,0);
 </script>
 
 </body>
