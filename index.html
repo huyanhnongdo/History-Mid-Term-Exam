@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ôn tập giữa kỳ I Lịch sử 12 (Kết nối tri thức), Bài 1–6: tóm tắt kiến thức, mốc thời gian, bẫy đề, trắc nghiệm và đúng/sai có đáp án.">
+<title>Ôn giữa kỳ Sử 12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap">
+<style>
+/* Layout: a study binder — sticky tab bar, one reading column, cards only for questions */
+:root{
+  --bg:#f3f5f9; --surface:#ffffff; --ink:#18223a; --muted:#5b667d; --line:#d9dee8;
+  --accent:#1f4fa8; --accent-soft:#e3ebfa; --gold:#9a6b12; --gold-soft:#f6ecd6;
+  --ok:#1d7a46; --ok-soft:#e1f3e8; --bad:#b3261e; --bad-soft:#fbe4e2;
+  --display:"Literata", Georgia, "Times New Roman", serif;
+  --body:"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1420; --surface:#171e2d; --ink:#e6eaf3; --muted:#9aa5bb; --line:#2a3447;
+  --accent:#8fb2f5; --accent-soft:#1d2a45; --gold:#e3b866; --gold-soft:#33291a;
+  --ok:#6fd39a; --ok-soft:#15301f; --bad:#f2938c; --bad-soft:#3a1b1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1420; --surface:#171e2d; --ink:#e6eaf3; --muted:#9aa5bb; --line:#2a3447;
+  --accent:#8fb2f5; --accent-soft:#1d2a45; --gold:#e3b866; --gold-soft:#33291a;
+  --ok:#6fd39a; --ok-soft:#15301f; --bad:#f2938c; --bad-soft:#3a1b1a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{padding-block:28px 18px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,38px);line-height:1.15;margin:6px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);max-width:62ch;margin:0}
+.scope{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font-size:12.5px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs button{font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--muted);padding:13px 12px 11px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+nav.tabs button:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{padding-block:22px 60px}
+section.view{display:flex;flex-direction:column;gap:22px}
+h2{font-family:var(--display);font-size:24px;margin:0;line-height:1.25;text-wrap:balance}
+h3{font-size:16.5px;margin:0 0 6px}
+.lesson{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.lesson .num{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.lesson h2{margin:2px 0 12px}
+.lesson ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.lesson li b{color:var(--accent)}
+.sub{margin-top:14px}
+.tbl-wrap{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+td.y{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;color:var(--accent)}
+.note{background:var(--gold-soft);border-radius:8px;padding:10px 14px;font-size:14.5px}
+.timeline{display:flex;flex-direction:column}
+.tl{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.tl .d{font-variant-numeric:tabular-nums;font-weight:700;color:var(--accent)}
+.tl .t{min-width:0}
+.tl .tag{font-size:11.5px;color:var(--gold);font-weight:600;margin-left:6px;white-space:nowrap}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.f{font:inherit;font-size:13.5px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.f[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.spacer{flex:1}
+.stat{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stat b{color:var(--ink)}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.q .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.q .meta span:first-child{color:var(--gold);font-weight:600}
+.q p.stem{margin:0 0 10px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{font:inherit;text-align:left;display:flex;gap:10px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);cursor:pointer}
+.opt .k{font-weight:700;color:var(--muted);min-width:1.2em}
+.opt:hover:not([disabled]){border-color:var(--accent)}
+.opt[disabled]{cursor:default}
+.opt.right{background:var(--ok-soft);border-color:var(--ok)}
+.opt.right .k{color:var(--ok)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt.wrong .k{color:var(--bad)}
+.expl{margin-top:10px;font-size:14.5px;padding:10px 12px;border-radius:8px;background:var(--accent-soft)}
+.expl b.okt{color:var(--ok)} .expl b.badt{color:var(--bad)}
+.src{font-size:14px;background:var(--bg);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;margin:0 0 12px;white-space:pre-line}
+.stmt{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start;padding:9px 0;border-top:1px solid var(--line)}
+.stmt .s{min-width:0}
+.ds{display:flex;gap:6px}
+.ds button{font:inherit;font-weight:700;width:38px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.ds button.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.ds button.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.stmt .why{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.score{font-size:13.5px;font-weight:600;color:var(--accent);margin-top:8px}
+.traps{display:flex;flex-direction:column;gap:10px}
+.trap{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.trap .x{color:var(--bad);font-weight:600}
+.trap .v{color:var(--ok);font-weight:600}
+.reset{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:4px}
+footer{color:var(--muted);font-size:13px;padding-block:0 30px}
+@media (max-width:520px){.tl{grid-template-columns:92px 1fr;gap:10px}.lesson,.q{padding:14px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+
+<header class="top"><div class="wrap">
+  <div class="eyebrow">Lịch sử 12 · Kết nối tri thức · Kiểm tra giữa kỳ I</div>
+  <h1>Ôn giữa kỳ Sử 12</h1>
+  <p class="lede">Gói ôn tập Chủ đề 1, Chủ đề 2 và Bài 6 (Chủ đề 3), soạn từ SGK và 6 đề tham khảo bạn gửi. Đề thi có 2 phần: 24 câu trắc nghiệm (6 điểm) và 4 câu đúng/sai (4 điểm).</p>
+  <div class="scope"><span class="chip">Bài 1 · Liên hợp quốc</span><span class="chip">Bài 2 · Trật tự hai cực I-an-ta</span><span class="chip">Bài 3 · Thế giới sau Chiến tranh lạnh</span><span class="chip">Bài 4 · ASEAN</span><span class="chip">Bài 5 · Cộng đồng ASEAN</span><span class="chip">Bài 6 · Cách mạng tháng Tám 1945</span></div>
+</div></header>
+
+<nav class="tabs" aria-label="Phần ôn tập"><div class="wrap" role="tablist">
+  <button role="tab" data-v="kien-thuc" aria-selected="true">Kiến thức</button>
+  <button role="tab" data-v="moc" aria-selected="false">Mốc thời gian</button>
+  <button role="tab" data-v="bay" aria-selected="false">Bẫy hay gặp</button>
+  <button role="tab" data-v="trac-nghiem" aria-selected="false">Trắc nghiệm</button>
+  <button role="tab" data-v="dung-sai" aria-selected="false">Đúng / Sai</button>
+</div></nav>
+
+<main><div class="wrap">
+
+<!-- KIẾN THỨC -->
+<section class="view" id="v-kien-thuc">
+  <article class="lesson">
+    <div class="num">Bài 1</div><h2>Liên hợp quốc</h2>
+    <h3>Bối cảnh</h3>
+    <ul>
+      <li>Cuối Chiến tranh thế giới thứ hai, ưu thế thuộc phe Đồng minh; việc tổ chức lại thế giới trở nên cấp bách.</li>
+      <li>Cần một tổ chức quốc tế đủ mạnh để duy trì hòa bình, thay thế <b>Hội Quốc liên</b> (lập 1920, giải thể 1946).</li>
+      <li>Ba nước đóng vai trò chính: <b>Liên Xô, Mỹ, Anh</b>.</li>
+    </ul>
+    <div class="sub"><h3>Quá trình hình thành</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Thời gian</th><th>Sự kiện</th></tr>
+      <tr><td class="y">1/1/1942</td><td>26 nước kí <i>Tuyên bố Liên hợp quốc</i>, cam kết hợp tác chống phát xít. Tạo cơ sở cho LHQ.</td></tr>
+      <tr><td class="y">28/11–1/12/1943</td><td>Hội nghị <b>Tê-hê-ran</b> (I-ran): Liên Xô, Mỹ, Anh <b>khẳng định quyết tâm</b> thành lập LHQ.</td></tr>
+      <tr><td class="y">2/1945</td><td>Hội nghị <b>I-an-ta</b> (Liên Xô): <b>ra quyết định</b> thành lập LHQ, đồng ý triệu tập hội nghị thông qua Hiến chương.</td></tr>
+      <tr><td class="y">25/4–26/6/1945</td><td>Hội nghị <b>Xan Phran-xi-xcô</b> (Mỹ), 50 nước: <b>thông qua Hiến chương</b>.</td></tr>
+      <tr><td class="y">24/10/1945</td><td>Hiến chương được Quốc hội các nước phê chuẩn, LHQ <b>chính thức thành lập với 51 thành viên</b>. Ngày 24/10 là Ngày LHQ (quyết định 31/10/1947).</td></tr>
+    </table></div></div>
+    <div class="sub"><h3>4 mục tiêu (Điều 1 Hiến chương)</h3>
+    <ul>
+      <li><b>Duy trì hòa bình và an ninh quốc tế</b>. Đây là mục tiêu được chú trọng nhất, là cơ sở để thực hiện các mục tiêu khác.</li>
+      <li>Thúc đẩy quan hệ hữu nghị giữa các dân tộc trên cơ sở bình đẳng và quyền tự quyết.</li>
+      <li>Thúc đẩy hợp tác quốc tế giải quyết vấn đề kinh tế, xã hội, văn hóa, nhân đạo; bảo đảm quyền con người.</li>
+      <li>Là trung tâm điều hòa các nỗ lực quốc tế vì các mục tiêu trên.</li>
+    </ul></div>
+    <div class="sub"><h3>6 nguyên tắc (Điều 2 Hiến chương)</h3>
+    <ul>
+      <li>Bình đẳng về chủ quyền quốc gia.</li>
+      <li>Tôn trọng toàn vẹn lãnh thổ và độc lập chính trị.</li>
+      <li>Từ bỏ đe dọa hoặc sử dụng vũ lực.</li>
+      <li>Không can thiệp vào công việc nội bộ các nước.</li>
+      <li>Tôn trọng nghĩa vụ quốc tế và luật pháp quốc tế.</li>
+      <li>Giải quyết tranh chấp bằng biện pháp hòa bình.</li>
+    </ul></div>
+    <div class="sub"><h3>Vai trò</h3>
+    <ul>
+      <li><b>Hòa bình, an ninh:</b> ngăn không để xảy ra chiến tranh thế giới mới từ 1945; gìn giữ hòa bình (En Xan-va-đo, Goa-tê-ma-la, Mô-dăm-bích…); công ước giải trừ quân bị: Hiệp ước cấm phổ biến vũ khí hạt nhân (1968), Công ước cấm vũ khí hóa học (1993), Hiệp ước cấm vũ khí hạt nhân (2017); thúc đẩy phi thực dân hóa, nay có <b>193</b> thành viên.</li>
+      <li><b>Kinh tế, tài chính, thương mại, đời sống:</b> chiến lược phát triển từng thập kỉ (từ 1960); UNCTAD; Mục tiêu Thiên niên kỉ (2000); Chương trình nghị sự 2030 với 17 mục tiêu (2015); xóa đói giảm nghèo, chống biến đổi khí hậu, dịch bệnh.</li>
+      <li><b>Quyền con người, văn hóa, xã hội:</b> <i>Tuyên ngôn Nhân quyền</i> (1948); UNESCO bảo tồn di sản; quỹ <i>Giáo dục không thể chờ đợi</i> (năm 2021 hỗ trợ khoảng 222 triệu trẻ em).</li>
+    </ul></div>
+  </article>
+
+  <article class="lesson">
+    <div class="num">Bài 2</div><h2>Trật tự thế giới trong Chiến tranh lạnh</h2>
+    <h3>Hội nghị I-an-ta (4–11/2/1945)</h3>
+    <ul>
+      <li>Ba nguyên thủ: Sớc-sin (Anh), Ru-dơ-ven (Mỹ), Xta-lin (Liên Xô). Không có Pháp, Trung Quốc.</li>
+      <li>Quyết định: kết thúc chiến tranh, tiêu diệt tận gốc phát xít Đức và quân phiệt Nhật; thành lập LHQ; đóng quân, phân chia phạm vi ảnh hưởng ở châu Âu và châu Á.</li>
+      <li><b>Châu Âu:</b> Liên Xô chiếm Đông Đức, Đông Béc-lin, Đông Âu; Mỹ, Anh, Pháp chiếm Tây Đức, Tây Béc-lin, Tây Âu. Áo và Phần Lan trung lập.</li>
+      <li><b>Châu Á:</b> giữ nguyên trạng Mông Cổ; trả Liên Xô quyền lợi mất sau chiến tranh Nga – Nhật (1904–1905); Mỹ chiếm đóng Nhật; Triều Tiên chia ở vĩ tuyến 38 (Liên Xô phía Bắc, Mỹ phía Nam); Trung Quốc cần thống nhất, dân chủ.</li>
+      <li><b>Đông Nam Á, Nam Á, Tây Á</b> vẫn thuộc ảnh hưởng của <b>các nước phương Tây</b>.</li>
+    </ul>
+    <div class="sub"><h3>Hai giai đoạn tồn tại (1945–1991)</h3>
+    <ul>
+      <li><b>1945 – đầu những năm 70:</b> xác lập và phát triển, đối đầu Mỹ – Liên Xô căng thẳng, nhất là từ khi Chiến tranh lạnh bắt đầu. NATO (1949) và Tổ chức Hiệp ước Vác-sa-va (1955) là hai khối quân sự đối đầu. Chiến tranh cục bộ: Triều Tiên (1950–1953), Pháp xâm lược Việt Nam (1945–1954), Mỹ xâm lược Việt Nam (1954–1975), Trung Đông (từ 1948).</li>
+      <li>Ngay trong giai đoạn này đã rạn nứt: <b>cách mạng Trung Quốc 1949 là bước đột phá đầu tiên</b>; Tây Âu, Nhật Bản lớn mạnh làm giảm ảnh hưởng của Mỹ.</li>
+      <li><b>Đầu những năm 70 – 1991:</b> suy yếu và sụp đổ. Hòa hoãn Xô – Mỹ, thỏa thuận hạn chế vũ khí chiến lược, gặp cấp cao đầu tiên (1972, Níc-xơn – Brê-giơ-nhép). Thỏa thuận thủ tiêu tên lửa tầm trung ở châu Âu (1987). <b>1989</b>: tuyên bố chấm dứt Chiến tranh lạnh. CNXH ở Đông Âu sụp đổ, <b>Liên Xô tan rã 12/1991</b> chấm dứt trật tự hai cực.</li>
+    </ul></div>
+    <div class="sub"><h3>5 nguyên nhân sụp đổ</h3>
+    <ul>
+      <li>Đối đầu căng thẳng làm cả hai cực tốn kém, suy giảm thế mạnh, phải hạn chế chạy đua vũ trang.</li>
+      <li>Từ giữa những năm 70, quan hệ Đông Âu – Tây Âu hòa dịu.</li>
+      <li>Các nước vươn lên thoát khỏi ảnh hưởng hai cực, nhất là thắng lợi của phong trào giải phóng dân tộc.</li>
+      <li>Cán cân kinh tế thay đổi: Nhật Bản, Tây Âu vươn lên cạnh tranh với Mỹ; kinh tế Liên Xô suy giảm.</li>
+      <li>Khủng hoảng và sai lầm trong cải tổ dẫn đến Liên Xô tan rã.</li>
+    </ul></div>
+    <div class="sub"><h3>Tác động</h3>
+    <ul>
+      <li>Mở ra thời kì phát triển mới trong quan hệ quốc tế, đảm bảo lợi ích các quốc gia, dân tộc.</li>
+      <li>Ưu thế tạm thời thuộc về Mỹ, nhưng vai trò các cường quốc khác, các trung tâm kinh tế, tổ chức quốc tế tăng lên; Mỹ suy giảm tương đối.</li>
+      <li>Dẫn đến sự hình thành một trật tự thế giới mới.</li>
+    </ul></div>
+  </article>
+
+  <article class="lesson">
+    <div class="num">Bài 3</div><h2>Trật tự thế giới sau Chiến tranh lạnh</h2>
+    <h3>4 xu thế phát triển chính</h3>
+    <ul>
+      <li><b>Lấy kinh tế làm trọng tâm:</b> các nước điều chỉnh chiến lược, tập trung phát triển kinh tế.</li>
+      <li><b>Toàn cầu hóa:</b> sự gia tăng mạnh mẽ mối liên hệ, phụ thuộc, tác động lẫn nhau giữa các quốc gia, khu vực. Được thúc đẩy bởi sự kết thúc Chiến tranh lạnh và cách mạng khoa học – công nghệ.</li>
+      <li><b>Đối thoại, hợp tác</b> thay cho đối đầu, trên cơ sở cùng có lợi, tôn trọng lẫn nhau, cùng tồn tại hòa bình.</li>
+      <li><b>Đa cực</b> trong quan hệ quốc tế.</li>
+    </ul>
+    <div class="sub"><h3>Khái niệm đa cực</h3>
+    <p style="margin:0">Trật tự thế giới có sự tham gia của nhiều quốc gia, trung tâm, trong đó <b>không quốc gia nào có quyền lực áp đảo</b> hay chi phối sự phát triển của thế giới. Đây là tiến trình lịch sử khách quan, phản ánh tương quan lực lượng mới.</p></div>
+    <div class="sub"><h3>3 biểu hiện của xu thế đa cực</h3>
+    <ul>
+      <li>Sức mạnh, vị thế của các nước lớn tăng: Trung Quốc, Nga, <b>Ấn Độ</b>, Nhật Bản, một số nước EU.</li>
+      <li><b>Mỹ suy giảm sức mạnh tương đối</b> (GDP Mỹ gấp Trung Quốc khoảng 12 lần năm 2000, chỉ còn khoảng 1,3 lần năm 2021). Mỹ vẫn số 1 về kinh tế.</li>
+      <li>Vai trò của các trung tâm, tổ chức kinh tế, tài chính quốc tế và khu vực tăng: G20 (1999), ASEM.</li>
+    </ul></div>
+    <div class="note">Đại hội XII của Đảng nhận định: "Cục diện thế giới theo xu hướng đa cực, đa trung tâm diễn ra nhanh hơn".</div>
+  </article>
+
+  <article class="lesson">
+    <div class="num">Bài 4</div><h2>Sự ra đời và phát triển của ASEAN</h2>
+    <h3>Hoàn cảnh ra đời</h3>
+    <ul>
+      <li>Xu hướng khu vực hóa trên thế giới phổ biến sau Chiến tranh thế giới thứ hai.</li>
+      <li>Các nước Đông Nam Á (đã giành độc lập) cần hợp tác phát triển và tạo sức mạnh tập thể trước sự tranh giành ảnh hưởng của nước lớn trong Chiến tranh lạnh.</li>
+      <li>Tổ chức tiền thân tồn tại ngắn: Hiệp hội Đông Nam Á (1961: Ma-lai-xi-a, Phi-líp-pin, Thái Lan), MAPHILINDO (1963: Ma-lai-xi-a, Phi-líp-pin, In-đô-nê-xi-a).</li>
+      <li><b>8/8/1967</b>, Băng Cốc: Ngoại trưởng 5 nước <b>In-đô-nê-xi-a, Ma-lai-xi-a, Phi-líp-pin, Xin-ga-po, Thái Lan</b> thông qua <i>Tuyên bố ASEAN</i> (Tuyên bố Băng Cốc).</li>
+    </ul>
+    <div class="sub"><h3>Mục đích</h3>
+    <p style="margin:0">Tăng cường hợp tác kinh tế, văn hóa, xã hội; thúc đẩy hòa bình, ổn định khu vực bằng việc tôn trọng công lí, luật pháp và nguyên tắc Hiến chương LHQ; đưa Đông Nam Á thành khu vực hòa bình, tự do, thịnh vượng, ASEAN gồm tất cả các nước Đông Nam Á.</p></div>
+    <div class="sub"><h3>Từ ASEAN 5 đến ASEAN 10</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Năm</th><th>Thành viên mới</th><th>Thành</th></tr>
+      <tr><td class="y">1967</td><td>Thái Lan, Ma-lai-xi-a, In-đô-nê-xi-a, Xin-ga-po, Phi-líp-pin</td><td>ASEAN 5</td></tr>
+      <tr><td class="y">1984</td><td>Bru-nây</td><td>ASEAN 6</td></tr>
+      <tr><td class="y">7/1995</td><td>Việt Nam</td><td>ASEAN 7</td></tr>
+      <tr><td class="y">1997</td><td>Lào, Mi-an-ma</td><td>ASEAN 9</td></tr>
+      <tr><td class="y">1999</td><td>Cam-pu-chia (lễ kết nạp tại Hà Nội)</td><td>ASEAN 10</td></tr>
+    </table></div></div>
+    <div class="sub"><h3>4 giai đoạn phát triển</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Giai đoạn</th><th>Nội dung chính</th><th>Văn kiện</th></tr>
+      <tr><td class="y">1967–1976</td><td>Khởi đầu, xây nền móng; tập trung <b>hợp tác chính trị – an ninh</b>, "xây dựng lòng tin và học cách hòa giải".</td><td>ZOPFAN (1971)</td></tr>
+      <tr><td class="y">1976–1999</td><td>Quan hệ chính trị ổn định, hợp tác kinh tế; <b>mở rộng ASEAN 5 thành ASEAN 10</b>; bước đầu đối thoại với bên ngoài.</td><td>Tuyên bố Ba-li I và Hiệp ước TAC (1976); AFTA (1992); ARF (1994)</td></tr>
+      <tr><td class="y">1999–2015</td><td><b>Hoàn thiện cơ cấu tổ chức</b>, tăng cường hợp tác nội khối và ngoại khối.</td><td>Ba-li II (2003); Hiến chương ASEAN (2007)</td></tr>
+      <tr><td class="y">2015–nay</td><td>Xây dựng <b>Cộng đồng ASEAN</b> ba trụ cột; đẩy mạnh hợp tác trong và ngoài khối.</td><td>Tuyên bố thành lập Cộng đồng (2015); Tầm nhìn 2025 (2015); Tầm nhìn sau 2025 (2020)</td></tr>
+    </table></div></div>
+    <div class="note">Ngoài SGK: Đông Ti-mo được kết nạp làm thành viên thứ 11 vào tháng 10/2025. Đi thi vẫn trả lời theo SGK (ASEAN 10, mốc 1999) trừ khi đề hỏi rõ về sự kiện này.</div>
+  </article>
+
+  <article class="lesson">
+    <div class="num">Bài 5</div><h2>Cộng đồng ASEAN: từ ý tưởng đến hiện thực</h2>
+    <h3>Ý tưởng, mục tiêu, kế hoạch</h3>
+    <ul>
+      <li><b>Ý tưởng</b> khởi nguồn từ khi ASEAN thành lập (Tuyên bố Băng Cốc 1967). Chính thức khẳng định tại Hội nghị cấp cao <b>không chính thức ở Ma-lai-xi-a (12/1997)</b> với văn kiện <i>Tầm nhìn ASEAN 2020</i>.</li>
+      <li><b>Mục tiêu:</b> cộng đồng ba trụ cột, liên kết sâu rộng và ràng buộc hơn, <b>trên cơ sở pháp lí là Hiến chương ASEAN</b>; mở rộng hợp tác với bên ngoài. Tuyên bố Ba-li II (2003) nêu rõ ba trụ cột.</li>
+      <li><b>Kế hoạch:</b> <i>Lộ trình xây dựng Cộng đồng ASEAN (2009–2015)</i>, thông qua tại Hội nghị cấp cao 14 ở Thái Lan (2009).</li>
+      <li><b>22/11/2015</b> kí <i>Tuyên bố Cua-la Lăm-pơ</i> thành lập Cộng đồng; <b>chính thức từ 31/12/2015</b>.</li>
+    </ul>
+    <div class="sub"><h3>Ba trụ cột</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Trụ cột</th><th>Mục tiêu, nội dung</th></tr>
+      <tr><td class="y">APSC<br>Chính trị – An ninh</td><td>Môi trường <b>hòa bình, an ninh</b>; cộng đồng dựa trên giá trị chung; khu vực gắn kết, tự cường, an ninh toàn diện; năng động, rộng mở với bên ngoài.</td></tr>
+      <tr><td class="y">AEC<br>Kinh tế</td><td><b>Một thị trường và cơ sở sản xuất chung</b>, lưu chuyển tự do hàng hóa, dịch vụ, đầu tư, vốn, lao động có tay nghề; khu vực cạnh tranh cao, phát triển đồng đều, hội nhập kinh tế toàn cầu.</td></tr>
+      <tr><td class="y">ASCC<br>Văn hóa – Xã hội</td><td>Hài hòa, bình đẳng, công bằng xã hội, nâng cao <b>ý thức cộng đồng và bản sắc chung</b>. Sáu nội dung: phát triển con người; phúc lợi và bảo hiểm xã hội; bình đẳng xã hội và các quyền; bền vững môi trường; xây dựng bản sắc ASEAN; thu hẹp khoảng cách phát triển.</td></tr>
+    </table></div></div>
+    <div class="sub"><h3>Sau 2015: thách thức và triển vọng</h3>
+    <ul>
+      <li><b>Tầm nhìn Cộng đồng ASEAN sau năm 2025</b>: thông qua tại Hội nghị cấp cao 37 ở Hà Nội (2020); bổ sung chuyển đổi số, kinh tế số, kinh tế xanh.</li>
+      <li><b>Thách thức nội khối:</b> đa dạng chế độ chính trị, chính trị một số nước phức tạp, mâu thuẫn song phương; chênh lệch thu nhập, trình độ; sản xuất tương đồng gây cạnh tranh xuất khẩu.</li>
+      <li><b>Thách thức bên ngoài:</b> nước lớn cạnh tranh ảnh hưởng, Biển Đông, biến đổi khí hậu, ô nhiễm, dịch bệnh.</li>
+      <li><b>Triển vọng:</b> liên kết sâu rộng hơn trên cả ba trụ cột, khu vực năng động, uy tín và vị thế ngày càng cao (năm 2021 là nền kinh tế lớn thứ 5 thế giới, GDP khoảng 3.300 tỉ USD).</li>
+    </ul></div>
+  </article>
+
+  <article class="lesson">
+    <div class="num">Bài 6 · Chủ đề 3</div><h2>Cách mạng tháng Tám năm 1945</h2>
+    <h3>Bối cảnh lịch sử</h3>
+    <ul>
+      <li>Chiến tranh thế giới thứ hai bước vào giai đoạn kết thúc.</li>
+      <li><b>Hội nghị Pốt-xđam (17/7–2/8/1945)</b> giao việc giải giáp quân Nhật ở Đông Dương cho <b>quân Trung Hoa Dân quốc ở phía Bắc vĩ tuyến 16</b> và <b>quân Anh ở phía Nam vĩ tuyến 16</b>.</li>
+      <li>Ngày 6 và 9/8/1945, Mỹ ném bom nguyên tử xuống Hi-rô-si-ma và Na-ga-xa-ki. Ngày 9/8, Hồng quân Liên Xô tấn công đạo quân Quan Đông của Nhật ở Đông Bắc Trung Quốc.</li>
+      <li><b>15/8/1945</b>, Nhật đầu hàng Đồng minh không điều kiện. Quân Nhật ở Đông Dương rệu rã, Chính phủ Trần Trọng Kim hoang mang. <b>Điều kiện khách quan thuận lợi cho Tổng khởi nghĩa đã đến.</b></li>
+      <li>Từ tháng 3 đến tháng 8/1945, <b>cao trào kháng Nhật, cứu nước</b> chuẩn bị lực lượng, tập dượt quần chúng.</li>
+    </ul>
+    <div class="sub"><h3>Đảng phát động Tổng khởi nghĩa</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Thời gian</th><th>Sự kiện</th></tr>
+      <tr><td class="y">13/8/1945</td><td>Trung ương Đảng và Tổng bộ Việt Minh lập <b>Ủy ban Khởi nghĩa toàn quốc</b>, ban bố <b>Quân lệnh số 1</b>, chính thức phát động Tổng khởi nghĩa.</td></tr>
+      <tr><td class="y">14–15/8/1945</td><td><b>Hội nghị toàn quốc của Đảng</b> ở Tân Trào (Tuyên Quang): thông qua kế hoạch lãnh đạo Tổng khởi nghĩa; quyết định chính sách đối nội, đối ngoại sau khi giành chính quyền.</td></tr>
+      <tr><td class="y">16–17/8/1945</td><td><b>Đại hội Quốc dân</b> ở Tân Trào: tán thành chủ trương Tổng khởi nghĩa, thông qua <b>10 chính sách của Việt Minh</b>, cử <b>Ủy ban Dân tộc giải phóng Việt Nam</b> do Hồ Chí Minh làm Chủ tịch.</td></tr>
+    </table></div></div>
+    <div class="sub"><h3>Diễn biến chính</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Thời gian</th><th>Sự kiện</th></tr>
+      <tr><td class="y">Từ 14/8</td><td>Một số cấp bộ Đảng, Việt Minh căn cứ tình hình địa phương phát động khởi nghĩa.</td></tr>
+      <tr><td class="y">Chiều 16/8</td><td>Đơn vị Giải phóng quân do <b>Võ Nguyên Giáp</b> chỉ huy từ Tân Trào tiến về giải phóng tỉnh lị <b>Thái Nguyên</b>, mở đường tiến về Hà Nội.</td></tr>
+      <tr><td class="y">18/8</td><td><b>Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam</b> giành chính quyền ở tỉnh lị sớm nhất cả nước.</td></tr>
+      <tr><td class="y">19/8</td><td><b>Hà Nội</b>: quần chúng, có tự vệ chiến đấu hỗ trợ, chiếm Phủ Khâm sai, Sở Cảnh sát Trung ương, Sở Bưu điện… Tối cùng ngày khởi nghĩa thắng lợi.</td></tr>
+      <tr><td class="y">23/8</td><td><b>Huế</b>: hàng vạn quần chúng biểu tình thị uy, chiếm công sở.</td></tr>
+      <tr><td class="y">25/8</td><td><b>Sài Gòn</b>: chiếm Sở Mật thám, Sở Cảnh sát…; mít tinh lớn do Việt Minh tổ chức, chính quyền cách mạng ra mắt.</td></tr>
+      <tr><td class="y">28/8</td><td><b>Đồng Nai Thượng và Hà Tiên</b> là những nơi cuối cùng giành chính quyền.</td></tr>
+      <tr><td class="y">30/8</td><td>Vua <b>Bảo Đại thoái vị</b>, chế độ phong kiến hoàn toàn sụp đổ.</td></tr>
+      <tr><td class="y">2/9/1945</td><td>Tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh thay mặt Chính phủ lâm thời đọc <i>Tuyên ngôn Độc lập</i>, khai sinh nước <b>Việt Nam Dân chủ Cộng hòa</b>.</td></tr>
+    </table></div>
+    <p style="margin:8px 0 0">Trước áp lực và hoạt động khôn khéo của lực lượng cách mạng, quân Nhật ở Hà Nội và các địa phương phải án binh bất động, nên khởi nghĩa diễn ra <b>nhanh chóng và ít đổ máu</b>.</p></div>
+    <div class="sub"><h3>Nguyên nhân thắng lợi</h3>
+    <ul>
+      <li><b>Chủ quan: đường lối lãnh đạo đúng đắn, sáng tạo.</b> Đảng và Hồ Chí Minh vận dụng sáng tạo chủ nghĩa Mác – Lê-nin; Trung ương Đảng và Việt Minh linh hoạt, sáng tạo trong <b>chớp thời cơ</b>.</li>
+      <li><b>Chủ quan: truyền thống yêu nước, đoàn kết</b> của dân tộc; khi Đảng và Mặt trận Việt Minh giương cao ngọn cờ giải phóng dân tộc, toàn dân đồng lòng đứng lên.</li>
+      <li><b>Chủ quan: chuẩn bị lâu dài, chu đáo trong suốt 15 năm</b> (1930–1945): lực lượng chính trị, lực lượng vũ trang, căn cứ địa; phối hợp đấu tranh chính trị, vũ trang và ngoại giao.</li>
+      <li><b>Khách quan:</b> thắng lợi của Đồng minh và Hồng quân Liên Xô chống phát xít, đặc biệt là đánh bại quân phiệt Nhật.</li>
+    </ul></div>
+    <div class="sub"><h3>Ý nghĩa lịch sử</h3>
+    <ul>
+      <li><b>Dân tộc:</b> lật đổ ách cai trị của thực dân Pháp <b>hơn 80 năm</b>, phát xít Nhật <b>gần 5 năm</b>; chấm dứt chế độ quân chủ <b>hơn 1000 năm</b>; lập nước Việt Nam Dân chủ Cộng hòa.</li>
+      <li>Đảng Cộng sản Đông Dương từ hoạt động bí mật trở thành <b>đảng cầm quyền</b>; nhân dân từ nô lệ thành người làm chủ.</li>
+      <li>Bước tiến nhảy vọt, mở ra <b>kỉ nguyên độc lập, tự do</b> dưới chế độ dân chủ cộng hòa; chuẩn bị điều kiện cho những thắng lợi tiếp theo.</li>
+      <li><b>Quốc tế:</b> góp phần vào thắng lợi chống phát xít, làm tan rã hệ thống thuộc địa, cổ vũ các dân tộc thuộc địa và phụ thuộc.</li>
+      <li>Hồ Chí Minh: lần đầu tiên trong lịch sử cách mạng các dân tộc thuộc địa và nửa thuộc địa, <b>một Đảng mới 15 tuổi</b> đã lãnh đạo cách mạng thành công, nắm chính quyền toàn quốc.</li>
+    </ul></div>
+    <div class="sub"><h3>3 bài học kinh nghiệm</h3>
+    <ul>
+      <li><b>Sự lãnh đạo của Đảng</b> là nhân tố quyết định: đường lối đúng đắn, vận dụng sáng tạo, chủ động, linh hoạt.</li>
+      <li><b>Xây dựng khối đại đoàn kết dân tộc</b>: vai trò của Mặt trận Việt Minh; tập hợp quần chúng bằng nhiều hình thức phong phú.</li>
+      <li><b>Nắm bắt thời cơ</b>: xác định đúng thời cơ, chủ động, mau lẹ chớp thời cơ.</li>
+    </ul></div>
+    <div class="note">Thời cơ "ngàn năm có một" nằm giữa lúc Nhật đầu hàng (15/8) và trước khi quân Đồng minh vào Đông Dương (cuối tháng 8). Đề hay hỏi vì sao phải khởi nghĩa gấp: kẻ thù cũ đã gục, kẻ thù mới chưa đến.</div>
+  </article>
+</section>
+
+<!-- MỐC THỜI GIAN -->
+<section class="view" id="v-moc" hidden>
+  <h2>Mốc thời gian cần thuộc</h2>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- BẪY -->
+<section class="view" id="v-bay" hidden>
+  <h2>Bẫy hay gặp trong đề</h2>
+  <p class="lede" style="margin-top:-10px">Những chỗ các đề tham khảo cố tình đánh tráo. Đọc kĩ trước khi làm phần Đúng/Sai.</p>
+  <div class="traps" id="traps"></div>
+</section>
+
+<!-- TRẮC NGHIỆM -->
+<section class="view" id="v-trac-nghiem" hidden>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div class="toolbar" id="mcq-filter"></div>
+    <div class="toolbar">
+      <button class="f" id="mcq-wrong" aria-pressed="false">Chỉ câu làm sai</button>
+      <button class="f" id="mcq-todo" aria-pressed="false">Chỉ câu chưa làm</button>
+      <button class="f" id="mcq-shuffle">Trộn thứ tự</button>
+      <span class="spacer"></span>
+      <span class="stat" id="mcq-stat"></span>
+    </div>
+    <div class="bar"><i id="mcq-bar"></i></div>
+  </div>
+  <div id="mcq-list" style="display:flex;flex-direction:column;gap:12px"></div>
+  <button class="reset" id="mcq-reset">Xóa kết quả trắc nghiệm, làm lại từ đầu</button>
+</section>
+
+<!-- ĐÚNG SAI -->
+<section class="view" id="v-dung-sai" hidden>
+  <div class="note">Cách tính điểm mỗi câu Đúng/Sai: đúng 1 ý được 0,1 điểm; 2 ý: 0,25; 3 ý: 0,5; cả 4 ý: 1 điểm.</div>
+  <div class="toolbar" id="ds-filter"></div>
+  <div id="ds-list" style="display:flex;flex-direction:column;gap:12px"></div>
+  <button class="reset" id="ds-reset">Xóa kết quả Đúng/Sai, làm lại từ đầu</button>
+</section>
+
+</div></main>
+<footer><div class="wrap">Đáp án do Claude đối chiếu với SGK Lịch sử 12 (Kết nối tri thức); các đề gốc không kèm đáp án chính thức. Câu nào bạn thấy nghi ngờ, hỏi lại thầy cô.</div></footer>
+
+<script>
+const TIMELINE=[
+["1/1/1942","26 nước kí Tuyên bố Liên hợp quốc","B1"],
+["11–12/1943","Hội nghị Tê-hê-ran: khẳng định quyết tâm lập LHQ","B1"],
+["4–11/2/1945","Hội nghị I-an-ta: quyết định lập LHQ, chia phạm vi ảnh hưởng","B1 B2"],
+["25/4–26/6/1945","Hội nghị Xan Phran-xi-xcô, 50 nước thông qua Hiến chương","B1"],
+["17/7–2/8/1945","Hội nghị Pốt-xđam: Trung Hoa Dân quốc (Bắc vĩ tuyến 16) và Anh (Nam vĩ tuyến 16) giải giáp quân Nhật","B6"],
+["6 và 9/8/1945","Mỹ ném bom nguyên tử Hi-rô-si-ma, Na-ga-xa-ki; 9/8 Liên Xô đánh quân Quan Đông","B6"],
+["13/8/1945","Ủy ban Khởi nghĩa toàn quốc, Quân lệnh số 1","B6"],
+["14–15/8/1945","Hội nghị toàn quốc của Đảng ở Tân Trào","B6"],
+["15/8/1945","Nhật đầu hàng Đồng minh không điều kiện","B6"],
+["16–17/8/1945","Đại hội Quốc dân Tân Trào; chiều 16/8 Giải phóng quân tiến về Thái Nguyên","B6"],
+["18/8/1945","Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam giành chính quyền sớm nhất","B6"],
+["19/8/1945","Khởi nghĩa thắng lợi ở Hà Nội","B6"],
+["23/8/1945","Khởi nghĩa thắng lợi ở Huế","B6"],
+["25/8/1945","Khởi nghĩa thắng lợi ở Sài Gòn","B6"],
+["28/8/1945","Đồng Nai Thượng, Hà Tiên giành chính quyền cuối cùng","B6"],
+["30/8/1945","Bảo Đại thoái vị","B6"],
+["2/9/1945","Tuyên ngôn Độc lập, nước Việt Nam Dân chủ Cộng hòa ra đời","B6"],
+["24/10/1945","LHQ chính thức thành lập, 51 thành viên","B1"],
+["1947","Mỹ phát động Chiến tranh lạnh","B2"],
+["1948","Tuyên ngôn Nhân quyền; bắt đầu chiến tranh Trung Đông","B1 B2"],
+["1949","Cách mạng Trung Quốc thắng lợi (bước đột phá đầu tiên); NATO thành lập","B2"],
+["1950–1953","Chiến tranh Triều Tiên","B2"],
+["1955","Tổ chức Hiệp ước Vác-sa-va thành lập","B2"],
+["1960","LHQ bắt đầu đề ra chiến lược phát triển theo thập kỉ","B1"],
+["1961","Hiệp hội Đông Nam Á (ASA)","B4"],
+["1963","MAPHILINDO","B4"],
+["8/8/1967","Tuyên bố Băng Cốc, ASEAN ra đời (ASEAN 5)","B4"],
+["1968","Hiệp ước cấm phổ biến vũ khí hạt nhân","B1"],
+["1971","Tuyên bố ZOPFAN (Khu vực Hòa bình, Tự do, Trung lập)","B4"],
+["5/1972","Níc-xơn thăm Liên Xô, gặp cấp cao đầu tiên; hạn chế vũ khí chiến lược","B2"],
+["1976","Tuyên bố Ba-li I, Hiệp ước TAC","B4"],
+["1984","Bru-nây gia nhập (ASEAN 6)","B4"],
+["1987","Xô – Mỹ thỏa thuận thủ tiêu tên lửa tầm trung ở châu Âu","B2"],
+["11/1989","Bức tường Béc-lin sụp đổ","B3"],
+["1989","Liên Xô và Mỹ tuyên bố chấm dứt Chiến tranh lạnh","B2"],
+["12/1991","Liên Xô tan rã, trật tự hai cực I-an-ta chấm dứt","B2"],
+["1992","AFTA (Khu vực Mậu dịch tự do ASEAN)","B4"],
+["1993","Công ước cấm vũ khí hóa học","B1"],
+["1994","Diễn đàn khu vực ASEAN (ARF)","B4"],
+["7/1995","Việt Nam gia nhập (ASEAN 7)","B4"],
+["1997","Lào, Mi-an-ma gia nhập (ASEAN 9); Tầm nhìn ASEAN 2020 (Ma-lai-xi-a, 12/1997)","B4 B5"],
+["1999","Cam-pu-chia gia nhập (ASEAN 10); G20 thành lập","B3 B4"],
+["2000","Mục tiêu Thiên niên kỉ của LHQ","B1"],
+["2003","Tuyên bố Ba-li II: ba trụ cột Cộng đồng ASEAN","B4 B5"],
+["20/11/2007","Hiến chương ASEAN","B4 B5"],
+["2009","Lộ trình xây dựng Cộng đồng ASEAN 2009–2015 (Hội nghị 14, Thái Lan)","B5"],
+["2015","Chương trình nghị sự 2030, 17 mục tiêu phát triển bền vững","B1"],
+["22/11/2015","Tuyên bố Cua-la Lăm-pơ thành lập Cộng đồng ASEAN; Tầm nhìn 2025","B5"],
+["31/12/2015","Cộng đồng ASEAN chính thức thành lập","B5"],
+["2017","Hiệp ước cấm vũ khí hạt nhân","B1"],
+["2020","Hội nghị cấp cao 37 (Hà Nội): Tầm nhìn Cộng đồng ASEAN sau 2025","B5"]
+];
+
+const TRAPS=[
+["Hội nghị nào làm gì với LHQ?","Tê-hê-ran: khẳng định quyết tâm. I-an-ta: ra quyết định thành lập. Xan Phran-xi-xcô: thông qua Hiến chương. LHQ chính thức ra đời 24/10/1945 sau khi các nước phê chuẩn.","\"Tại hội nghị Xan Phran-xi-xcô, Hiến chương chính thức có hiệu lực\""],
+["Số thành viên LHQ","26 nước kí Tuyên bố 1942 (không phải thành viên); 50 nước dự hội nghị Xan Phran-xi-xcô; 51 thành viên khi thành lập; nay 193.","\"Năm 2020 LHQ có hơn 200 thành viên\""],
+["Mục tiêu hay nguyên tắc?","\"Duy trì hòa bình\", \"thúc đẩy hữu nghị\", \"trung tâm điều hòa\" là mục tiêu. \"Không can thiệp nội bộ\", \"tôn trọng luật pháp quốc tế\" là nguyên tắc.","Chọn \"không can thiệp nội bộ\" làm vai trò của LHQ"],
+["Ai dự Hội nghị I-an-ta?","Chỉ Liên Xô, Mỹ, Anh. Đông Nam Á vẫn thuộc ảnh hưởng phương Tây.","\"Quân Anh và quân Trung Hoa Dân quốc vào Đông Dương\" là quyết định của Hội nghị Pốt-xđam (7/1945), không phải I-an-ta"],
+["1989 hay 1991?","1989: tuyên bố chấm dứt Chiến tranh lạnh. 12/1991: Liên Xô tan rã, trật tự hai cực mới chấm dứt.","\"Trật tự hai cực sụp đổ khi Xô – Mỹ tuyên bố chấm dứt Chiến tranh lạnh\""],
+["Rạn nứt bắt đầu từ khi nào?","Bước đột phá đầu tiên là cách mạng Trung Quốc 1949. Suy yếu rõ từ đầu những năm 70 (hòa hoãn Xô – Mỹ).","\"Trật tự hai cực bắt đầu xói mòn trong thập niên 1980\""],
+["Từ tuyệt đối","Trật tự hai cực chi phối phần lớn (hầu hết) quan hệ quốc tế. Các câu có \"toàn bộ\", \"triệt để\", \"tất cả\", \"chỉ\", \"hoàn toàn\", \"quyết định\" thường là Sai.","\"Chi phối toàn bộ đời sống chính trị thế giới\"; \"LHQ đóng vai trò quyết định\""],
+["Sau Chiến tranh lạnh có phải đơn cực?","Không. Ưu thế tạm thời thuộc Mỹ nhưng Mỹ suy giảm tương đối; xu thế là đa cực. Mỹ vẫn đứng đầu kinh tế.","\"Mỹ mất vị trí đứng đầu thế giới về kinh tế\"; \"trật tự đơn cực được thiết lập qua hiệp ước\""],
+["Đa cực hay toàn cầu hóa?","Công ty xuyên quốc gia, thương mại quốc tế, sáp nhập tập đoàn, EU/WTO/ASEM là biểu hiện toàn cầu hóa. Biểu hiện đa cực: nước lớn vươn lên, Mỹ suy giảm tương đối, vai trò các tổ chức kinh tế – tài chính tăng.","Chọn \"công ty xuyên quốc gia\" làm biểu hiện đa cực"],
+["5 nước sáng lập ASEAN","In-đô-nê-xi-a, Ma-lai-xi-a, Phi-líp-pin, Xin-ga-po, Thái Lan. Thứ tự: Bru-nây thứ 6, Việt Nam thứ 7, Lào và Mi-an-ma (ASEAN 9), Cam-pu-chia thứ 10.","Đáp án có Bru-nây, Việt Nam hay Mi-an-ma trong nhóm sáng lập; \"Việt Nam gia nhập, ASEAN có 10 nước\""],
+["Giai đoạn ASEAN","1967–1976: chính trị – an ninh. 1976–1999: mở rộng 5 lên 10. 1999–2015: hoàn thiện cơ cấu tổ chức, Hiến chương 2007. 2015–nay: Cộng đồng ASEAN.","Gán ZOPFAN (1971) cho giai đoạn 1976–1999; gán Hiến chương cho 1976–1999"],
+["Văn kiện Cộng đồng ASEAN","Ý tưởng: Tầm nhìn 2020 (1997). Ba trụ cột: Ba-li II (2003). Cơ sở pháp lí: Hiến chương ASEAN (2007). Kế hoạch: Lộ trình 2009–2015. Thành lập: Tuyên bố Cua-la Lăm-pơ (22/11/2015).","\"Cơ sở pháp lí của Cộng đồng là Tuyên bố Băng Cốc và Ba-li II\""],
+["Cộng đồng ASEAN không thay ASEAN","Cộng đồng ASEAN là bước phát triển của ASEAN, không thay thế ASEAN. ASEAN cũng không phải liên minh chính trị – quân sự.","\"Cộng đồng ASEAN thay thế cho tổ chức ASEAN\"; \"ASEAN là liên minh chính trị – kinh tế\""],
+["Trụ cột nào là trụ cột nào?","APSC: môi trường hòa bình, an ninh. AEC: một thị trường, cơ sở sản xuất chung, thu hẹp chênh lệch kinh tế. ASCC: con người làm trung tâm, phát triển con người, bản sắc chung.","Gán \"thị trường chung\" cho APSC; nói một trụ cột \"quan trọng nhất\""],
+["Đa dạng là thách thức","SGK xếp sự đa dạng về chế độ chính trị vào thách thức nội khối của Cộng đồng ASEAN.","\"Sự đa dạng chế độ chính trị là thuận lợi cho ASEAN\""],
+["Ba hội nghị tháng 8/1945","13/8: Ủy ban Khởi nghĩa toàn quốc, Quân lệnh số 1 (phát động). 14–15/8: Hội nghị toàn quốc của Đảng (kế hoạch, chính sách). 16–17/8: Đại hội Quốc dân (tán thành, 10 chính sách, Ủy ban Dân tộc giải phóng).","Gán việc ra Quân lệnh số 1 cho Đại hội Quốc dân; gán việc cử Ủy ban Dân tộc giải phóng cho Hội nghị toàn quốc"],
+["Nơi giành chính quyền sớm nhất, muộn nhất","Sớm nhất (18/8): Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam. Muộn nhất (28/8): Đồng Nai Thượng, Hà Tiên. Hà Nội 19/8, Huế 23/8, Sài Gòn 25/8.","\"Hà Nội giành chính quyền sớm nhất cả nước\""],
+["Đô thị hay nông thôn?","Căn cứ địa cách mạng xây dựng ở rừng núi, nông thôn (Tân Trào). Đô thị là nơi giành chính quyền quyết định (Hà Nội, Huế, Sài Gòn).","\"Đô thị là nơi xây dựng căn cứ địa\""],
+["Khởi nghĩa, không phải chiến tranh","Cách mạng tháng Tám là cuộc tổng khởi nghĩa giành chính quyền, nhanh và ít đổ máu, chủ yếu dựa vào lực lượng chính trị của quần chúng, có lực lượng vũ trang hỗ trợ.","\"Cách mạng tháng Tám là cuộc chiến tranh giải phóng dân tộc\"; \"diễn ra trong điều kiện hoàn toàn thuận lợi\""],
+["Ai lãnh đạo, mấy năm chuẩn bị?","Đảng Cộng sản Đông Dương lãnh đạo (không phải \"giai cấp lao động\"), chuẩn bị 15 năm. Sau cách mạng Đảng trở thành đảng cầm quyền.","\"Giai cấp lao động là lực lượng lãnh đạo\""],
+["Tính dân chủ còn hạn chế","Tính dân chủ: xóa bỏ chế độ quân chủ, đem lại quyền tự do dân chủ. Chưa xóa bỏ hoàn toàn sở hữu ruộng đất của địa chủ (việc đó làm sau, trong cải cách ruộng đất).","Chọn \"xóa bỏ hoàn toàn chế độ sở hữu ruộng đất của địa chủ\" làm tính chất dân chủ"]
+];
+
+const MCQ=[
+// ===== BÀI 1 =====
+{b:1,s:"Đề 1 · C1; Đề 4 · C10",q:"Năm 1945, bản Hiến chương Liên hợp quốc được thông qua tại hội nghị",o:["I-an-ta.","Pốt-xđam.","Xan Phran-xi-xcô.","Tê-hê-ran."],a:2,e:"Hội nghị Xan Phran-xi-xcô (Mỹ), 25/4–26/6/1945, 50 nước thông qua Hiến chương."},
+{b:1,s:"Đề 5 · C1",q:"Việc thành lập Liên hợp quốc được Liên Xô, Mỹ, Anh quyết định từ hội nghị nào?",o:["Hội nghị Pốt-xđam (Đức).","Hội nghị Xan Phran-xi-xcô (Mỹ).","Hội nghị I-an-ta (Liên Xô).","Hội nghị Tê-hê-ran (I-ran)."],a:2,e:"Tê-hê-ran chỉ khẳng định quyết tâm; I-an-ta (2/1945) ra quyết định thành lập."},
+{b:1,s:"Đề 1 · C2",q:"Một trong những nguyên tắc hoạt động của Liên hợp quốc là",o:["là trung tâm điều hòa hành động của các quốc gia.","tôn trọng các nghĩa vụ quốc tế và luật pháp quốc tế.","duy trì hòa bình an ninh quốc tế.","thúc đẩy quan hệ hữu nghị, hợp tác quốc tế giữa các quốc gia."],a:1,e:"A, C, D là mục tiêu (Điều 1). Nguyên tắc nằm ở Điều 2."},
+{b:1,s:"Đề 2 · C3",q:"Một trong những nguyên tắc hoạt động của Liên hợp quốc được quy định trong Hiến chương là",o:["tôn trọng quyết định của 5 nước Ủy viên thường trực.","không đưa quân đội Liên hợp quốc vào các khu vực.","tôn trọng các nghĩa vụ quốc tế và luật pháp quốc tế.","tôn trọng độc lập của 50 nước sáng lập Liên hợp quốc."],a:2,e:"Đúng nguyên văn một trong 6 nguyên tắc ở Điều 2."},
+{b:1,s:"Đề 1 · C3",q:"Liên hợp quốc được thành lập nhằm mục tiêu nào sau đây?",o:["Tăng cường hợp tác quốc tế.","Tạo sự bình đẳng về kinh tế.","Giám sát quân đội Đồng minh.","Thống nhất thể chế chính trị."],a:0,e:"Thúc đẩy hợp tác quốc tế là một trong 4 mục tiêu."},
+{b:1,s:"Đề 2 · C1",q:"Nội dung nào sau đây là mục tiêu hoạt động của Liên hợp quốc?",o:["Xây dựng một tổ chức Liên hợp quốc vững mạnh về quân sự và thịnh vượng về kinh tế.","Hợp tác quốc tế trong việc giải quyết các vấn đề quốc tế về kinh tế, xã hội, văn hóa...","Giải quyết thành công vấn đề an sinh, xã hội của từng quốc gia.","Liên kết các quốc gia thành các trung tâm kinh tế - văn hóa."],a:1,e:"Mục tiêu thứ 3 trong Điều 1 Hiến chương."},
+{b:1,s:"Đề 5 · C3",q:"Một trong những mục tiêu của tổ chức Liên hợp quốc là gì?",o:["Duy trì hòa bình và an ninh quốc tế.","Thúc đẩy dân chủ và văn minh.","Duy trì trật tự hai cực I-an-ta.","Bảo vệ toàn vẹn lãnh thổ của các nước."],a:0,e:"Mục tiêu số 1 và quan trọng nhất."},
+{b:1,s:"Đề 4 · C13; HSG · C6",q:"Trong số các mục tiêu của Liên hợp quốc, mục tiêu nào được chú trọng và là cơ sở để thực hiện các mục tiêu khác?",o:["Thúc đẩy quan hệ hữu nghị các dân tộc.","Thúc đẩy hợp tác quốc tế để giải quyết các vấn đề kinh tế, xã hội, văn hóa, nhân đạo.","Duy trì hòa bình và an ninh quốc tế.","Liên hợp quốc đóng vai trò là trung tâm điều hòa các nỗ lực quốc tế."],a:2,e:"SGK nói rõ: mục tiêu duy trì hòa bình và an ninh quốc tế được chú trọng và là cơ sở để thực hiện các mục tiêu khác."},
+{b:1,s:"Đề 1 · C4",q:"Quá trình hình thành Liên hợp quốc gắn liền với vai trò quan trọng của các chính phủ",o:["Liên Xô, Mỹ, Đức.","Mỹ, Đức, Anh.","Liên Xô, Mỹ, Anh.","Liên Xô, Mỹ, Pháp."],a:2,e:"Ba nước có mặt ở cả Tê-hê-ran và I-an-ta."},
+{b:1,s:"Đề 2 · C4",q:"Bối cảnh lịch sử nào sau đây dẫn đến sự hình thành Liên hợp quốc?",o:["Liên Xô và Mỹ thực hiện Chiến tranh lạnh.","Chiến tranh thế giới thứ hai bắt đầu diễn ra ác liệt.","Nhu cầu xác lập một tổ chức quốc tế nhằm duy trì hòa bình và an ninh thế giới sau chiến tranh.","Các nước thắng trận trong Chiến tranh thế giới thứ nhất phân chia phạm vi ảnh hưởng trên toàn cầu."],a:2,e:"Giai đoạn cuối CTTG2, cần tổ chức lại thế giới và thay thế Hội Quốc liên."},
+{b:1,s:"Đề 5 · C16",q:"Liên hợp quốc được thành lập vào năm nào?",o:["1954","1945","1949","1947"],a:1,e:"24/10/1945."},
+{b:1,s:"Đề 1 · C13",q:"Vai trò quan trọng của tổ chức Liên hợp quốc từ khi thành lập đến nay là",o:["chấm dứt hoàn toàn nạn khủng bố trên thế giới.","ngăn chặn các cường quốc chạy đua vũ trang.","giải quyết triệt để các tranh chấp ở Biển Đông.","duy trì hòa bình an ninh thế giới."],a:3,e:"A, C có từ tuyệt đối \"hoàn toàn\", \"triệt để\"; B không đúng thực tế."},
+{b:1,s:"Đề 3 · C16",q:"Vai trò quan trọng hàng đầu của tổ chức Liên hợp quốc đã thực hiện từ khi thành lập đến nay là gì?",o:["Là trung gian hòa giải mọi tranh chấp quốc tế giữa các dân tộc.","Góp phần ngăn chặn được nguy cơ bùng nổ cuộc chiến tranh thế giới mới.","Thúc đẩy quan hệ hợp tác kinh tế, văn hóa giữa các nước thành viên.","Là trung tâm giải quyết các mâu thuẫn về vấn đề dân tộc trên thế giới."],a:1,e:"SGK: \"Trước hết, LHQ góp phần ngăn ngừa không để xảy ra một cuộc chiến tranh thế giới mới kể từ năm 1945\"."},
+{b:1,s:"Đề 3 · C15",q:"Đâu không phải là vai trò của Liên hợp quốc từ khi thành lập đến nay?",o:["Duy trì hòa bình và an ninh thế giới.","Mở rộng kết nạp thành viên trên toàn thế giới.","Thúc đẩy kinh tế, tài chính, thương mại quốc tế và nâng cao đời sống nhân dân.","Đảm bảo quyền con người, phát triển văn hóa, xã hội."],a:1,e:"SGK nêu 3 nhóm vai trò A, C, D. Số thành viên tăng là kết quả, không phải một vai trò."},
+{b:1,s:"Đề 5 · C12",q:"Nội dung nào sau đây không phản ánh vai trò của Liên hợp quốc?",o:["Duy trì hòa bình, an ninh quốc tế.","Không can thiệp vào công việc nội bộ của các quốc gia.","Bảo đảm quyền con người, phát triển văn hóa xã hội.","Thúc đẩy hợp tác quốc tế trên các lĩnh vực."],a:1,e:"B là nguyên tắc hoạt động, không phải vai trò."},
+{b:1,s:"Đề 2 · C2",q:"Đâu là vai trò của Liên hợp quốc về bảo đảm quyền con người, phát triển văn hóa, xã hội?",o:["Giảm lãi suất cho vay ở hầu hết các nước phát triển.","Tăng cường bình đẳng giới và vị thế, năng lực của phụ nữ.","Cải thiện năng lực công nghệ thông tin.","Hoàn thành phổ cập giáo dục đại học."],a:1,e:"Bình đẳng giới thuộc lĩnh vực quyền con người."},
+{b:1,s:"Đề 3 · C18",q:"Văn kiện nào của Đại hội đồng Liên hợp quốc thông qua năm 1948 được coi là văn kiện đầu tiên của bộ luật quốc tế về quyền con người?",o:["Tuyên ngôn Quốc tế Nhân quyền.","Tuyên ngôn Nhân quyền và Dân quyền.","Tuyên ngôn Thiên niên kỉ của Liên hợp quốc.","Tuyên ngôn Viên và Chương trình hành động."],a:0,e:"Tuyên ngôn Nhân quyền và Dân quyền là của Cách mạng Pháp (1789), không phải LHQ."},
+{b:1,s:"HSG · C36",q:"Liên hợp quốc đưa ra nguyên tắc tôn trọng quyền bình đẳng, toàn vẹn lãnh thổ và độc lập chính trị của các nước dựa trên cơ sở nào sau đây?",o:["Sự nhất trí của năm nước ủy viên thường trực Hội đồng Bảo an.","Đây là những quyền tự nhiên của mỗi quốc gia, dân tộc.","Khát vọng độc lập, bình đẳng của các dân tộc thuộc địa và phụ thuộc.","Muốn trực tiếp chống lại âm mưu nô dịch của chủ nghĩa đế quốc."],a:1,e:"Bình đẳng chủ quyền, toàn vẹn lãnh thổ là quyền vốn có của mọi quốc gia, không phụ thuộc vào ai trao. Câu này nằm ngoài SGK, đáp án dễ tranh cãi."},
+// ===== BÀI 2 =====
+{b:2,s:"Đề 1 · C5",q:"Sau Chiến tranh thế giới thứ hai, một trật tự thế giới mới được thiết lập, thường được gọi là",o:["Hệ thống Véc-xai – Oa-sinh-tơn.","Trật tự thế giới đơn cực.","Trật tự thế giới đa cực.","Trật tự thế giới hai cực I-an-ta."],a:3,e:"Véc-xai – Oa-sinh-tơn là trật tự sau CTTG1."},
+{b:2,s:"Đề 4 · C2",q:"Nước nào sau đây không có mặt ở Hội nghị cấp cao I-an-ta (2/1945)?",o:["Mĩ.","Liên Xô.","Anh.","Pháp."],a:3,e:"Chỉ có Liên Xô, Mỹ, Anh."},
+{b:2,s:"Đề 5 · C20",q:"Tham dự Hội nghị I-an-ta gồm nguyên thủ đại diện cho các quốc gia nào?",o:["Anh, Pháp, Liên Xô.","Liên Xô, Mĩ, Anh.","Anh, Pháp, Mĩ.","Liên Xô, Mĩ, Pháp."],a:1,e:"Sớc-sin, Ru-dơ-ven, Xta-lin."},
+{b:2,s:"Đề 4 · C16",q:"Hội nghị I-an-ta diễn ra nhằm giải quyết vấn đề cấp bách nhất:",o:["Bàn biện pháp kết thúc sớm chiến tranh.","Phân chia phạm vi ảnh hưởng ở châu Âu và châu Á.","Thành lập tổ chức Liên hợp quốc.","Nhanh chóng đánh bại hoàn toàn các nước phát xít."],a:3,e:"Vấn đề cấp bách hàng đầu lúc đó là đánh bại hoàn toàn phát xít (tiêu diệt tận gốc phát xít Đức, quân phiệt Nhật)."},
+{b:2,s:"Đề 2 · C20",q:"Hội nghị I-an-ta (tháng 2-1945) không thông qua quyết định nào sau đây?",o:["Thành lập tổ chức Liên hợp quốc nhằm duy trì hòa bình, an ninh thế giới.","Thỏa thuận về việc phân chia phạm vi ảnh hưởng ở châu Âu và châu Á.","Tiêu diệt tận gốc chủ nghĩa phát xít Đức và chủ nghĩa quân phiệt Nhật.","Giao cho quân Pháp việc giải giáp quân đội Nhật ở Đông Dương."],a:3,e:"I-an-ta không bàn việc giải giáp quân Nhật ở Đông Dương."},
+{b:2,s:"Đề 2 · C17",q:"Theo quyết định của Hội nghị I-an-ta (tháng 2-1945), Mĩ không được phân chia phạm vi ảnh hưởng ở địa bàn nào sau đây?",o:["Tây Đức.","Tây Âu.","Tây Béc-lin.","Đông Âu."],a:3,e:"Đông Âu thuộc phạm vi ảnh hưởng của Liên Xô."},
+{b:2,s:"Đề 5 · C9",q:"Theo thỏa thuận của các cường quốc tại Hội nghị I-an-ta, Đông Nam Á thuộc phạm vi ảnh hưởng của",o:["các nước phương Tây.","Đức, Pháp và Nhật Bản.","Mĩ, Anh và Liên Xô.","các nước Đông Âu."],a:0,e:"Đông Nam Á, Nam Á, Tây Á vẫn thuộc ảnh hưởng phương Tây."},
+{b:2,s:"Đề 2 · C14",q:"Quyết định nào sau đây của Hội nghị I-an-ta (2-1945) tạo nên những bất lợi cho cách mạng Việt Nam trong những năm 1945 – 1946?",o:["Quân Anh cùng với quân Pháp làm nhiệm vụ giải giáp quân đội Nhật.","Quân Anh và quân Trung Hoa Dân quốc vào kiểm soát Đông Dương.","Liên Xô có phạm vi ảnh hưởng và kiểm soát ở các nước Đông Dương.","Đông Nam Á vẫn thuộc phạm vi ảnh hưởng của các nước phương Tây."],a:3,e:"Bẫy: quân Anh và Trung Hoa Dân quốc vào Đông Dương là quyết định của Hội nghị Pốt-xđam, không phải I-an-ta. Quyết định của I-an-ta là D."},
+{b:2,s:"Đề 4 · C8; HSG · C5",q:"Những quyết định của Hội nghị I-an-ta (2/1945) về sự phân chia phạm vi ảnh hưởng của các cường quốc ở châu Âu và châu Á đã",o:["thay đổi cục diện Chiến tranh thế giới thứ hai.","làm mâu thuẫn về thuộc địa trở nên gay gắt.","tạo lợi thế cho phong trào giải phóng dân tộc.","vi phạm chủ quyền của các quốc gia dân tộc."],a:3,e:"Các cường quốc tự phân chia đất đai, ảnh hưởng của nước khác."},
+{b:2,s:"Đề 2 · C15",q:"Nội dung nào sau đây là đặc điểm nổi bật của trật tự thế giới mới được hình thành sau Chiến tranh thế giới thứ hai?",o:["Một trật tự thế giới được thiết lập trên cơ sở nước thắng trận thống trị nước bại trận.","Xác lập trật tự thế giới mới của các nước tư bản chủ nghĩa do Mỹ đứng đầu, chi phối.","Hình thành trật tự thế giới hai cực đối lập: cực Liên Xô và cực Mỹ đứng đầu mỗi bên.","Trật tự thế giới được thiết lập trên cơ sở các nước thắng trận đoàn kết, đồng thuận."],a:2,e:"Hai cực Xô – Mỹ đứng đầu hai hệ thống đối lập."},
+{b:2,s:"Đề 2 · C16",q:"Nội dung nào sau đây là nhân tố hàng đầu chi phối toàn bộ đời sống chính trị thế giới trong phần lớn thời gian nửa sau thế kỉ XX?",o:["Cục diện trật tự hai cực, hai phe: tư bản chủ nghĩa và xã hội chủ nghĩa.","Hai hệ thống xã hội đối lập ra đời: tư bản chủ nghĩa và xã hội chủ nghĩa.","Xu hướng liên kết khu vực và xu thế toàn cầu hóa diễn ra mạnh mẽ.","Các cuộc \"chiến tranh nóng\" ở châu Á liên tiếp diễn ra không có hồi kết."],a:0,e:"Trật tự hai cực tồn tại 1945–1991, chi phối quan hệ quốc tế."},
+{b:2,s:"Đề 1 · C14",q:"Giai đoạn 1945 đến đầu những năm 70 của thế kỉ XX là thời kì trật tự hai cực I-an-ta",o:["có sự liên kết sâu rộng, toàn diện trên mọi lĩnh vực.","xác lập và phát triển với sự đối đầu Xô - Mĩ căng thẳng.","bắt đầu xói mòn và đi đến sụp đổ.","đạt được những thỏa thuận phát triển bền vững."],a:1,e:"C là đặc điểm giai đoạn từ đầu những năm 70 đến 1991."},
+{b:2,s:"Đề 3 · C12",q:"Trong quá trình hình thành và tồn tại của Trật tự thế giới hai cực I-an-ta, giai đoạn căng thẳng nhất là",o:["từ năm 1971 đến đầu những năm 90 của thế kỉ XX.","từ năm 1972 đến cuối những năm 80 của thế kỉ XX.","từ năm 1944 đến đầu những năm 60 của thế kỉ XX.","từ năm 1947 đến đầu những năm 70 của thế kỉ XX."],a:3,e:"Quan hệ căng thẳng đặc biệt từ khi Chiến tranh lạnh bắt đầu (1947) cho tới khi hòa hoãn đầu những năm 70."},
+{b:2,s:"Đề 4 · C5; HSG · C3",q:"Sự kiện lịch sử nào sau đây diễn ra trong thời kì tồn tại của trật tự hai cực I-an-ta (1945 – 1991)?",o:["Liên bang Cộng hòa xã hội chủ nghĩa Xô viết được thành lập.","Các thế lực phát xít lên cầm quyền ở một số nước châu Âu.","Liên Xô và Mĩ thỏa thuận hạn chế vũ khí tiến công chiến lược.","Việt Nam gia nhập Hiệp hội các quốc gia Đông Nam Á."],a:2,e:"A là 1922, B là những năm 1920–1930, D là 1995 (sau 1991). C là năm 1972."},
+{b:2,s:"Đề 4 · C19; HSG · C9",q:"Nhận xét nào đúng về Chiến tranh lạnh (1947 - 1989)?",o:["Diễn ra gay gắt nhưng vẫn có hòa hoãn bộ phận.","Thực chất là mâu thuẫn về vấn đề chiến tranh hạt nhân.","Hai phe giằng co dai dẳng và phân chia được thắng bại.","Có những xung đột quân sự trực tiếp giữa hai siêu cường."],a:0,e:"Có hòa hoãn từ đầu những năm 70. Hai siêu cường không đánh nhau trực tiếp."},
+{b:2,s:"Đề 2 · C19; HSG · C34",q:"Sự kiện có tính bước đột phá làm xói mòn trật tự thế giới hai cực I-an-ta đó là",o:["Cách mạng tháng Tám ở Việt Nam (8/1945).","chế độ độc tài thân Mỹ thất bại ở Cu-ba (1959).","Anh, Pháp rút quân khỏi kênh đào Xuy-ê (1956).","thắng lợi của cách mạng Trung Quốc (1949)."],a:3,e:"SGK: cách mạng Trung Quốc 1949 mở ra bước đột phá đầu tiên, phá vỡ âm mưu khống chế Trung Quốc của Mỹ."},
+{b:2,s:"HSG · C34",q:"Thắng lợi của cách mạng Trung Quốc năm 1949 đã mở ra bước đột phá đầu tiên đối với trật tự hai cực I-an-ta vì",o:["đã phá vỡ âm mưu khống chế Trung Quốc của Mỹ.","đã làm thay đổi tính chất quan hệ giữa Mỹ và Liên Xô.","đã xóa bỏ những đặc quyền của Liên Xô trên toàn lãnh thổ.","đã đưa Trung Quốc trở thành một cực trong trật tự thế giới đa cực."],a:0,e:"Nguyên văn tư liệu SGK. C sai vì chỉ là đặc quyền ở vùng Đông Bắc, không phải \"toàn lãnh thổ\"."},
+{b:2,s:"Đề 2 · C18",q:"Nội dung nào dưới đây không phải là nguyên nhân dẫn đến sự sụp đổ của Trật tự thế giới hai cực I-an-ta?",o:["Chạy đua vũ trang kéo dài làm suy giảm thế mạnh của Mỹ và Liên Xô.","Sự phát triển và thắng lợi của phong trào giải phóng dân tộc.","Nước Mỹ mất vị trí đứng đầu thế giới về kinh tế và tài chính.","Sự vươn lên mạnh mẽ của các nước Tây Âu, Nhật Bản."],a:2,e:"Mỹ chỉ suy giảm tương đối, vẫn đứng đầu kinh tế."},
+{b:2,s:"Đề 5 · C5",q:"Trật tự thế giới hai cực I-an-ta đã hoàn toàn sụp đổ khi nào?",o:["Sự tan rã của chủ nghĩa xã hội ở Liên Xô và Đông Âu.","Liên Xô và Mĩ tuyên bố chấm dứt Chiến tranh lạnh.","Hiệp định về cơ sở quan hệ giữa Đông Đức và Tây Đức.","Sự ra đời thông điệp của Tổng thống Mĩ Tru-man."],a:0,e:"1989 chỉ chấm dứt Chiến tranh lạnh; Liên Xô tan rã 12/1991 mới chấm dứt trật tự hai cực."},
+{b:2,s:"Đề 5 · C23",q:"Sự kiện nào đánh dấu chính thức chấm dứt sự tồn tại của trật tự hai cực I-an-ta?",o:["Sự tan rã của Liên Xô năm 1991.","Sự kiện chấm dứt Chiến tranh lạnh 1989.","Sự kiện bức tường Béc-lin bị phá bỏ.","Xu thế hòa hoãn Đông – Tây (những năm 70)."],a:0,e:"Liên Xô, cực đứng đầu hệ thống XHCN, tan rã thì trật tự hai cực không còn."},
+{b:2,s:"Đề 2 · C13",q:"Nội dung nào sau đây không phải là tác động của Trật tự thế giới hai cực I-an-ta?",o:["Cuộc chiến tranh của Mỹ ở Việt Nam.","Sự xuất hiện của chủ nghĩa khủng bố.","Chiến tranh giữa hai miền Triều Tiên.","Bức tường Béc-lin chia đôi nước Đức."],a:1,e:"Chủ nghĩa khủng bố là vấn đề an ninh phi truyền thống, không do trật tự hai cực sinh ra."},
+{b:2,s:"Đề 5 · C7",q:"Nội dung nào sau đây phản ánh đúng tác động của sự sụp đổ Trật tự thế giới hai cực I-an-ta (1991) đến các quốc gia trên thế giới?",o:["Mĩ vươn lên thiết lập trật tự thế giới \"đơn cực\" do Mĩ làm bá chủ.","Các nước tư bản chủ nghĩa và xã hội chủ nghĩa xung đột gay gắt.","Các quốc gia chạy đua vũ trang để có vị trí trong trật tự thế giới mới.","Một số cường quốc có vị trí ngày càng cao trong quan hệ quốc tế."],a:3,e:"SGK: vai trò của các cường quốc khác, các trung tâm kinh tế ngày càng tăng."},
+{b:2,s:"HSG · C38",q:"Sự sụp đổ của trật tự hai cực I-an-ta năm 1991 không đưa đến tác động nào dưới đây?",o:["Tạo điều kiện cho các cường quốc mới nổi có vị trí, vai trò lớn hơn trong quan hệ quốc tế.","Mở ra chiều hướng và những điều kiện để giải quyết hòa bình các vụ tranh chấp, xung đột.","Trong nội bộ chủ nghĩa tư bản xuất hiện cơ chế điều hòa với sự ra đời của tổ chức G7.","Vai trò của các cường quốc, các trung tâm kinh tế, tổ chức quốc tế và khu vực gia tăng."],a:2,e:"G7 ra đời năm 1975, trước khi trật tự hai cực sụp đổ."},
+{b:2,s:"HSG · C25",q:"Vì sao sự tồn tại của Trật tự thế giới hai cực I-an-ta không phù hợp với lợi ích chung của cộng đồng quốc tế?",o:["Chủ quyền lãnh thổ của nhiều quốc gia bị xâm phạm nghiêm trọng.","Liên Xô không có điều kiện để ủng hộ phong trào giải phóng dân tộc.","Quyền lợi kinh tế và văn hóa của các đồng minh bị Mĩ khống chế.","Các tổ chức quốc tế bị giới hạn hoạt động trong mâu thuẫn Xô - Mỹ."],a:0,e:"Các cường quốc phân chia phạm vi ảnh hưởng, gây chia cắt (Đức, Triều Tiên), chiến tranh cục bộ."},
+// ===== BÀI 3 =====
+{b:3,s:"Đề 5 · C18",q:"Nhận xét nào dưới đây đúng với xu thế phát triển của thế giới sau Chiến tranh lạnh?",o:["Trật tự thế giới mới được hình thành theo xu hướng \"đa cực\".","Mĩ vươn lên trở thành \"một cực\" duy nhất.","Trật tự \"hai cực I-an-ta\" tiếp tục được duy trì.","Thế giới phát triển theo xu thế một cực và nhiều trung tâm."],a:0,e:"Đa cực là một trong những xu thế chính."},
+{b:3,s:"Đề 5 · C2",q:"Sau khi Chiến tranh lạnh chấm dứt, yếu tố nào sau đây đóng vai trò là trung tâm trong quan hệ quốc tế?",o:["Kinh tế.","Quân sự.","Vũ khí chiến lược.","Chính trị."],a:0,e:"Xu thế phát triển lấy kinh tế làm trọng tâm."},
+{b:3,s:"Đề 2 · C5",q:"Khái niệm \"đa cực\" được hiểu là",o:["trạng thái địa - văn hóa toàn cầu với nhiều trung tâm quyền lực chi phối.","một trật tự mới với vai trò vượt trội của Mỹ, chi phối các nước khác.","một trật tự thế giới mà các nước vừa và nhỏ có vai trò quyết định.","trạng thái địa - chính trị toàn cầu với nhiều trung tâm quyền lực chi phối."],a:3,e:"Đa cực là khái niệm quan hệ quốc tế (địa – chính trị), không quốc gia nào áp đảo."},
+{b:3,s:"Đề 1 · C6",q:"Đầu thế kỉ XXI, quốc gia nào dưới đây là một trong những trung tâm quyền lực ngày càng vươn lên, khẳng định sức mạnh về kinh tế, quân sự, chính trị đối với thế giới?",o:["Liên Xô.","Việt Nam.","Xin-ga-po.","Ấn Độ."],a:3,e:"SGK nêu Trung Quốc, Nga, Ấn Độ, Nhật Bản, một số nước EU. Liên Xô đã tan rã năm 1991."},
+{b:3,s:"Đề 2 · C6",q:"Nội dung nào sau đây là một trong những biểu hiện của xu thế đa cực?",o:["Các trung tâm quyền lực ngày càng vươn lên, khẳng định sức mạnh đối với thế giới.","Các nước tăng cường chạy đua về kinh tế và quân sự, hình thành các liên minh xuyên lục địa.","Sự lớn mạnh của Trung Quốc trước cải cách, mở cửa, đe dọa đến vị trí số 1 của Mỹ.","Các nước trong khối NATO liên kết với nhau tạo ra sức mạnh quân sự vượt trội."],a:0,e:"Biểu hiện thứ nhất trong SGK."},
+{b:3,s:"Đề 1 · C15",q:"Nội dung nào sau đây không phải là biểu hiện của xu thế đa cực?",o:["Sự vươn lên khẳng định sức mạnh của các trung tâm quyền lực.","Mĩ suy giảm sức mạnh so với các cường quốc khác.","Có sự phân tuyến triệt để giữa hệ thống xã hội chủ nghĩa và tư bản chủ nghĩa.","Vai trò ngày càng lớn của các trung tâm, tổ chức kinh tế tài chính quốc tế, khu vực."],a:2,e:"Phân tuyến hai hệ thống là đặc trưng của trật tự hai cực."},
+{b:3,s:"Đề 3 · C1",q:"Nội dung nào sau đây không phải là biểu hiện của xu thế đa cực trong quan hệ quốc tế sau Chiến tranh lạnh?",o:["Sự gia tăng sức mạnh, tầm ảnh hưởng và vị thế về kinh tế, chính trị, quân sự của các nước lớn.","Sự suy giảm sức mạnh tương đối của Mĩ trong tương quan so sánh với các cường quốc khác.","Sự phát triển của quan hệ thương mại quốc tế và tác động to lớn của các công ty xuyên quốc gia.","Vai trò ngày càng gia tăng của các trung tâm, tổ chức kinh tế, tài chính quốc tế và khu vực."],a:2,e:"C là biểu hiện của toàn cầu hóa. A, B, D là ba biểu hiện đa cực trong SGK."},
+{b:3,s:"Đề 1 · C16",q:"Nội dung nào sau đây phản ánh đúng quan hệ quốc tế trong những năm đầu thế kỉ XXI?",o:["Liên Xô và Mỹ chấm dứt chiến tranh lạnh, tiếp tục gia tăng ảnh hưởng và vị thế trên thế giới.","Các nước, các trung tâm có tiềm lực kinh tế, quân sự mạnh đóng vai trò chi phối quan hệ quốc tế.","Trật tự hai cực I-an-ta từng bước được thiết lập, chi phối phần lớn quan hệ quốc tế.","Trung Quốc là cường quốc số 1 thế giới, vươn lên lãnh đạo hệ thống xã hội chủ nghĩa."],a:1,e:"Đầu thế kỉ XXI không còn Liên Xô, không còn hai cực; Mỹ vẫn số 1."},
+{b:3,s:"Đề 1 · C21",q:"Nội dung nào sau đây phản ánh đúng đặc điểm của trật tự thế giới đa cực?",o:["Lợi ích của mỗi dân tộc được đặt lên vị trí hàng đầu.","Sức mạnh của Mỹ được tăng cường tuyệt đối.","Có sự cân bằng giữa hai hệ thống xã hội đối lập.","Được thành lập ngay sau khi chiến tranh lạnh kết thúc."],a:0,e:"Không nước nào áp đảo, các nước chủ động vì lợi ích quốc gia. B sai (Mỹ suy giảm tương đối), C là hai cực, D sai (đa cực là một xu thế đang hình thành)."},
+{b:3,s:"Đề 1 · C22",q:"Điểm chung của trật tự thế giới hai cực I-an-ta và trật tự thế giới đa cực là",o:["bị chiến tranh lạnh chi phối.","có sự phân tuyến rõ rệt.","gắn với vai trò của các nước lớn.","gắn với các cuộc chiến tranh thế giới."],a:2,e:"Cả hai đều phản ánh tương quan lực lượng giữa các cường quốc."},
+{b:3,s:"Đề 2 · C21",q:"Nội dung nào phản ánh điểm khác biệt giữa trật tự đa cực so với trật tự hai cực I-an-ta?",o:["Bị chi phối bởi quyền lợi của các cường quốc.","Hòa bình, đối thoại, hợp tác là xu thế chủ đạo.","Hình thành sau khi chiến tranh thế giới kết thúc.","Các nước tập trung phát triển quân sự là trọng điểm."],a:1,e:"Hai cực gắn với đối đầu; sau Chiến tranh lạnh là đối thoại, hợp tác."},
+{b:3,s:"Đề 4 · C20; HSG · C10",q:"Sau Chiến tranh lạnh, tương quan lực lượng giữa các cường quốc trên thế giới có tác động như thế nào đến quan hệ quốc tế?",o:["Góp phần tạo nên xu thế hòa bình, ổn định và phát triển trên thế giới.","Đẩy nhanh quá trình thiết lập trật tự thế giới mới do Mỹ thống trị.","Góp phần hình thành trật tự thế giới theo xu thế đa cực, nhiều trung tâm.","Ngăn chặn được những \"di chứng\" của Chiến tranh lạnh trên thế giới."],a:2,e:"SGK: đa cực phản ánh tương quan so sánh lực lượng mới."},
+{b:3,s:"Đề 4 · C18; HSG · C8",q:"Xu thế chủ đạo trong quan hệ giữa các cường quốc sau Chiến tranh lạnh là",o:["tôn trọng vai trò, nhiệm vụ của Liên hợp quốc.","hợp tác, không cạnh tranh, không mâu thuẫn.","đối thoại, thỏa hiệp, tránh xung đột trực tiếp.","hòa bình, không xung đột, tiến hành hợp tác."],a:2,e:"B, D có từ tuyệt đối \"không\"; thực tế vẫn có cạnh tranh."},
+{b:3,s:"Đề 3 · C9",q:"Sau Chiến tranh lạnh, quan hệ giữa các nước lớn theo hướng đối thoại, thỏa hiệp, tránh xung đột trực tiếp với đặc điểm nổi bật là",o:["mâu thuẫn và hài hòa.","mâu thuẫn và kiềm chế.","hài hòa và kiềm chế.","hợp tác và tiếp xúc."],a:0,e:"Tính hai mặt: song song giữa hợp tác và cạnh tranh, giữa mâu thuẫn và hài hòa, giữa tiếp xúc và kiềm chế. Chỉ A là một cặp đúng. Kiến thức này không có trong SGK mới; đáp án dễ tranh cãi."},
+{b:3,s:"Đề 5 · C24",q:"Nội dung nào sau đây phản ánh đúng sự điều chỉnh quan hệ giữa các nước có chế độ chính trị khác nhau sau khi Chiến tranh lạnh chấm dứt?",o:["Giảm dần cuộc chạy đua vũ trang.","Thiết lập quan hệ đối tác chiến lược.","Hòa hoãn, đối thoại, cùng phát triển.","Giảm dần sự cạnh tranh về kinh tế."],a:2,e:"Xu thế đối thoại, hợp tác thay cho đối đầu."},
+{b:3,s:"Đề 3 · C2",q:"Một trong những biểu hiện của xu thế đối thoại, hợp tác trong quan hệ quốc tế sau Chiến tranh lạnh là",o:["giải quyết mâu thuẫn bằng biện pháp hòa bình.","sự suy giảm sức mạnh tương đối của nước Mĩ.","sự hợp nhất các công ty thành các tập đoàn lớn.","sự phát triển nhanh quan hệ thương mại quốc tế."],a:0,e:"B là đa cực; C, D là toàn cầu hóa."},
+{b:3,s:"Đề 3 · C3",q:"Xét về bản chất, toàn cầu hóa là",o:["sự tăng lên mạnh mẽ những mối liên hệ, tác động, phụ thuộc lẫn nhau giữa các nước.","sự phát triển nhanh chóng của quan hệ thương mại giữa các quốc gia trên thế giới.","sự tăng cường sáp nhập và hợp nhất các công ti thành những tập đoàn lớn trên toàn cầu.","sự ra đời của các tổ chức liên kết kinh tế, thương mại, tài chính quốc tế và khu vực."],a:0,e:"B, C, D chỉ là biểu hiện."},
+{b:3,s:"Đề 3 · C4",q:"Nội dung nào không phải là biểu hiện của xu thế toàn cầu hóa?",o:["Sự phát triển nhanh chóng của quan hệ thương mại quốc tế.","Sự phát triển và tác động to lớn của các công ti xuyên quốc gia.","Sự sáp nhập và hợp nhất các công ti thành các tập đoàn lớn.","Sự biến đổi về cơ cấu dân cư và chất lượng nguồn nhân lực."],a:3,e:"D không thuộc các biểu hiện toàn cầu hóa."},
+{b:3,s:"Đề 3 · C5",q:"Sự ra đời của Liên minh châu Âu (EU), Tổ chức Thương mại Thế giới (WTO), Diễn đàn hợp tác Á - Âu (ASEM) là biểu hiện của xu thế",o:["đa dạng hóa.","nhất thể hóa.","đa phương hóa.","toàn cầu hóa."],a:3,e:"Sự ra đời các tổ chức liên kết kinh tế, thương mại, tài chính quốc tế và khu vực."},
+{b:3,s:"Đề 4 · C9",q:"Xu thế toàn cầu hóa xuất hiện là hệ quả của",o:["sự phát triển quan hệ thương mại quốc tế.","cuộc cách mạng khoa học - công nghệ.","Chiến tranh lạnh chấm dứt.","phong trào giải phóng dân tộc."],a:1,e:"Cách mạng khoa học – công nghệ là nguyên nhân sâu xa; kết thúc Chiến tranh lạnh chỉ thúc đẩy thêm."},
+{b:3,s:"Đề 3 · C6",q:"Thách thức an ninh phi truyền thống mà các dân tộc phải đối mặt trong xu thế toàn cầu hóa là",o:["chủ nghĩa khủng bố.","xung đột tôn giáo.","xung đột sắc tộc.","nạn thất nghiệp gia tăng."],a:0,e:"Khủng bố là ví dụ điển hình về an ninh phi truyền thống."},
+{b:3,s:"Đề 3 · C7",q:"Nội dung nào phản ánh không đúng thời cơ mà xu thế toàn cầu hóa đặt ra đối với các nước đang phát triển?",o:["Tiếp thu thành tựu khoa học - công nghệ hiện đại.","Mở rộng quan hệ hợp tác, chiếm lĩnh thị trường.","Các mâu thuẫn xã hội được giải quyết triệt để.","Khai thác vốn đầu tư, học hỏi kinh nghiệm quản lí."],a:2,e:"\"Triệt để\" là dấu hiệu sai."},
+{b:3,s:"Đề 3 · C8",q:"Nguyên tắc quan trọng nhất của Việt Nam khi hội nhập vào nền kinh tế thế giới theo xu thế toàn cầu hóa là",o:["am hiểu luật pháp quốc tế.","cạnh tranh lành mạnh.","giữ vững độc lập chủ quyền.","bình đẳng trong cạnh tranh."],a:2,e:"Hội nhập nhưng phải giữ vững độc lập, chủ quyền."},
+{b:3,s:"Đề 3 · C11",q:"Một trong những thách thức với các nước đang phát triển trong xu thế đa cực là",o:["vấn đề an ninh phi truyền thống ngày càng trở nên nghiêm trọng.","giảm sự phục tùng của các nước đối với các cường quốc lớn.","tăng cường xu thế hòa bình, hợp tác và phát triển trên thế giới.","trào lưu dân túy, xu hướng bảo hộ có chiều hướng giảm nhanh."],a:0,e:"B, C, D đều là điều thuận lợi, không phải thách thức."},
+{b:3,s:"Đề 4 · C11",q:"Tại sao nói \"Hòa bình, ổn định và hợp tác phát triển là thời cơ đối với các dân tộc khi bước vào thế kỉ XXI\"?",o:["Các quốc gia, dân tộc trên thế giới có môi trường hòa bình để xây dựng, phát triển đất nước, tăng cường hợp tác quốc tế và ứng dụng thành tựu cách mạng khoa học - công nghệ.","Các quốc gia điều chỉnh chiến lược phát triển, tập trung vào phát triển kinh tế để xây dựng sức mạnh thực lực.","Các nước phát triển có điều kiện tận dụng thị trường, vốn, nhân công, nguyên liệu giá rẻ từ thế giới thứ ba.","Các nước đang phát triển có môi trường hòa bình để phát triển kinh tế, thu hút vốn đầu tư nước ngoài."],a:0,e:"A bao quát cho mọi dân tộc; C, D chỉ nói một nhóm nước."},
+{b:3,s:"Đề 2 · C22",q:"Nhận định nào sau đây là đúng về những chính sách mà Việt Nam có thể áp dụng để hội nhập kinh tế thành công với thế giới?",o:["Xây dựng kinh tế tự chủ, phát huy lợi thế đất nước.","Liên kết hợp tác chặt chẽ với các nước Đông Nam Á.","Tìm kiếm những nguồn vốn viện trợ không hoàn lại.","Gia nhập vào tất cả các tổ chức thương mại thế giới."],a:0,e:"Hội nhập đi đôi với tự chủ. D có từ tuyệt đối \"tất cả\"."},
+{b:3,s:"HSG · C35",q:"Mối quan hệ giữa chủ nghĩa xã hội và chủ nghĩa tư bản trong bối cảnh toàn cầu hóa hiện nay có điểm khác biệt nào so với thế kỉ XX?",o:["Có sự hòa hợp, cùng phát triển trong nền kinh tế toàn cầu.","Chủ nghĩa xã hội có thể hợp tác với chủ nghĩa tư bản mà không từ bỏ nguyên lý cơ bản.","Các quốc gia xã hội chủ nghĩa cần từ bỏ mô hình, chuyển sang kinh tế tư bản tự do.","Luôn đối đầu, không thể hợp tác trong nền kinh tế toàn cầu."],a:1,e:"Đối thoại, hợp tác giữa các nước có chế độ chính trị khác nhau, trên cơ sở tôn trọng lẫn nhau."},
+// ===== BÀI 4 =====
+{b:4,s:"Đề 2 · C8; Đề 4 · C12; Đề 5 · C19",q:"Những nước sáng lập ASEAN gồm",o:["Thái Lan, In-đô-nê-xi-a, Phi-líp-pin, Việt Nam, Lào.","Thái Lan, In-đô-nê-xi-a, Phi-líp-pin, Xin-ga-po, Lào.","Thái Lan, In-đô-nê-xi-a, Phi-líp-pin, Xin-ga-po, Ma-lai-xi-a.","Thái Lan, Đông Ti-mo, Phi-líp-pin, Xin-ga-po, Ma-lai-xi-a."],a:2,e:"ASEAN 5 (8/8/1967, Băng Cốc)."},
+{b:4,s:"Đề 2 · C9",q:"Quốc gia nào sau đây là thành viên thứ 6 của ASEAN?",o:["Lào.","Mi-an-ma.","Cam-pu-chia.","Bru-nây."],a:3,e:"Bru-nây gia nhập năm 1984."},
+{b:4,s:"Đề 1 · C8",q:"Quốc gia nào sau đây là thành viên thứ bảy của tổ chức ASEAN?",o:["Lào.","Việt Nam.","Xin-ga-po.","Bru-nây."],a:1,e:"Việt Nam gia nhập 7/1995."},
+{b:4,s:"Đề 1 · C7; Đề 4 · C3; HSG · C1",q:"Điều kiện tiên quyết đưa đến sự thành lập tổ chức ASEAN (1967) là các quốc gia thành viên đều",o:["có nền kinh tế phát triển.","đã giành được độc lập.","có nền văn hóa dân tộc đặc sắc.","có chế độ chính trị tương đồng."],a:1,e:"Phải có độc lập, chủ quyền mới tự quyết định tham gia tổ chức khu vực."},
+{b:4,s:"Đề 2 · C7",q:"Hiệp hội các quốc gia Đông Nam Á (ASEAN) được ra đời trong bối cảnh",o:["các quốc gia trong khu vực có chung một ngôn ngữ.","cuộc chiến tranh trên bán đảo Triều Tiên đang diễn ra.","cuộc Cách mạng công nghiệp lần thứ ba đã kết thúc.","các tổ chức liên kết khu vực đã ra đời, hoạt động hiệu quả."],a:3,e:"Xu hướng khu vực hóa trên thế giới. Chiến tranh Triều Tiên kết thúc 1953."},
+{b:4,s:"Đề 4 · C22; HSG · C11",q:"Yếu tố khách quan dẫn tới sự ra đời của tổ chức ASEAN là",o:["có chung mục tiêu chống lại chiến lược toàn cầu của Mĩ.","sự gần gũi về địa lí, tương đồng về lịch sử, kinh tế, văn hóa.","nhu cầu giúp đỡ nhau để giải quyết khó khăn và phát triển.","sự xuất hiện của các tổ chức hợp tác khu vực trên thế giới."],a:3,e:"Yếu tố khách quan là bối cảnh thế giới; C là nhu cầu bên trong (chủ quan)."},
+{b:4,s:"Đề 5 · C15",q:"Sự ra đời của tổ chức ASEAN (1967) ở Đông Nam Á đã chứng tỏ điều gì?",o:["Xu thế liên kết khu vực đang diễn ra mạnh mẽ.","Sự toàn thắng của phong trào giải phóng dân tộc.","Nền kinh tế của các nước phát triển khởi sắc.","Chủ nghĩa đế quốc không thể can thiệp vào khu vực."],a:0,e:"Năm 1967 Đông Dương vẫn đang có chiến tranh, nên B sai."},
+{b:4,s:"Đề 2 · C10; Đề 5 · C13",q:"Một trong những mục đích thành lập của ASEAN là",o:["thúc đẩy tăng trưởng kinh tế, tiến bộ xã hội trong khu vực.","tăng cường hợp tác quốc phòng, an ninh và hình thành liên minh phòng thủ.","thành lập một tổ chức chính trị, quân sự chung trong khu vực Đông Nam Á.","giải quyết tranh chấp trong khu vực bằng biện pháp quân sự hòa bình."],a:0,e:"Nguyên văn mục đích 1 của Tuyên bố Băng Cốc. ASEAN không phải liên minh quân sự."},
+{b:4,s:"Đề 5 · C14",q:"Mục đích chính trị - an ninh của tổ chức ASEAN là thúc đẩy hòa bình và ổn định khu vực dựa trên cơ sở nào?",o:["Tôn trọng công lý và nguyên tắc luật pháp trong quan hệ giữa các quốc gia.","Tôn trọng quyền tự trị và các quyền lợi cơ bản của các nước thành viên.","Chung sống hòa bình và đảm bảo sự nhất trí của năm nước tham gia sáng lập.","Sức mạnh thực sự của mỗi quốc gia về kinh tế, chính trị, quân sự, văn hóa."],a:0,e:"Mục đích 2 của Tuyên bố Băng Cốc."},
+{b:4,s:"Đề 5 · C6",q:"Mục tiêu của ASEAN là hướng đến xây dựng một khu vực Đông Nam Á",o:["hòa bình và ổn định.","hòa bình và thịnh vượng.","văn minh và giàu đẹp.","phát triển và phồn vinh."],a:1,e:"\"Một Cộng đồng các quốc gia Đông Nam Á hòa bình và thịnh vượng\"."},
+{b:4,s:"Đề 4 · C14",q:"\"Phát triển kinh tế và văn hóa thông qua những nỗ lực hợp tác chung giữa các nước thành viên, trên tinh thần duy trì hòa bình và ổn định khu vực\" là mục tiêu của",o:["Liên hợp quốc.","Hội nghị I-an-ta.","Liên minh châu Âu.","Tổ chức ASEAN."],a:3,e:"Từ khóa \"khu vực\"."},
+{b:4,s:"Đề 4 · C15",q:"Một trong những nguyên tắc hoạt động cơ bản của tổ chức ASEAN là",o:["hợp tác, phát triển có hiệu quả trong các lĩnh vực kinh tế, văn hóa, an ninh.","hợp tác, phát triển có hiệu quả trong các lĩnh vực kinh tế, văn hóa, xã hội.","hợp tác, phát triển có hiệu quả trong các lĩnh vực kinh tế, chính trị, an ninh.","hợp tác, phát triển có hiệu quả trong các lĩnh vực kinh tế, chính trị, xã hội."],a:1,e:"Nguyên tắc của Hiệp ước Ba-li (1976): kinh tế, văn hóa, xã hội."},
+{b:4,s:"Đề 5 · C10",q:"Nhận xét nào đúng về đặc điểm của các nước thành viên ASEAN?",o:["Các nước có sự khác biệt về ý thức hệ và chế độ chính trị.","Tồn tại những cặp quan hệ đối ngoại song phương đối lập.","Giữa các nước thành viên có sự phân tuyến tương đối rõ rệt.","Các nước có sự tương đồng về chế độ chính trị - xã hội."],a:0,e:"ASEAN gồm cả nước XHCN (Việt Nam, Lào) và TBCN, quân chủ."},
+{b:4,s:"Đề 1 · C17",q:"Việc mở rộng thành viên của ASEAN diễn ra lâu dài và đầy trở ngại chủ yếu là do",o:["tác động của cuộc Chiến tranh lạnh và cục diện hai cực, hai phe.","có nhiều khác biệt về văn hóa giữa các quốc gia dân tộc.","các nước thực hiện các chiến lược phát triển kinh tế khác nhau.","nguyên tắc hoạt động của ASEAN không phù hợp với một số nước."],a:0,e:"Chiến tranh lạnh chia Đông Nam Á thành hai nhóm nước đối lập."},
+{b:4,s:"Đề 4 · C6",q:"Một trong những lí do làm cho ASEAN có điều kiện mở rộng tổ chức, kết nạp thành viên mới là",o:["các nước đã hợp tác để cùng nhau phát triển.","tình hình kinh tế khu vực đã phát triển.","\"Vấn đề Cam-pu-chia\" đã được Liên hợp quốc giải quyết.","nội bộ không còn mâu thuẫn."],a:2,e:"Hiệp định Pa-ri về Cam-pu-chia (1991) chấm dứt đối đầu, mở đường cho ASEAN 10."},
+{b:4,s:"Đề 4 · C7; HSG · C4",q:"Sự kiện Việt Nam gia nhập ASEAN (7-1995) phản ánh điều gì trong quan hệ giữa các nước ở khu vực Đông Nam Á?",o:["Chứng tỏ sự khác biệt về ý thức hệ có thể hòa giải.","ASEAN đã trở thành liên minh kinh tế - chính trị.","Chứng tỏ sự hợp tác giữa các nước ASEAN ngày càng hiệu quả.","Mở ra triển vọng liên kết ở khu vực Đông Nam Á."],a:0,e:"Việt Nam (XHCN) gia nhập tổ chức trước đây gồm các nước TBCN. D cũng có lí; đây là đáp án hay gặp nhưng dễ tranh cãi."},
+{b:4,s:"Đề 1 · C9",q:"Giai đoạn từ 1999 - 2015 là thời kì tổ chức ASEAN",o:["hoàn thiện cơ cấu tổ chức, tăng cường hợp tác.","mở rộng thành viên, tăng cường liên kết khu vực.","bắt đầu xói mòn và đi đến sụp đổ.","bước đầu phát triển về cơ cấu tổ chức, nguyên tắc hoạt động."],a:0,e:"B là giai đoạn 1976–1999."},
+{b:4,s:"Đề 3 · C19",q:"Một trong những hoạt động nổi bật của ASEAN trong giai đoạn 1967 - 1976 là",o:["phản đối Trật tự thế giới hai cực I-an-ta, ủng hộ xu thế đa cực.","tập trung vào hợp tác trên lĩnh vực chính trị - an ninh.","tích cực ủng hộ việc đấu tranh chống Mỹ xâm lược Việt Nam.","tham gia vào giải quyết căng thẳng trên bán đảo Triều Tiên."],a:1,e:"\"Xây dựng lòng tin và học cách hòa giải\"."},
+{b:4,s:"Đề 3 · C23",q:"Trong giai đoạn 1967 - 1976, ASEAN coi trọng vấn đề chính trị - an ninh vì một trong những lí do nào sau đây?",o:["Mỹ bắt đầu có những hành động can thiệp, dính líu vào Đông Dương.","Cuộc Chiến tranh lạnh đã và đang tác động sâu sắc đến nhiều nước.","Xu thế toàn cầu hóa xuất hiện và có những bước phát triển mạnh mẽ.","Việc lập lại hòa bình ở Cam-pu-chia trở thành tâm điểm của khu vực."],a:1,e:"Mỹ can thiệp Đông Dương từ 1950, không phải \"bắt đầu\" lúc này; toàn cầu hóa và vấn đề Cam-pu-chia muộn hơn."},
+{b:4,s:"Đề 4 · C21",q:"Sự kiện nào sau đây đánh dấu bước ngoặt của ASEAN trong giai đoạn 1967 - 1976?",o:["Hiệp ước Ba-li được kí kết.","Hiến chương ASEAN được thông qua.","Cộng đồng ASEAN được xây dựng.","Ban Thư kí ASEAN được thành lập."],a:0,e:"Hiệp ước TAC (Ba-li, 2/1976) mở ra giai đoạn mới."},
+{b:4,s:"Đề 3 · C20",q:"Một trong những hoạt động nổi bật của ASEAN trong giai đoạn 1976 - 1999 là",o:["phát triển số lượng thành viên, từ 5 nước lên 10 nước.","hợp tác hiệu quả trong hoạt động chống chủ nghĩa khủng bố.","bước đầu phát triển về cơ cấu tổ chức, nguyên tắc hoạt động.","các nước tập trung hợp tác trên lĩnh vực chính trị - an ninh."],a:0,e:"D là giai đoạn 1967–1976."},
+{b:4,s:"Đề 4 · C1",q:"Một trong những thành tựu quan trọng của ASEAN trong giai đoạn 1976 - 1999 là",o:["xây dựng thành công Cộng đồng ASEAN.","Hiến chương ASEAN được thông qua.","ASEAN phát triển số lượng thành viên từ 5 lên 10 nước.","ASEAN ra tuyên bố về khu vực hòa bình, tự do và trung lập."],a:2,e:"ZOPFAN là 1971; Hiến chương 2007; Cộng đồng 2015."},
+{b:4,s:"Đề 3 · C21",q:"Một trong những thành tựu về chính trị - an ninh của ASEAN trong giai đoạn 1976 - 1999 là",o:["tham gia vào giải quyết việc lập lại hòa bình ở Cam-pu-chia.","bước đầu phát triển về cơ cấu tổ chức, nguyên tắc hoạt động.","các nước tập trung hợp tác trên lĩnh vực chính trị - an ninh.","hợp tác hiệu quả trong hoạt động chống chủ nghĩa khủng bố."],a:0,e:"Hiệp định Pa-ri về Cam-pu-chia (1991) thuộc giai đoạn này."},
+{b:4,s:"Đề 4 · C4; HSG · C2",q:"Theo sáng kiến của ASEAN, Diễn đàn khu vực (ARF) được thành lập năm 1994 nhằm mục đích gì?",o:["Tổ chức Đông Nam Á thành một khu vực mậu dịch tự do.","Thúc đẩy mối quan hệ giữa các nước thành viên.","Tăng cường hợp tác về kinh tế, chính trị, văn hóa.","Tạo nên môi trường hòa bình và ổn định cho sự phát triển của Đông Nam Á."],a:3,e:"ARF là diễn đàn an ninh. A là AFTA. (Đề 4 ghi nhầm năm 1993; SGK ghi 1994.)"},
+{b:4,s:"Đề 5 · C11",q:"Trong giai đoạn 1999 - 2015, ASEAN đạt được thành tựu quan trọng nào sau đây?",o:["Chuẩn bị cơ sở pháp lý cho sự ra đời của Cộng đồng ASEAN.","Thống nhất các quốc gia về kinh tế, chính trị, văn hóa.","Ra tuyên bố về Khu vực Hòa bình, Tự do và Trung lập.","Giải quyết xong những xung đột với ba nước Đông Dương."],a:0,e:"Hiến chương ASEAN (2007) là cơ sở pháp lí của Cộng đồng."},
+{b:4,s:"Đề 4 · C24; HSG · C13",q:"Từ những năm 90 của thế kỉ XX đến nay, ASEAN đã chuyển trọng tâm hoạt động sang lĩnh vực nào?",o:["Hợp tác trên lĩnh vực giáo dục.","Hợp tác trên lĩnh vực quân sự.","Hợp tác trên lĩnh vực kinh tế.","Hợp tác trên lĩnh vực du lịch."],a:2,e:"AFTA (1992), Hiệp định khung tăng cường hợp tác kinh tế."},
+{b:4,s:"Đề 4 · C17; HSG · C7",q:"Để giải quyết vấn đề Biển Đông hiện nay, các nước ASEAN cần",o:["phát huy tinh thần đoàn kết của nhân dân trong khu vực.","sự đồng thuận và có vai trò trung tâm.","tranh thủ sự ủng hộ từ cộng đồng quốc tế.","sự đồng thuận và có vai trò hỗ trợ lẫn nhau."],a:1,e:"ASEAN đề cao đồng thuận và vai trò trung tâm."},
+{b:4,s:"HSG · C30",q:"ASEAN và Trung Quốc có văn kiện chung đầu tiên nào liên quan đến vấn đề Biển Đông?",o:["Tuyên bố về ứng xử của các bên ở Biển Đông (2002).","Tuyên bố ASEAN về Biển Đông (1992).","Tuyên bố về nguyên tắc 6 điểm về Biển Đông (2012).","Công ước Liên hợp quốc về Luật Biển năm 1982."],a:0,e:"DOC 2002. Tuyên bố 1992 chỉ của ASEAN; UNCLOS là của LHQ."},
+{b:4,s:"HSG · C37",q:"Một trong những hạn chế khi ASEAN vận hành dựa trên nguyên tắc đồng thuận là",o:["giúp các nước ASEAN tìm ra tiếng nói chung, thúc đẩy đoàn kết.","thời gian, thủ tục thông qua quyết định thường nặng nề và chậm chạp.","các thành viên không cảm thấy bị gò ép hay lo ngại, đều có thể lên tiếng.","nền tảng giúp ASEAN lôi kéo các nước lớn tham gia diễn đàn của ASEAN."],a:1,e:"A, C, D là ưu điểm."},
+// ===== BÀI 5 =====
+{b:5,s:"Đề 5 · C8",q:"Ý tưởng xây dựng Cộng đồng ASEAN khởi nguồn từ khi",o:["ASEAN thành lập.","Việt Nam gia nhập ASEAN.","Hiệp ước Ba-li được kí kết.","thành viên thứ 10 được kết nạp."],a:0,e:"Tuyên bố Băng Cốc 1967 đã nêu mục tiêu xây dựng một cộng đồng hòa bình, thịnh vượng."},
+{b:5,s:"Đề 2 · C11; Đề 5 · C21",q:"Hội nghị cấp cao ASEAN không chính thức tại Ma-lai-xi-a (1997) đã thông qua văn kiện quan trọng nào sau đây?",o:["Tuyên bố Băng Cốc.","Tuyên bố Cua-la Lăm-pơ.","Hiến chương ASEAN.","Tầm nhìn ASEAN 2020."],a:3,e:"Tuyên bố Cua-la Lăm-pơ cũng ở Ma-lai-xi-a nhưng năm 2015."},
+{b:5,s:"Đề 1 · C11",q:"Cộng đồng ASEAN chính thức được thành lập được đánh dấu bằng sự kiện các nhà lãnh đạo ASEAN kí",o:["Tuyên bố Cua-la Lăm-pơ.","Tầm nhìn ASEAN 2020.","Tuyên bố Băng Cốc.","Hiến chương ASEAN."],a:0,e:"22/11/2015; Cộng đồng có hiệu lực từ 31/12/2015."},
+{b:5,s:"Đề 1 · C10",q:"Cộng đồng ASEAN được thành lập trong bối cảnh nào sau đây?",o:["Trật tự thế giới hai cực I-an-ta bắt đầu được thiết lập.","Xu thế toàn cầu hóa đang diễn ra mạnh mẽ.","Chiến tranh thế giới thứ hai diễn ra quyết liệt.","Mỹ can thiệp sâu vào chiến tranh Đông Dương."],a:1,e:"2015 là thời kì toàn cầu hóa."},
+{b:5,s:"Đề 1 · C20",q:"Cộng đồng ASEAN thành lập (2015) hướng đến mục tiêu tổng quát là xây dựng",o:["môi trường hòa bình và an ninh cho phát triển ở khu vực.","nền tảng sản xuất thống nhất trong đó có sự lưu thông tự do.","tình đoàn kết, thống nhất bền lâu giữa các quốc gia ASEAN.","tổ chức hợp tác liên chính phủ có liên kết sâu rộng."],a:3,e:"A là mục tiêu riêng của APSC, B của AEC."},
+{b:5,s:"Đề 2 · C12",q:"Đâu là mục tiêu của các nước Đông Nam Á khi đề ra và xây dựng Cộng đồng ASEAN?",o:["Tiến tới thành lập một nghị viện chung cho các nước trong khu vực.","Thúc đẩy thành lập một liên minh về chính trị, quân sự và ngoại giao.","Xây dựng một tổ chức hợp tác liên chính phủ có liên kết sâu rộng.","Hạn chế triệt để ảnh hưởng của các cường quốc đối với khu vực."],a:2,e:"Cộng đồng ASEAN không phải nhà nước siêu quốc gia hay liên minh quân sự."},
+{b:5,s:"HSG · C22",q:"Quá trình xây dựng Cộng đồng ASEAN phải dựa trên cơ sở pháp lí là Hiến chương ASEAN vì",o:["nguyên tắc hoạt động của ASEAN không phù hợp với một số nước.","các nước ASEAN không có sự tương đồng về văn hóa, xã hội.","các nước thực hiện những chiến lược phát triển kinh tế khác nhau.","phù hợp với mục tiêu và nguyên tắc hoạt động của tổ chức ASEAN."],a:3,e:"Hiến chương quy định mục tiêu, nguyên tắc, cơ cấu của ASEAN."},
+{b:5,s:"HSG · C20",q:"Nội dung nào sau đây phản ánh đúng ý nghĩa sự ra đời của văn kiện Lộ trình xây dựng Cộng đồng ASEAN (2009-2015)?",o:["Định hướng cho sự phát triển trong tương lai của tổ chức ASEAN.","Hình thành khối liên minh quân sự phòng thủ chung của ASEAN.","Lần đầu tiên xác định được nguyên tắc trong quan hệ giữa các nước.","Góp phần đưa ASEAN trở thành trung tâm quyền lực lớn nhất thế giới."],a:0,e:"Lộ trình là kế hoạch cụ thể để xây dựng Cộng đồng."},
+{b:5,s:"Đề 2 · C23",q:"Điểm tương đồng về ý nghĩa sự ra đời của văn kiện Tầm nhìn ASEAN 2020 và Tầm nhìn Cộng đồng ASEAN sau năm 2025 là",o:["Tạo cơ sở pháp lý để ASEAN mở rộng các nước thành viên trong khu vực.","Hoàn thiện về thể chế, chính sách để ASEAN mở rộng hợp tác với bên ngoài.","Định hướng cho hoạt động và phát triển của tổ chức ASEAN trong tương lai.","Đặt nền móng vững chắc để hoàn thành ý tưởng thành lập Cộng đồng ASEAN."],a:2,e:"\"Tầm nhìn\" là văn kiện định hướng. D chỉ đúng với Tầm nhìn 2020 (Cộng đồng đã ra đời năm 2015)."},
+{b:5,s:"Đề 1 · C12",q:"Cộng đồng Văn hóa - Xã hội ASEAN (ASCC) tập trung vào lĩnh vực nào sau đây?",o:["An ninh và quốc phòng.","Khoa học và công nghệ.","Phát triển con người.","Hợp tác kinh tế - tài chính."],a:2,e:"Nội dung đầu tiên trong sáu nội dung của ASCC."},
+{b:5,s:"HSG · C24",q:"Cộng đồng Văn hóa - Xã hội ASEAN ra đời (tháng 12 - 2015) có nhiệm vụ nào sau đây?",o:["Tạo ra thị trường và cơ sở sản xuất chung trong khu vực.","Hiện thực hóa tất cả những mục tiêu ban đầu của ASEAN.","Mở rộng hợp tác an ninh với các nước bên ngoài khu vực.","Nâng cao ý thức cộng đồng về bản sắc chung của ASEAN."],a:3,e:"A là AEC, C là APSC."},
+{b:5,s:"Đề 1 · C19",q:"Cộng đồng Chính trị - An ninh ASEAN hướng tới mục tiêu xây dựng",o:["một ASEAN lấy con người làm trung tâm.","môi trường hòa bình, an ninh cho phát triển Đông Nam Á.","một thị trường, một nền tảng sản xuất thống nhất.","thu hẹp khoảng cách phát triển giữa các nước thành viên."],a:1,e:"A, D thuộc ASCC; C thuộc AEC."},
+{b:5,s:"HSG · C27",q:"Cộng đồng Chính trị - An ninh ASEAN có vai trò như thế nào trong việc duy trì hòa bình, ổn định ở khu vực Đông Nam Á?",o:["Góp phần hạn chế sự tác động của các nước lớn đối với an ninh khu vực.","Quyết định việc thúc đẩy hợp tác an ninh, phòng chống khủng bố.","Quyết định trực tiếp giải quyết các tranh chấp bằng biện pháp hòa bình.","Xây dựng mối quan hệ song phương với các đối tác, thị trường tự do."],a:0,e:"B, C có từ \"quyết định\"; D thuộc kinh tế."},
+{b:5,s:"Đề 2 · C24",q:"Tại sao trong Hội nghị Tư lệnh lực lượng quốc phòng ASEAN lần thứ 20 năm 2023, lần đầu tiên ASEAN đề ra kế hoạch tổ chức tập trận chung?",o:["Đẩy mạnh hợp tác chính trị - an ninh toàn diện trong khuôn khổ ASEAN.","Củng cố lực lượng quân đội của các nước ASEAN.","Thúc đẩy quá trình hợp đồng tác chiến giữa các nước ASEAN.","Nhằm thị uy vũ trang và sức mạnh của quân đội các nước ASEAN."],a:0,e:"Gắn với trụ cột APSC, không nhằm mục đích quân sự."},
+{b:5,s:"Đề 1 · C18; HSG · C21",q:"Về chính trị, một trong những thách thức mà Cộng đồng ASEAN phải đối mặt là",o:["việc hoàn thiện thể chế, chính sách.","sự đa dạng về chế độ chính trị.","một số quốc gia không có biển.","lưu chuyển hàng hóa tự do."],a:1,e:"SGK: thách thức chính trị nội khối là sự đa dạng về chế độ chính trị."},
+{b:5,s:"Đề 1 · C23",q:"Nội dung nào sau đây không phải là một trong những triển vọng của Cộng đồng ASEAN?",o:["Có đóng góp quan trọng tại nhiều cơ chế, diễn đàn hợp tác khu vực.","Đã thiết lập quan hệ hợp tác với nhiều trung tâm lớn của thế giới.","Trở thành khu vực phát triển năng động, thịnh vượng mới của thế giới.","Hoàn chỉnh quá trình nhất thể hóa ở khu vực Đông Nam Á."],a:3,e:"ASEAN không hướng tới nhất thể hóa hoàn toàn."},
+{b:5,s:"HSG · C23",q:"Nội dung nào sau đây là triển vọng của Cộng đồng ASEAN?",o:["Vai trò, vị thế của ASEAN ngày càng nâng cao trên trường quốc tế.","Dịch bệnh, biến đổi khí hậu, ô nhiễm môi trường đã được kiểm soát.","Cộng đồng ASEAN là tổ chức có quy mô kinh tế đứng đầu thế giới.","Sự đa dạng về chế độ chính trị, tôn giáo, văn hóa giữa các thành viên."],a:0,e:"B, D là thách thức; C sai (năm 2021 ASEAN đứng thứ 5)."},
+{b:5,s:"Đề 1 · C24",q:"Nội dung nào sau đây là thách thức của Việt Nam khi gia nhập Cộng đồng Kinh tế ASEAN?",o:["Nguồn vốn đầu tư ra bên ngoài bị phân tán và manh mún.","Gia tăng xung đột và tranh chấp kinh tế ở khu vực Biển Đông.","Sự cạnh tranh quyết liệt về thị trường tiêu thụ hàng hóa.","Các loại hàng hóa, dịch vụ và thương mại bị đánh thuế cao."],a:2,e:"Thị trường chung khiến hàng hóa các nước cạnh tranh trực tiếp. D ngược lại (thuế giảm)."},
+{b:5,s:"Đề 4 · C23; HSG · C12",q:"Khẩu hiệu chung của Hiệp hội các quốc gia Đông Nam Á (ASEAN) là",o:["\"Một tầm nhìn, một bản sắc, một cộng đồng\".","\"Một cộng đồng, một bản sắc, một trung tâm\".","\"Một tầm nhìn, một tương lai, một cộng đồng\".","\"Một khu vực, một bản sắc, một cộng đồng\"."],a:0,e:"Thông điệp trên tem \"Chào mừng Cộng đồng ASEAN\" (2015)."},
+// ===== BÀI 6 =====
+{b:6,s:"Tự soạn theo SGK",q:"Theo quyết định của Hội nghị Pốt-xđam (1945), việc giải giáp quân Nhật ở Đông Dương được giao cho",o:["quân Pháp ở cả nước.","quân Trung Hoa Dân quốc ở phía Bắc và quân Anh ở phía Nam vĩ tuyến 16.","quân Anh ở phía Bắc và quân Mỹ ở phía Nam vĩ tuyến 16.","quân Liên Xô ở phía Bắc và quân Mỹ ở phía Nam vĩ tuyến 17."],a:1,e:"Hội nghị Pốt-xđam (17/7–2/8/1945). Vĩ tuyến 16, không phải 17."},
+{b:6,s:"Tự soạn theo SGK",q:"Điều kiện khách quan thuận lợi cho Tổng khởi nghĩa tháng Tám năm 1945 xuất hiện khi",o:["Nhật đảo chính Pháp trên toàn Đông Dương.","Nhật Bản tuyên bố đầu hàng Đồng minh không điều kiện.","quân Đồng minh kéo vào Đông Dương giải giáp quân Nhật.","Liên Xô tấn công đạo quân Quan Đông của Nhật."],a:1,e:"15/8/1945, quân Nhật rệu rã, chính phủ Trần Trọng Kim hoang mang."},
+{b:6,s:"Tự soạn theo SGK",q:"Ngày 13/8/1945, Trung ương Đảng và Tổng bộ Việt Minh đã",o:["triệu tập Đại hội Quốc dân ở Tân Trào.","thành lập Ủy ban Khởi nghĩa toàn quốc, ban bố Quân lệnh số 1.","cử ra Ủy ban Dân tộc giải phóng Việt Nam.","thông qua 10 chính sách của Việt Minh."],a:1,e:"A, C, D là Đại hội Quốc dân (16–17/8)."},
+{b:6,s:"Tự soạn theo SGK",q:"Hội nghị toàn quốc của Đảng (14 – 15/8/1945) họp ở Tân Trào đã",o:["thông qua kế hoạch lãnh đạo toàn dân Tổng khởi nghĩa và quyết định chính sách đối nội, đối ngoại.","cử ra Ủy ban Dân tộc giải phóng Việt Nam do Hồ Chí Minh làm Chủ tịch.","ban bố Quân lệnh số 1, chính thức phát động Tổng khởi nghĩa.","tuyên bố thành lập nước Việt Nam Dân chủ Cộng hòa."],a:0,e:"Phân biệt ba hội nghị tháng 8/1945."},
+{b:6,s:"Tự soạn theo SGK",q:"Đại hội Quốc dân họp ở Tân Trào (16 – 17/8/1945) đã cử ra",o:["Ủy ban Khởi nghĩa toàn quốc.","Chính phủ lâm thời nước Việt Nam Dân chủ Cộng hòa.","Ủy ban Dân tộc giải phóng Việt Nam do Hồ Chí Minh làm Chủ tịch.","Tổng bộ Việt Minh."],a:2,e:"Đại hội còn tán thành chủ trương Tổng khởi nghĩa và thông qua 10 chính sách của Việt Minh."},
+{b:6,s:"HSG · C26",q:"Chiều ngày 16/8/1945, một đơn vị Giải phóng quân do Võ Nguyên Giáp chỉ huy xuất phát từ Tân Trào về giải phóng thị xã Thái Nguyên nhằm",o:["tiêu diệt các đồn bốt, châu lỵ.","giành chính quyền tại địa bàn cuối cùng.","chiếm trung tâm chính trị của Pháp.","mở đường tiến về giải phóng Hà Nội."],a:3,e:"Nguyên văn SGK."},
+{b:6,s:"Tự soạn theo SGK",q:"Những địa phương giành chính quyền ở tỉnh lị sớm nhất trong cả nước (18/8/1945) là",o:["Hà Nội, Huế, Sài Gòn, Hải Phòng.","Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam.","Thái Nguyên, Tuyên Quang, Cao Bằng, Lạng Sơn.","Đồng Nai Thượng, Hà Tiên, Bắc Giang, Hà Tĩnh."],a:1,e:"Đồng Nai Thượng, Hà Tiên là nơi muộn nhất (28/8)."},
+{b:6,s:"Tự soạn theo SGK",q:"Thứ tự thời gian khởi nghĩa giành chính quyền thắng lợi ở ba thành phố lớn là",o:["Hà Nội – Huế – Sài Gòn.","Huế – Hà Nội – Sài Gòn.","Sài Gòn – Huế – Hà Nội.","Hà Nội – Sài Gòn – Huế."],a:0,e:"Hà Nội 19/8, Huế 23/8, Sài Gòn 25/8."},
+{b:6,s:"Tự soạn theo SGK",q:"Sự kiện nào đánh dấu chế độ phong kiến ở Việt Nam hoàn toàn sụp đổ?",o:["Nhật đảo chính Pháp (9/3/1945).","Khởi nghĩa thắng lợi ở Huế (23/8/1945).","Vua Bảo Đại tuyên bố thoái vị (30/8/1945).","Tuyên ngôn Độc lập được đọc (2/9/1945)."],a:2,e:"SGK: ngày 30/8/1945 Bảo Đại thoái vị, chế độ phong kiến hoàn toàn sụp đổ."},
+{b:6,s:"Tự soạn theo SGK",q:"Vì sao Tổng khởi nghĩa tháng Tám năm 1945 diễn ra nhanh chóng và ít đổ máu?",o:["Quân Đồng minh đã vào Đông Dương giúp đỡ cách mạng.","Quân Nhật trước áp lực và hoạt động khôn khéo của lực lượng cách mạng phải án binh bất động.","Thực dân Pháp tự nguyện trao trả độc lập.","Lực lượng vũ trang cách mạng đã tiêu diệt toàn bộ quân Nhật."],a:1,e:"Nguyên văn SGK."},
+{b:6,s:"Tự soạn theo SGK",q:"Nguyên nhân khách quan dẫn đến thắng lợi của Cách mạng tháng Tám năm 1945 là",o:["truyền thống yêu nước, đoàn kết của dân tộc.","quá trình chuẩn bị lâu dài, chu đáo trong 15 năm.","thắng lợi của Đồng minh và Hồng quân Liên Xô, đặc biệt chiến thắng quân phiệt Nhật.","đường lối lãnh đạo đúng đắn, sáng tạo của Đảng."],a:2,e:"A, B, D là nguyên nhân chủ quan."},
+{b:6,s:"Tự soạn theo SGK",q:"Đảng Cộng sản Đông Dương đã có quá trình chuẩn bị cho Cách mạng tháng Tám trong suốt",o:["5 năm.","10 năm.","15 năm.","30 năm."],a:2,e:"1930–1945. Hồ Chí Minh: \"một Đảng mới 15 tuổi\"."},
+{b:6,s:"Tự soạn theo SGK",q:"Cách mạng tháng Tám năm 1945 đã lật đổ",o:["ách cai trị của Pháp gần 80 năm, Nhật hơn 5 năm, chế độ quân chủ gần 1000 năm.","ách cai trị của Pháp hơn 80 năm, Nhật gần 5 năm, chế độ quân chủ hơn 1000 năm.","ách cai trị của Pháp hơn 60 năm, Nhật gần 5 năm, chế độ quân chủ hơn 1000 năm.","ách cai trị của Pháp hơn 80 năm, Nhật hơn 10 năm, chế độ quân chủ hơn 1000 năm."],a:1,e:"Con số trong SGK: hơn 80, gần 5, hơn 1000."},
+{b:6,s:"Tự soạn theo SGK",q:"Bài học nào sau đây không phải là bài học kinh nghiệm của Cách mạng tháng Tám năm 1945 được SGK nêu?",o:["Bài học về sự lãnh đạo của Đảng.","Bài học về xây dựng khối đại đoàn kết dân tộc.","Bài học về nắm bắt thời cơ.","Bài học về dựa vào viện trợ của các nước lớn."],a:3,e:"SGK nêu đúng 3 bài học A, B, C."},
+{b:6,s:"HSG · C16",q:"Một trong những điểm giống nhau giữa Cách mạng tháng Tám (1945) ở Việt Nam và Cách mạng tháng Mười Nga (1917) là",o:["đưa nhân dân lao động làm chủ đất nước.","đã góp phần đánh bại chủ nghĩa phát xít.","đã mở ra thời kì hiện đại trong lịch sử.","làm xoay chuyển lớn cục diện thế giới."],a:0,e:"Cách mạng tháng Mười (1917) diễn ra trước khi có chủ nghĩa phát xít nên B sai."},
+{b:6,s:"HSG · C17",q:"Trong Cách mạng tháng Tám năm 1945, địa bàn ở đô thị không phải là",o:["nơi xây dựng căn cứ địa cách mạng từ lớn đến nhỏ.","nơi xây dựng cơ sở và phát triển lực lượng chính trị.","địa bàn quyết định thắng lợi cho cuộc Tổng khởi nghĩa.","chỗ dựa để làm rối loạn sào huyệt của kẻ thù."],a:0,e:"Căn cứ địa xây dựng ở rừng núi, nông thôn (Việt Bắc, Tân Trào)."},
+{b:6,s:"HSG · C18",q:"Nội dung nào sau đây không đúng với tính chất dân chủ của Cách mạng tháng Tám năm 1945 ở Việt Nam?",o:["Xóa bỏ hoàn toàn chế độ sở hữu ruộng đất của địa chủ.","Góp phần vào thắng lợi của phe dân chủ chống phát xít.","Đem lại các quyền tự do dân chủ cho nhân dân.","Xóa bỏ chế độ phong kiến tồn tại hàng nghìn năm."],a:0,e:"Cách mạng tháng Tám chưa giải quyết triệt để vấn đề ruộng đất."},
+{b:6,s:"HSG · C19",q:"Ý nghĩa của sự ra đời và hoạt động của Mặt trận Việt Minh trong quá trình chuẩn bị cho Cách mạng tháng Tám năm 1945 là",o:["thức tỉnh tinh thần giai cấp, khiến quân Nhật từng bước đầu hàng.","chấm dứt thời kì khủng hoảng về đường lối cứu nước.","tập hợp và đoàn kết các lực lượng trong xã hội vào thực hiện nhiệm vụ cứu nước.","chấm dứt thời kì khủng hoảng về tổ chức chính trị và lực lượng vũ trang."],a:2,e:"Gắn với bài học xây dựng khối đại đoàn kết dân tộc. B là ý nghĩa của sự thành lập Đảng (1930)."},
+{b:6,s:"HSG · C29",q:"Vì sao nói thắng lợi của Cách mạng tháng Tám năm 1945 đã chuẩn bị điều kiện tiên quyết cho những thắng lợi tiếp theo của cách mạng Việt Nam?",o:["Hoàn thành cách mạng dân tộc dân chủ nhân dân trên cả nước.","Hoàn thành ngọn cờ độc lập dân tộc và cả nước tiến lên chủ nghĩa xã hội.","Đảng Cộng sản Đông Dương đã trở thành Đảng lãnh đạo và cầm quyền.","Thắng lợi dẫn đến sự ra đời của nhà nước vô sản đầu tiên."],a:2,e:"Có chính quyền, Đảng cầm quyền thì mới lãnh đạo được kháng chiến và xây dựng. D sai: nhà nước vô sản đầu tiên là Nga (1917)."}
+];
+
+const DS=[
+{b:2,s:"Đề 1 · Câu 1",src:"1945: Hội nghị I-an-ta và Hội nghị Pốt-xđam; Liên hợp quốc thành lập\n1947: Mĩ phát động Chiến tranh lạnh chống Liên Xô\n1949: Cách mạng Trung Quốc thành công; NATO thành lập\n1955: Tổ chức Hiệp ước Vác-sa-va thành lập\n1989: Liên Xô và Mĩ tuyên bố chấm dứt Chiến tranh lạnh\n1991: Hệ thống xã hội chủ nghĩa sụp đổ",
+ it:[["Bảng thông tin phản ánh những sự kiện liên quan đến Trật tự thế giới mới sau Chiến tranh thế giới thứ hai.",1,"Các mốc từ hình thành đến sụp đổ trật tự hai cực."],
+ ["Các sự kiện năm 1949 và 1955 cho thấy hai khối quân sự đối lập đã được hình thành đầy đủ, làm gia tăng căng thẳng của Chiến tranh lạnh.",1,"NATO (1949) và Vác-sa-va (1955)."],
+ ["Sự hình thành và phát triển của các trật tự thế giới đều chứng tỏ Liên hợp quốc là tổ chức có quyền quyết định, điều tiết quan hệ quốc tế.",0,"Trật tự thế giới do tương quan lực lượng các cường quốc quyết định, không phải LHQ."],
+ ["Thực tiễn quan hệ quốc tế thời Chiến tranh lạnh cho thấy sự hình thành trật tự thế giới mới phụ thuộc vào tương quan lực lượng giữa các cường quốc.",1,"Đúng với bản chất trật tự I-an-ta."]]},
+{b:2,s:"Đề 4 · Câu 3",src:"Trong giai đoạn từ năm 1945 đến đầu những năm 70 của thế kỉ XX, Trật tự thế giới hai cực I-an-ta được định hình với sự thiết lập các khối kinh tế và quân sự đối đầu nhau. Về kinh tế, Mỹ đề ra Kế hoạch Mác-san viện trợ cho Tây Âu; Liên Xô và các nước Đông Âu thành lập Hội đồng tương trợ kinh tế (SEV). Về quân sự, năm 1949 Mỹ và các nước phương Tây thành lập NATO; năm 1955 Liên Xô và các nước Đông Âu thành lập Tổ chức Hiệp ước Vác-sa-va.",
+ it:[["Trật tự hai cực I-an-ta xác lập và phát triển với sự đối đầu về tư tưởng, chính trị, kinh tế, quân sự giữa Mỹ và Liên Xô.",1,"Đúng nội dung tư liệu."],
+ ["Sự ra đời của Kế hoạch Mác-san và Tổ chức Hiệp ước Vác-sa-va đánh dấu sự xác lập cục diện hai cực, hai phe.",0,"Mốc đánh dấu là hai khối quân sự NATO (1949) và Vác-sa-va (1955). Ghép Mác-san với Vác-sa-va là đánh tráo."],
+ ["Sự đối đầu giữa Mỹ và Liên Xô chủ yếu do mâu thuẫn về thị trường và thuộc địa của các nước tư bản chủ nghĩa.",0,"Đối đầu do đối lập về mục tiêu chiến lược, ý thức hệ giữa hai hệ thống."],
+ ["Trật tự hai cực I-an-ta tồn tại từ 1945 đến 1991, chi phối toàn bộ đời sống chính trị thế giới trong nửa sau thế kỉ XX.",0,"\"Toàn bộ\" là sai; trật tự hai cực chi phối phần lớn (hầu hết). Bản trong đề HSG viết \"phần lớn\" thì Đúng."]]},
+{b:2,s:"Đề 3 · Câu 1",src:"\"Vào thập niên 1980, mối quan hệ nồng ấm giữa Tổng thống Mỹ Ri-gân và nhà lãnh đạo Liên Xô Goóc-ba-chốp đã giúp giảm dần tình trạng căng thẳng của Chiến tranh lạnh. Năm 1987, hai nhà lãnh đạo đã đồng ý hủy bỏ tên lửa hạt nhân tầm trung. Năm 1989, Goóc-ba-chốp cho phép các quốc gia xã hội chủ nghĩa ở Đông Âu bầu ra chính phủ dân chủ, và đến năm 1991, Liên Xô tan rã thành 15 nước cộng hòa độc lập. Ngày 12-3-1999, Hung-ga-ri, Ba Lan và Cộng hòa Séc gia nhập khối NATO.\"\n(King Fisher, Bách khoa thư lịch sử)",
+ it:[["Trật tự thế giới hai cực I-an-ta bắt đầu bị xói mòn và sụp đổ trong thập niên 1980.",0,"Xói mòn từ 1949 (cách mạng Trung Quốc), suy yếu từ đầu những năm 70."],
+ ["Chiến tranh lạnh kết thúc và trật tự hai cực sụp đổ bắt nguồn từ nhiều nguyên nhân, nhưng yếu tố Mỹ và Liên Xô vẫn là quyết định.",1,"Hai cực là Xô – Mỹ; Liên Xô tan rã thì trật tự chấm dứt."],
+ ["Chiến tranh lạnh kết thúc, trật tự hai cực sụp đổ nhưng nhiều di chứng vẫn còn và đang tiếp diễn ở nhiều nơi.",1,"Ví dụ: bán đảo Triều Tiên vẫn chia cắt; NATO mở rộng sang Đông Âu."],
+ ["Việc Liên Xô tan rã (1991) đã chính thức chấm dứt cục diện hai cực, hai phe.",1,"Đúng theo SGK."]]},
+{b:1,s:"Đề 4 · Câu 2",src:"\"Ngày 1-1-1942, đại diện 26 nước chống phát xít đã kí bản tuyên bố về Liên hợp quốc, cam kết thành lập một tổ chức quốc tế vì hòa bình và an ninh sau chiến tranh... Tại Hội nghị Tê-hê-ran (1943), ba nước Liên Xô, Mỹ, Anh khẳng định quyết tâm thành lập Liên hợp quốc. Tại Hội nghị I-an-ta (2-1945), ba nước đã ra quyết định về việc thành lập Liên hợp quốc... Từ 25-4-1945 đến 26-6-1945, hội nghị quốc tế tại Xan Phran-xi-xcô với đại biểu 50 nước đã thông qua bản Hiến chương Liên hợp quốc.\"\n(SGK Lịch sử 12, tr.7)",
+ it:[["Mục tiêu chính của Liên hợp quốc là nhằm duy trì hòa bình và an ninh thế giới.",1,"Mục tiêu được chú trọng nhất."],
+ ["Liên hợp quốc ban đầu có 26 thành viên, năm 1945 là 50, năm 2020 là hơn 200.",0,"26 nước chỉ kí tuyên bố; khi thành lập có 51 thành viên; nay 193."],
+ ["Tại hội nghị Xan Phran-xi-xcô, Hiến chương Liên hợp quốc chính thức có hiệu lực.",0,"Hội nghị chỉ thông qua; Hiến chương có hiệu lực ngày 24/10/1945 sau khi các nước phê chuẩn."],
+ ["Liên hợp quốc được thành lập nhằm liên minh các lực lượng để chống phát xít.",0,"LHQ nhằm duy trì hòa bình, an ninh sau chiến tranh. Chống phát xít là nội dung Tuyên bố 1942."]]},
+{b:1,s:"Đề 5 · Câu 2",src:"\"Từ năm 1960, Đại hội đồng Liên hợp quốc đề ra các chiến lược phát triển cho từng thập kỉ nhằm huy động hợp tác quốc tế cho các mục tiêu phát triển chung. Một trong những ưu tiên của Liên hợp quốc là tạo môi trường kinh tế, thương mại, tài chính quốc tế bình đẳng và quan tâm thích đáng đến lợi ích của các nước thành viên.\"\n(Bộ Ngoại giao, Tài liệu cơ bản về Liên hợp quốc)",
+ it:[["Đoạn tư liệu cho thấy vai trò của LHQ trong việc thúc đẩy, tạo môi trường thuận lợi để phát triển kinh tế, tài chính, thương mại quốc tế.",1,"Đúng nội dung."],
+ ["Từ sau Chiến tranh thế giới thứ hai, LHQ chỉ tập trung cho các hoạt động phát triển kinh tế, thương mại, tài chính.",0,"\"Chỉ\" sai; LHQ còn duy trì hòa bình, bảo đảm quyền con người."],
+ ["Tạo môi trường kinh tế, thương mại, tài chính quốc tế bình đẳng là ưu tiên lớn nhất của LHQ hiện nay.",0,"Tư liệu nói \"một trong những ưu tiên\"; mục tiêu quan trọng nhất là duy trì hòa bình."],
+ ["Liên hợp quốc luôn có các chiến lược phát triển lâu dài cho các quốc gia trên thế giới nhằm đạt được các mục tiêu chung của tổ chức này.",1,"Từ 1960 LHQ đề ra chiến lược phát triển cho từng thập kỉ. Ý này dễ tranh cãi vì có chữ \"luôn\", \"lâu dài\"; nên hỏi lại thầy cô."]]},
+{b:1,s:"Đề 3 · Câu 2",src:"\"Mọi người sinh ra đều được tự do và bình đẳng về nhân phẩm và các quyền. Mọi người đều được tạo hóa ban cho lí trí và lương tâm, và cần phải đối xử với nhau bằng tình anh em.\"\n(Điều 1, Tuyên ngôn Quốc tế Nhân quyền của Liên hợp quốc)",
+ it:[["Tuyên ngôn Quốc tế Nhân quyền là tuyên ngôn về các quyền của con người nói chung, không phân biệt nước lớn, nước nhỏ.",1,"\"Mọi người\"."],
+ ["Theo Điều 1, chỉ các dân tộc đã giành được độc lập mới có quyền tự do và bình đẳng.",0,"\"Mọi người sinh ra\" đều có quyền."],
+ ["Tuyên ngôn Quốc tế Nhân quyền góp phần xây dựng một thế giới công bằng hơn, tạo cơ hội phát triển cho mọi người ở mọi quốc gia.",1,"Đúng vai trò bảo đảm quyền con người trong SGK."],
+ ["Trong việc bảo đảm quyền con người, LHQ chỉ tập trung bảo vệ quyền phụ nữ và trẻ em ở các nước chịu \"di chứng\" của chủ nghĩa thực dân.",0,"\"Chỉ\" sai."]]},
+{b:1,s:"HSG · Câu 5",src:"\"Xét theo tôn chỉ, mục đích và nguyên tắc hành động, Liên hợp quốc là một tổ chức quốc tế có vị trí quan trọng trong sinh hoạt quốc tế hiện nay... Liên hợp quốc đã có những đóng góp quan trọng trong việc gìn giữ hòa bình và an ninh thế giới, có những đóng góp đáng kể vào tiến trình phi thực dân hóa, cũng như có nhiều nỗ lực trong việc giải trừ quân bị và hạn chế sản xuất vũ khí hạt nhân. Ngoài ra, Liên hợp quốc cũng đã có những đóng góp đáng kể vào việc thúc đẩy mối quan hệ hợp tác về kinh tế, chính trị, văn hóa và xã hội...\"\n(Nguyễn Anh Thái, Lịch sử thế giới hiện đại)",
+ it:[["Việc bảo đảm quyền con người và thúc đẩy phát triển của LHQ đều có mối liên hệ mật thiết với hòa bình và an ninh thế giới.",1,"Hòa bình là cơ sở để thực hiện các mục tiêu khác."],
+ ["LHQ đã có ít đóng góp quan trọng trong việc gìn giữ hòa bình, phi thực dân hóa, giải trừ quân bị.",0,"Tư liệu nói \"đóng góp quan trọng\", \"đáng kể\"."],
+ ["Xét theo tôn chỉ, mục đích và nguyên tắc, LHQ đã hoàn thành xuất sắc tất cả các sứ mệnh lịch sử.",0,"\"Tất cả\" là tuyệt đối hóa."],
+ ["Sau Chiến tranh lạnh, tình hình thế giới thay đổi đòi hỏi LHQ phải cải cách cho phù hợp.",1,"Nhận định hợp lí."]]},
+{b:3,s:"Đề 1 · Câu 2",src:"\"Từ những điều chỉnh chính sách đối ngoại của các nước lớn, sau Chiến tranh lạnh không có một hiệp ước quốc tế nào được kí kết để phân chia khu vực ảnh hưởng hay vẽ lại bản đồ chính trị nào cả. Vì vậy, các nước lớn đều phải ra sức ganh đua, vươn lên theo kịp với các đối thủ. Các nước nhỏ khác cũng phải phấn đấu để bảo toàn vị thế của mình trên thế giới hiện đại đang bị tác động mạnh mẽ bởi cuộc cách mạng khoa học - công nghệ hiện đại.\"\n(Trần Nam Tiến, Lịch sử quan hệ quốc tế hiện đại)",
+ it:[["Quan hệ quốc tế sau Chiến tranh lạnh được định hình bởi sự cạnh tranh giữa các quốc gia thay vì được phân định bằng các hiệp ước.",1,"\"Không có hiệp ước nào... phải ra sức ganh đua\"."],
+ ["Cuộc cách mạng khoa học - công nghệ là yếu tố then chốt tác động đến vị thế và sự phát triển của tất cả các quốc gia trên thế giới.",1,"Tư liệu: thế giới \"đang bị tác động mạnh mẽ bởi cách mạng khoa học – công nghệ\", nước lớn hay nước nhỏ đều phải vươn lên. Ý này dễ tranh cãi vì có chữ \"tất cả\"; đa số đáp án tham khảo chấm Đúng."],
+ ["Sau Chiến tranh lạnh, một trật tự đơn cực do một quốc gia chi phối hoàn toàn đã được thiết lập thông qua các hiệp ước quốc tế.",0,"Trái với tư liệu và với xu thế đa cực."],
+ ["Các nước nhỏ hoàn toàn bị động và lệ thuộc vào sự sắp đặt của các nước lớn.",0,"Tư liệu: các nước nhỏ \"phải phấn đấu để bảo toàn vị thế\"."]]},
+{b:3,s:"Đề 2 · Câu 2",src:"\"Trật tự thế giới mới này được hình thành như thế nào còn phụ thuộc vào nhiều nhân tố: sự phát triển về thực lực kinh tế, chính trị, quân sự của các cường quốc Mĩ, Nga, Trung Quốc, Anh, Pháp, Nhật Bản, Đức trong cuộc chạy đua về sức mạnh quốc gia tổng hợp...; sự lớn mạnh của lực lượng cách mạng thế giới; sự phát triển của cách mạng khoa học - kĩ thuật sẽ còn tiếp tục tạo ra những đột phá và chuyển biến trên cục diện thế giới.\"\n(Nguyễn Anh Thái, Lịch sử thế giới hiện đại)",
+ it:[["Đầu thế kỉ XXI, trật tự thế giới từng bước chuyển sang xu thế đa cực với sự vươn lên của các cường quốc.",1,"Biểu hiện thứ nhất của xu thế đa cực."],
+ ["Xây dựng sức mạnh tổng hợp thay cho chạy đua vũ trang đã trở thành hình thức cạnh tranh chủ yếu giữa các cường quốc.",1,"\"Chạy đua về sức mạnh quốc gia tổng hợp\"."],
+ ["Sau Chiến tranh lạnh, cùng với sự phát triển của cách mạng khoa học - kĩ thuật, xu thế toàn cầu hóa diễn ra ngày càng mạnh mẽ.",1,"Đúng SGK Bài 3."],
+ ["Sau Chiến tranh lạnh, các nước lớn chỉ tập trung phát triển kinh tế để vươn lên vị thế hàng đầu.",0,"\"Chỉ\" sai; tư liệu nói sức mạnh tổng hợp gồm kinh tế, chính trị, quân sự."]]},
+{b:3,s:"Đề 3 · Câu 4",src:"\"Trật tự thế giới mới này được hình thành như thế nào, còn tùy thuộc ở nhiều nhân tố: sự phát triển về thực lực kinh tế, chính trị, quân sự của các cường quốc...; sự lớn mạnh của lực lượng cách mạng thế giới (sự thành bại của công cuộc cải cách, đổi mới ở các nước xã hội chủ nghĩa...); sự phát triển của cách mạng khoa học - kĩ thuật sẽ còn tiếp tục tạo ra những đột phá và biến chuyển trên cục diện thế giới.\"",
+ it:[["Sự thành bại trong cải cách, đổi mới của các nước xã hội chủ nghĩa quyết định sự xuất hiện của xu thế đa cực.",0,"Đó chỉ là một trong nhiều nhân tố, không \"quyết định\"."],
+ ["Sự phát triển của cách mạng khoa học - kĩ thuật ảnh hưởng lớn đến xu thế thế giới sau Chiến tranh lạnh.",1,"Đúng tư liệu."],
+ ["Trong xu thế đa cực, các trung tâm quyền lực vươn lên khẳng định sức mạnh về kinh tế, chính trị, quân sự.",1,"Đúng SGK."],
+ ["Trong xu thế đa cực, các quốc gia đều điều chỉnh chiến lược, lấy phát triển quân sự làm chủ đạo.",0,"Lấy kinh tế làm trọng tâm."]]},
+{b:3,s:"Đề 5 · Câu 4",src:"\"Bài học của thời kì Chiến tranh lạnh đã chứng tỏ phương thức quan hệ quốc tế lấy đối đầu chính trị - quân sự là chủ yếu không còn phù hợp, phải chịu nhiều tổn thất hoặc thất bại như hai nước Xô – Mỹ... Trong khi đó, phương thức lấy hợp tác và cạnh tranh về kinh tế - chính trị là chính lại thu được nhiều tiến bộ, kết quả như các nước Đức, Nhật và NICs. Sự hưng thịnh hay suy vong của một quốc gia quyết định bởi sức mạnh tổng hợp của quốc gia đó, mà chủ yếu là thực lực kinh tế và khoa học – kĩ thuật.\"\n(Vũ Dương Ninh, Một số chuyên đề lịch sử thế giới)",
+ it:[["Sau thời kì Chiến tranh lạnh, Xô – Mỹ lấy đối đầu chính trị - quân sự là chủ yếu, còn Đức và Nhật lấy hợp tác, cạnh tranh kinh tế - chính trị.",0,"Tư liệu nói về thời kì Chiến tranh lạnh, không phải \"sau\"."],
+ ["Bài học rút ra cho tất cả các quốc gia là không nên tập trung vào phát triển quân sự, quốc phòng.",0,"Bài học là không lấy đối đầu làm chủ yếu, không phải bỏ quốc phòng."],
+ ["Từ thời kì Chiến tranh lạnh sang sau Chiến tranh lạnh, quan hệ quốc tế điều chỉnh từ lấy quân sự sang lấy kinh tế làm trọng tâm.",1,"Xu thế lấy kinh tế làm trọng tâm."],
+ ["Kinh tế và khoa học – kĩ thuật là hai yếu tố chủ yếu tạo nên sức mạnh tổng hợp của một quốc gia sau Chiến tranh lạnh.",1,"Nguyên văn tư liệu."]]},
+{b:4,s:"Đề 1 · Câu 3",src:"\"Kể từ khi thành lập đến nay, tuy gặp nhiều khó khăn, phức tạp về chính trị, kinh tế, chịu sức ép của các nước lớn từ nhiều phía, nhưng tổ chức ASEAN đã tồn tại và phát triển với nhiều triển vọng tốt đẹp... Từ một tổ chức không tên tuổi, liên kết các quốc gia nhỏ, yếu trong khu vực để đối phó với những thách thức từ bên trong và bên ngoài, trong đó trước hết là những thách thức về an ninh và kinh tế để bảo vệ sự tồn tại của mình, ngày nay ASEAN đã trở thành một tổ chức có uy tín lớn trên thế giới.\"\n(Nguyễn Anh Thái, Lịch sử thế giới hiện đại)",
+ it:[["Mục tiêu ban đầu của ASEAN là liên kết các quốc gia để đối phó với thách thức về an ninh và kinh tế.",1,"\"Trước hết là những thách thức về an ninh và kinh tế\"."],
+ ["Quá trình phát triển của ASEAN chứng tỏ hợp tác khu vực là phương thức hiệu quả để các nước vừa và nhỏ bảo vệ lợi ích, nâng cao vị thế.",1,"Từ \"không tên tuổi\" thành tổ chức có uy tín lớn."],
+ ["Nhờ đoàn kết, ASEAN đã loại bỏ hoàn toàn sức ép từ các nước lớn và các thách thức về an ninh, kinh tế.",0,"\"Hoàn toàn\" sai; SGK vẫn nêu thách thức từ nước lớn."],
+ ["Tư liệu cho thấy ASEAN là minh chứng thành công của chủ nghĩa khu vực, giúp các nước nhỏ tăng quyền tự chủ và vị thế.",1,"Suy luận hợp lí từ tư liệu."]]},
+{b:4,s:"Đề 3 · Câu 3",src:"\"Thúc đẩy sự tăng trưởng kinh tế, tiến bộ xã hội và phát triển văn hóa trong khu vực thông qua những nỗ lực hợp tác chung trên tinh thần bình đẳng và hợp tác nhằm tăng cường cơ sở cho một cộng đồng các nước Đông Nam Á hòa bình và thịnh vượng.\nThúc đẩy hòa bình ổn định khu vực bằng việc tôn trọng pháp lí và nguyên tắc luật pháp trong quan hệ giữa các nước trong khu vực và tuân thủ các nguyên tắc của Hiến chương Liên hợp quốc.\nThúc đẩy sự cộng tác tích cực và giúp đỡ lẫn nhau trong các vấn đề cùng quan tâm trên các lĩnh vực kinh tế, xã hội, văn hóa, khoa học - kĩ thuật và hành chính.\"",
+ it:[["ASEAN ra đời năm 1967 là một tổ chức liên minh chính trị - kinh tế của khu vực, nằm trong Cộng đồng ASEAN.",0,"ASEAN không phải liên minh; Cộng đồng ASEAN là bước phát triển của ASEAN chứ ASEAN không \"nằm trong\" nó."],
+ ["Nguyên tắc hoạt động của ASEAN có những điểm tương đồng với nguyên tắc hoạt động của Liên hợp quốc.",1,"\"Tuân thủ các nguyên tắc của Hiến chương Liên hợp quốc\"."],
+ ["Một trong những mục đích thành lập ASEAN là duy trì hòa bình ổn định của khu vực.",1,"Mục đích thứ 2. (Đề 2 viết \"trên thế giới\" thì Sai.)"],
+ ["Ngay từ khi ra đời, ASEAN đã hướng đến xây dựng một cộng đồng vì hòa bình và thịnh vượng.",1,"\"Một cộng đồng các nước Đông Nam Á hòa bình và thịnh vượng\"."]]},
+{b:4,s:"Đề 5 · Câu 3",src:"Năm 1967: ASEAN thành lập.\nNăm 1976: Hiệp ước Thân thiện và Hợp tác ở Đông Nam Á (TAC) được kí kết.\nNăm 1995: Việt Nam gia nhập ASEAN.\nNăm 2007: Hiến chương ASEAN được thông qua.\nNăm 2015: Tuyên bố thành lập Cộng đồng ASEAN.",
+ it:[["ASEAN đóng vai trò trọng yếu trong việc làm xói mòn Trật tự hai cực I-an-ta.",0,"SGK không nêu vai trò này của ASEAN."],
+ ["ASEAN thành lập trong bối cảnh các quốc gia trong khu vực đã giành được độc lập.",1,"Điều kiện tiên quyết."],
+ ["Sự đa dạng của các nước thành viên về chế độ chính trị, tôn giáo, văn hóa là một thuận lợi cho sự phát triển của ASEAN.",0,"SGK xếp sự đa dạng về chế độ chính trị vào thách thức."],
+ ["Đoạn dữ liệu đề cập đến quá trình hình thành và phát triển của ASEAN.",1,"Các mốc từ 1967 đến 2015."]]},
+{b:4,s:"HSG · Câu 8",src:"\"Ngày 28-7-1995, tại Ban-đa Xê-ri Bê-ga-oan, thủ đô của Bru-nây đã diễn ra Hội nghị Bộ trưởng Ngoại giao ASEAN lần thứ 28... ASEAN đã long trọng tuyên bố kết nạp Việt Nam làm thành viên chính thức thứ bảy của ASEAN sau 28 năm thành lập Hiệp hội; đồng thời chấp nhận Việt Nam gia nhập Khu vực thương mại tự do ASEAN (AFTA). Việt Nam gia nhập ASEAN đánh dấu bước phát triển quan trọng ở khu vực.\"",
+ it:[["Gia nhập ASEAN là sự kiện đánh dấu Việt Nam bắt đầu tiến trình hội nhập khu vực và quốc tế sâu rộng, toàn diện, đồng bộ.",0,"Hội nhập đã bắt đầu từ Đổi mới (1986); \"toàn diện, đồng bộ\" là giai đoạn sau."],
+ ["Sự kiện Việt Nam gia nhập ASEAN đánh dấu ASEAN trở thành tổ chức gồm 10 quốc gia.",0,"Việt Nam là thành viên thứ 7; ASEAN 10 vào năm 1999."],
+ ["Cơ hội và thách thức khi Việt Nam gia nhập ASEAN xen kẽ nhau, góp phần thúc đẩy sự phát triển của đất nước.",1,"Nhận định hợp lí."],
+ ["Sự kiện này đánh dấu chấm dứt thời kì Đông Nam Á bị phân chia thành hai nhóm nước đối địch.",1,"Nước XHCN gia nhập ASEAN, khác biệt ý thức hệ được hòa giải."]]},
+{b:5,s:"Đề 4 · Câu 1",src:"\"Không tham gia vào bất kì một chính sách hay hoạt động nào, kể cả việc sử dụng lãnh thổ của một nước, do bất kì một quốc gia thành viên ASEAN hay ngoài ASEAN hoặc đối tượng không phải là quốc gia tiến hành, đe dọa đến chủ quyền, toàn vẹn lãnh thổ hay sự ổn định chính trị và kinh tế của các quốc gia thành viên ASEAN.\"\n(Điều 2, Hiến chương ASEAN, 20-11-2007)",
+ it:[["Nội dung tư liệu thể hiện hai mục tiêu cơ bản nhất và quan trọng nhất của ASEAN từ khi thành lập.",0,"Điều 2 Hiến chương là nguyên tắc, không phải mục tiêu."],
+ ["Hiến chương ASEAN là văn kiện quan trọng của Hiệp hội các quốc gia Đông Nam Á.",1,"Cơ sở pháp lí của ASEAN và Cộng đồng ASEAN."],
+ ["Nội dung tư liệu thể hiện tinh thần \"thống nhất trong đa dạng\" của ASEAN.",0,"Tư liệu nói về tôn trọng chủ quyền, an ninh, không nói về đa dạng."],
+ ["Hiến chương ASEAN tiếp tục là cơ sở pháp lí cho hoạt động của ASEAN hiện nay.",1,"Cộng đồng ASEAN xây dựng trên cơ sở pháp lí là Hiến chương."]]},
+{b:5,s:"Đề 1 · Câu 4",src:"\"...Đến năm 2020, ASEAN sẽ thiết lập được một Đông Nam Á hòa bình và ổn định, ở đó mỗi nước sống bình yên, những nguyên nhân xung đột đã được loại bỏ qua việc tôn trọng công lí, luật pháp và tăng cường tinh thần tự cường quốc gia và khu vực... toàn bộ Đông Nam Á sẽ là một Cộng đồng ASEAN nhận thức được các mối liên hệ lịch sử của mình, hiểu rõ di sản văn hóa của mình và gắn bó với nhau bằng một bản sắc chung của khu vực.\"\n(Tầm nhìn ASEAN 2020)",
+ it:[["Khi xây dựng Cộng đồng ASEAN, các nước hướng đến một cộng đồng có mối liên hệ lịch sử, gắn bó bằng bản sắc chung.",1,"Nguyên văn tư liệu."],
+ ["Cộng đồng ASEAN ra đời đã loại bỏ được tất cả những nguyên nhân xung đột.",0,"Tư liệu là tầm nhìn (mong muốn), không phải kết quả; vẫn còn thách thức."],
+ ["Cộng đồng ASEAN (2015) có cơ sở pháp lí là Tuyên bố Băng Cốc (1967) và Tuyên bố Ba-li II (2003).",0,"Cơ sở pháp lí là Hiến chương ASEAN."],
+ ["Hiện nay, Cộng đồng ASEAN thay thế cho tổ chức ASEAN, gắn kết các nước để thành khu vực năng động, thịnh vượng.",0,"Cộng đồng ASEAN không thay thế ASEAN."]]},
+{b:5,s:"Đề 2 · Câu 4",src:"\"Cộng đồng ASEAN sẽ được thành lập gồm ba trụ cột là hợp tác chính trị và an ninh, hợp tác kinh tế và hợp tác văn hóa - xã hội được gắn kết chặt chẽ và cùng tăng cường cho mục đích đảm bảo hòa bình, ổn định lâu dài và cùng thịnh vượng trong khu vực.\"\n(Tuyên bố Ba-li II, 2003)",
+ it:[["Cộng đồng ASEAN hoạt động dựa trên ba trụ cột nhằm tăng cường hợp tác, gắn kết giữa các nước trong khu vực.",1,"Đúng tư liệu."],
+ ["Trong ba trụ cột, trụ cột văn hóa – xã hội được xác định là quan trọng nhất.",0,"Ba trụ cột \"gắn kết chặt chẽ\", không xếp hạng."],
+ ["Một trong những mục tiêu thành lập Cộng đồng ASEAN là duy trì hòa bình ổn định của khu vực Đông Nam Á.",1,"\"Đảm bảo hòa bình, ổn định lâu dài\"."],
+ ["Ba trụ cột phản ánh quy luật tất yếu của sự hợp tác trong xu thế hòa hoãn Đông – Tây.",0,"Hòa hoãn Đông – Tây là những năm 70; Cộng đồng ASEAN ra đời trong bối cảnh toàn cầu hóa."]]},
+{b:5,s:"Đề 5 · Câu 1",src:"\"Được khích lệ và được thống nhất bởi Một tầm nhìn, Một bản sắc và Một cộng đồng chia sẻ, đùm bọc. Gắn kết với nhau bởi một khát vọng chung và ý chí tập thể được sống trong một khu vực hòa bình, an ninh và ổn định lâu dài, kinh tế tăng trưởng bền vững, tiến bộ xã hội và thịnh vượng chung...\"\n(Lời mở đầu, Hiến chương ASEAN)",
+ it:[["Hiến chương ASEAN 2007 đánh dấu bước ngoặt quan trọng trong quá trình hợp tác cùng phát triển của các quốc gia Đông Nam Á.",1,"Lần đầu ASEAN có cơ sở pháp lí ràng buộc."],
+ ["Lời mở đầu Hiến chương nhấn mạnh sự hòa hợp, thống nhất của các quốc gia thành viên.",1,"\"Một tầm nhìn, một bản sắc, một cộng đồng\"."],
+ ["Hiến chương ASEAN nêu rõ mục tiêu xây dựng ASEAN thành một cộng đồng thịnh vượng.",1,"\"Thịnh vượng chung\"."],
+ ["Sự vững mạnh của ASEAN dựa trên cơ sở phát triển kinh tế và sự đa dạng về bản sắc văn hóa.",0,"Tư liệu nhấn mạnh \"một bản sắc\" chung và hòa bình, an ninh, không phải sự đa dạng."]]},
+{b:6,s:"HSG · Câu 4",src:"\"Chẳng những giai cấp lao động và nhân dân Việt Nam ta có thể tự hào, mà giai cấp lao động và những dân tộc bị áp bức nơi khác cũng có thể tự hào rằng: Lần này là lần đầu tiên trong lịch sử cách mạng của các dân tộc thuộc địa và nửa thuộc địa, một Đảng mới 15 tuổi đã lãnh đạo cách mạng thành công, đã nắm chính quyền toàn quốc.\"\n(Hồ Chí Minh, Toàn tập, Tập 7)",
+ it:[["Với thành công của Cách mạng tháng Tám, Đảng Cộng sản Đông Dương đã trở thành đảng cầm quyền.",1,"\"Đã nắm chính quyền toàn quốc\"; SGK: từ đảng hoạt động bí mật thành đảng cầm quyền."],
+ ["Giai cấp lao động là lực lượng lãnh đạo của cách mạng giải phóng dân tộc và giải phóng giai cấp.",0,"Lực lượng lãnh đạo là Đảng Cộng sản Đông Dương."],
+ ["Cách mạng tháng Tám năm 1945 gắn liền với vai trò lãnh đạo của Đảng Cộng sản Đông Dương.",1,"\"Một Đảng mới 15 tuổi đã lãnh đạo cách mạng thành công\"."],
+ ["Đảng Cộng sản Đông Dương là chính đảng trẻ nhất giành được chính quyền trên cả nước.",0,"Tư liệu nói \"lần đầu tiên trong lịch sử cách mạng các dân tộc thuộc địa và nửa thuộc địa\", không nói \"trẻ nhất\"."]]},
+{b:6,s:"HSG · Câu 6",src:"\"Nước Việt Nam Dân chủ Cộng hòa ra đời trong cái chớp mắt của lịch sử. Đó là khoảng thời gian rất ngắn: từ 13 tháng 8 đến 28 tháng 8 năm 1945, từ lúc Nhật hoàng tuyên bố đầu hàng tới khi quân Đồng minh kéo vào miền Bắc nước ta. Nếu ta bỏ qua thời cơ này thì cục diện sẽ khác. Việt Nam vẫn sẽ là một nước gồm ba xứ: Bắc Kỳ, Trung Kỳ, Nam Kỳ. Trước mắt trên miền Bắc sẽ có một chính phủ thân Tưởng, tại miền Nam, Pháp sẽ phục hồi bộ máy cai trị cũ...\"\n(Võ Nguyên Giáp, Chiến đấu trong vòng vây)",
+ it:[["Cách mạng tháng Tám năm 1945 đã xóa bỏ tình trạng đất nước bị chia cắt thành ba kì.",1,"Nếu bỏ lỡ thời cơ, Việt Nam vẫn là ba xứ; cách mạng thành công lập ra một nhà nước thống nhất."],
+ ["Cách mạng tháng Tám năm 1945 là cuộc chiến tranh giải phóng dân tộc, đồng thời là chiến tranh vệ quốc.",0,"Đây là cuộc tổng khởi nghĩa giành chính quyền, không phải chiến tranh."],
+ ["Sau Cách mạng tháng Tám thành công, chính phủ thân Tưởng được lập ở miền Nam, Pháp phục hồi bộ máy cai trị.",0,"Tư liệu nói đây là điều sẽ xảy ra nếu bỏ lỡ thời cơ, không phải điều đã xảy ra."],
+ ["Tổng khởi nghĩa tháng Tám tiến hành gấp rút trong thời gian ngắn, trong điều kiện khách quan hoàn toàn thuận lợi.",0,"\"Hoàn toàn thuận lợi\" sai: quân Đồng minh sắp vào, thời cơ rất ngắn."]]}
+];
+
+// ---------- helpers ----------
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const K="ABCD";
+
+// ---------- tabs ----------
+const views=["kien-thuc","moc","bay","trac-nghiem","dung-sai"];
+function show(v){
+  if(!views.includes(v))v="kien-thuc";
+  views.forEach(x=>{$("#v-"+x).hidden=x!==v});
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v?"true":"false"));
+}
+document.querySelectorAll("nav.tabs button").forEach(b=>b.addEventListener("click",()=>{show(b.dataset.v);try{history.replaceState(null,"","#"+b.dataset.v)}catch(e){location.hash=b.dataset.v}window.scrollTo({top:0})}));
+window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
+
+// ---------- timeline & traps ----------
+$("#timeline").innerHTML=TIMELINE.map(([d,t,g])=>`<div class="tl"><div class="d">${esc(d)}</div><div class="t">${esc(t)}<span class="tag">${esc(g)}</span></div></div>`).join("");
+$("#traps").innerHTML=TRAPS.map(([h,v,x])=>`<div class="trap"><h3>${esc(h)}</h3><div><span class="v">Nhớ:</span> ${esc(v)}</div><div style="margin-top:4px"><span class="x">Câu bẫy:</span> ${esc(x)}</div></div>`).join("");
+
+// ---------- MCQ ----------
+let mAns=LS.get("su12-mcq",{}); let mBai=0, onlyWrong=false, onlyTodo=false;
+let order=MCQ.map((_,i)=>i);
+function filterBar(el,cur,cb){
+  const items=[[0,"Tất cả"],[1,"Bài 1"],[2,"Bài 2"],[3,"Bài 3"],[4,"Bài 4"],[5,"Bài 5"],[6,"Bài 6"]];
+  el.innerHTML=items.map(([v,l])=>`<button class="f" data-b="${v}" aria-pressed="${v===cur}">${l}</button>`).join("");
+  el.querySelectorAll("button").forEach(b=>b.onclick=()=>cb(+b.dataset.b));
+}
+function renderMCQ(){
+  filterBar($("#mcq-filter"),mBai,b=>{mBai=b;renderMCQ()});
+  const pool=order.filter(i=>!mBai||MCQ[i].b===mBai);
+  const list=pool.filter(i=>{const a=mAns[i];if(onlyWrong)return a!==undefined&&a!==MCQ[i].a;if(onlyTodo)return a===undefined;return true});
+  const done=pool.filter(i=>mAns[i]!==undefined), right=done.filter(i=>mAns[i]===MCQ[i].a);
+  $("#mcq-stat").innerHTML=`Đã làm <b>${done.length}/${pool.length}</b> · Đúng <b>${right.length}</b>${done.length?` (${Math.round(right.length/done.length*100)}%)`:""}`;
+  $("#mcq-bar").style.width=(pool.length?done.length/pool.length*100:0)+"%";
+  $("#mcq-list").innerHTML=list.length?list.map((i,n)=>{
+    const q=MCQ[i],a=mAns[i],ans=a!==undefined;
+    return `<div class="q" data-i="${i}"><div class="meta"><span>Bài ${q.b}</span><span>${esc(q.s)}</span></div>
+    <p class="stem">${n+1}. ${esc(q.q)}</p><div class="opts">${q.o.map((o,k)=>{
+      let c="";if(ans){if(k===q.a)c="right";else if(k===a)c="wrong"}
+      return `<button class="opt ${c}" data-k="${k}" ${ans?"disabled":""}><span class="k">${K[k]}.</span><span>${esc(o)}</span></button>`}).join("")}</div>
+    ${ans?`<div class="expl">${a===q.a?'<b class="okt">Đúng.</b>':`<b class="badt">Sai. Đáp án ${K[q.a]}.</b>`} ${esc(q.e)}</div>`:""}</div>`}).join("")
+    :`<p class="lede">Không có câu nào trong mục này.</p>`;
+  $("#mcq-list").querySelectorAll(".opt:not([disabled])").forEach(b=>b.onclick=()=>{
+    const i=+b.closest(".q").dataset.i;mAns[i]=+b.dataset.k;LS.set("su12-mcq",mAns);
+    const y=b.closest(".q").getBoundingClientRect().top;renderMCQ();
+    const el=$(`#mcq-list .q[data-i="${i}"]`);if(el){window.scrollBy(0,el.getBoundingClientRect().top-y)}
+  });
+}
+$("#mcq-wrong").onclick=e=>{onlyWrong=!onlyWrong;onlyTodo=false;e.currentTarget.setAttribute("aria-pressed",onlyWrong);$("#mcq-todo").setAttribute("aria-pressed","false");renderMCQ()};
+$("#mcq-todo").onclick=e=>{onlyTodo=!onlyTodo;onlyWrong=false;e.currentTarget.setAttribute("aria-pressed",onlyTodo);$("#mcq-wrong").setAttribute("aria-pressed","false");renderMCQ()};
+$("#mcq-shuffle").onclick=()=>{for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]]}renderMCQ()};
+$("#mcq-reset").onclick=e=>{const b=e.currentTarget;if(b.dataset.c){mAns={};LS.set("su12-mcq",mAns);b.textContent="Xóa kết quả trắc nghiệm, làm lại từ đầu";delete b.dataset.c;renderMCQ()}else{b.dataset.c=1;b.textContent="Bấm lần nữa để xác nhận xóa"}};
+
+// ---------- Đúng/Sai ----------
+let dAns=LS.get("su12-ds",{}); let dBai=0;
+const PTS=[0,0.1,0.25,0.5,1];
+function renderDS(){
+  filterBar($("#ds-filter"),dBai,b=>{dBai=b;renderDS()});
+  $("#ds-list").innerHTML=DS.map((q,i)=>{
+    if(dBai&&q.b!==dBai)return "";
+    const st=dAns[i]||{};let done=0,ok=0;
+    const rows=q.it.map((it,j)=>{
+      const a=st[j],ans=a!==undefined;if(ans){done++;if(a===it[1])ok++}
+      const cls=v=>!ans?"":(v===it[1]?"right":(v===a?"wrong":""));
+      return `<div class="stmt"><div class="s"><b>${"abcd"[j]})</b> ${esc(it[0])}</div>
+      <div class="ds" data-i="${i}" data-j="${j}"><button class="${cls(1)}" data-v="1" ${ans?"disabled":""} aria-label="Đúng">Đ</button><button class="${cls(0)}" data-v="0" ${ans?"disabled":""} aria-label="Sai">S</button></div>
+      ${ans?`<div class="why">${a===it[1]?"Chính xác.":"Chưa đúng."} Đáp án: <b>${it[1]?"Đúng":"Sai"}</b>. ${esc(it[2])}</div>`:""}</div>`}).join("");
+    return `<div class="q"><div class="meta"><span>Bài ${q.b}</span><span>${esc(q.s)}</span></div><div class="src">${esc(q.src)}</div>${rows}
+    ${done===4?`<div class="score">Đúng ${ok}/4 ý → ${String(PTS[ok]).replace(".",",")} điểm</div>`:""}</div>`}).join("");
+  $("#ds-list").querySelectorAll(".ds button:not([disabled])").forEach(b=>b.onclick=()=>{
+    const p=b.parentElement,i=+p.dataset.i,j=+p.dataset.j;(dAns[i]=dAns[i]||{})[j]=+b.dataset.v;LS.set("su12-ds",dAns);
+    const y=p.getBoundingClientRect().top;renderDS();
+    const el=$(`#ds-list .ds[data-i="${i}"][data-j="${j}"]`);if(el)window.scrollBy(0,el.getBoundingClientRect().top-y);
+  });
+}
+$("#ds-reset").onclick=e=>{const b=e.currentTarget;if(b.dataset.c){dAns={};LS.set("su12-ds",dAns);b.textContent="Xóa kết quả Đúng/Sai, làm lại từ đầu";delete b.dataset.c;renderDS()}else{b.dataset.c=1;b.textContent="Bấm lần nữa để xác nhận xóa"}};
+
+renderMCQ();renderDS();show(location.hash.slice(1));
+</script>
+
+</body>
+</html>
