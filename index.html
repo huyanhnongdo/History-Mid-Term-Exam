@@ -35,6 +35,9 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.01em;font-size:cl
 .lede{color:var(--muted);max-width:62ch;margin:0}
 .scope{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .chip{font-size:12.5px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.listen{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 18px;border-radius:999px;background:var(--accent);color:var(--surface);font-weight:600;text-decoration:none}
+.listen svg{width:20px;height:20px;fill:currentColor}
+.listen:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
 nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 nav.tabs button{font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--muted);padding:13px 12px 11px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
@@ -112,6 +115,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 30px}
   <h1>Ôn giữa kỳ Sử 12</h1>
   <p class="lede">Gói ôn tập Chủ đề 1, Chủ đề 2 và Bài 6 (Chủ đề 3), soạn từ SGK và 6 đề tham khảo bạn gửi. Đề thi có 2 phần: 24 câu trắc nghiệm (6 điểm) và 4 câu đúng/sai (4 điểm).</p>
   <div class="scope"><span class="chip">Bài 1 · Liên hợp quốc</span><span class="chip">Bài 2 · Trật tự hai cực I-an-ta</span><span class="chip">Bài 3 · Thế giới sau Chiến tranh lạnh</span><span class="chip">Bài 4 · ASEAN</span><span class="chip">Bài 5 · Cộng đồng ASEAN</span><span class="chip">Bài 6 · Cách mạng tháng Tám 1945</span></div>
+  <a class="listen" href="nghe.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2v-8H5v-1a7 7 0 0 1 14 0v1h-3v8h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg>Nghe ôn tập · 8 bài, 17 phút</a>
 </div></header>
 
 <nav class="tabs" aria-label="Phần ôn tập"><div class="wrap" role="tablist">

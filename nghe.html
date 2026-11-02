@@ -24,6 +24,8 @@
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.75}
 .wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:flex;flex-direction:column;gap:18px}
+.back{display:inline-block;margin-bottom:14px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--accent);font-weight:600;font-size:14px;text-decoration:none}
+.back:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:600}
 h1{font-family:var(--display);font-weight:800;letter-spacing:-.01em;font-size:clamp(26px,6vw,34px);line-height:1.15;margin:4px 0 6px}
 h2{font-family:var(--display);font-weight:700;font-size:20px;margin:0}
@@ -60,6 +62,7 @@ select{font:inherit;font-size:14px;padding:6px 8px;border-radius:8px;border:1px 
 
 <div class="wrap">
   <header>
+    <a class="back" href="./">← Về trang ôn tập</a>
     <div class="eyebrow">Lịch sử 12 · Giữa kỳ I · Bài 1–6</div>
     <h1>Nghe ôn Sử 12</h1>
     <p class="lede">8 bài nghe, tổng khoảng 17 phút. Phát xong bài này sẽ tự chuyển sang bài tiếp theo, khóa màn hình vẫn nghe được.</p>
